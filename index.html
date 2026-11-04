@@ -736,6 +736,24 @@
       }
     }
 
+    // Dynamic Top Priority Notice
+    const bestFlight = (data.flights || []).find(f => f.audit && f.audit.verdict === 'BUY NOW') || (data.flights || [])[0];
+    if (bestFlight) {
+      document.getElementById('noticeTitle').textContent = `${bestFlight.origin_city} (${bestFlight.origin}) to ${bestFlight.destination_city} (${bestFlight.destination}) • ${bestFlight.airline} ($${bestFlight.price})`;
+      document.getElementById('noticeSummary').textContent = `Historical Percentile: ${bestFlight.stats.percentile_rank}% • Delta vs 90d Median: -$${bestFlight.stats.estimated_savings.toFixed(2)}. ${bestFlight.audit.rationale}`;
+      document.getElementById('noticeLink').href = bestFlight.booking_url;
+    }
+
+    // Filter count updates
+    const cFlights = (data.flights || []).length;
+    const cProducts = (data.products || []).length;
+    const cBuys = (data.flights || []).filter(f => f.audit && f.audit.verdict === 'BUY NOW').length + (data.products || []).filter(p => p.audit && p.audit.verdict === 'BUY NOW').length;
+
+    document.getElementById('countAll').textContent = cFlights + cProducts;
+    document.getElementById('countFlights').textContent = cFlights;
+    document.getElementById('countProducts').textContent = cProducts;
+    document.getElementById('countBuys').textContent = cBuys;
+
     const dealsGrid = document.getElementById('dealsGrid');
 
     function createSparkline(history) {
