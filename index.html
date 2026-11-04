@@ -715,17 +715,31 @@
   <script src="deals_data.js"></script>
 
   <script>
-    // Theme Switcher
+    // Theme Switcher & Parent Sync
     const themeBtn = document.getElementById('themeToggle');
     const htmlElem = document.documentElement;
-    themeBtn.addEventListener('click', () => {
-      const current = htmlElem.getAttribute('data-theme');
-      const next = current === 'slate' ? 'light' : 'slate';
-      htmlElem.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
+
+    function applyTheme(theme) {
+      htmlElem.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+    }
+
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const current = htmlElem.getAttribute('data-theme') || 'light';
+        const next = current === 'slate' ? 'light' : 'slate';
+        applyTheme(next);
+      });
+    }
+
+    window.addEventListener('message', function(e) {
+      if (e.data && e.data.type === 'SET_THEME' && e.data.theme) {
+        applyTheme(e.data.theme);
+      }
     });
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) htmlElem.setAttribute('data-theme', savedTheme);
+
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    applyTheme(savedTheme);
 
     // Render Dashboard Cards
     const data = window.DEAL_DATA || { metadata: {}, flights: [], products: [] };
