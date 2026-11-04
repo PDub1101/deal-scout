@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="slate">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DealScout — Autonomous Flight & Wishlist Price Radar</title>
+  <meta name="description" content="DealScout: Autonomous flight & gear price intelligence engine with 90-day historical percentiles and Google Gemini qualitative gotcha auditing." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root,
+    html[data-theme="slate"] {
+      --bg-page: #0f1218;
+      --bg-header: rgba(15, 18, 24, 0.88);
+      --bg-ribbon: #141822;
+      --bg-card: #171c26;
+      --bg-card-alt: #1c2331;
+      --bg-card-hover: #222a3a;
+      --border-subtle: #242c3d;
+      --border-strong: #333e54;
+
+      --text-primary: #eef2f8;
+      --text-secondary: #9fabc0;
+      --text-muted: #6e7c94;
+
+      --accent-primary: #60a5fa;
+      --accent-primary-bg: rgba(96, 165, 250, 0.12);
+      --accent-primary-border: rgba(96, 165, 250, 0.28);
+
+      --pos: #34d399;
+      --pos-bg: rgba(52, 211, 153, 0.12);
+      --pos-border: rgba(52, 211, 153, 0.28);
+
+      --amber: #fbbf24;
+      --amber-bg: rgba(251, 191, 36, 0.12);
+      --amber-border: rgba(251, 191, 36, 0.28);
+
+      --danger: #f87171;
+      --danger-bg: rgba(248, 113, 113, 0.12);
+      --danger-border: rgba(248, 113, 113, 0.28);
+
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.35);
+    }
+
+    html[data-theme="light"] {
+      --bg-page: #f8fafc;
+      --bg-header: rgba(248, 250, 252, 0.92);
+      --bg-ribbon: #edf2f7;
+      --bg-card: #ffffff;
+      --bg-card-alt: #f1f5f9;
+      --bg-card-hover: #e2e8f0;
+      --border-subtle: #e2e8f0;
+      --border-strong: #cbd5e1;
+
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+
+      --accent-primary: #2563eb;
+      --accent-primary-bg: rgba(37, 99, 235, 0.08);
+      --accent-primary-border: rgba(37, 99, 235, 0.2);
+
+      --pos: #059669;
+      --pos-bg: rgba(5, 150, 105, 0.08);
+      --pos-border: rgba(5, 150, 105, 0.2);
+
+      --amber: #d97706;
+      --amber-bg: rgba(217, 119, 6, 0.08);
+      --amber-border: rgba(217, 119, 6, 0.2);
+
+      --danger: #dc2626;
+      --danger-bg: rgba(220, 38, 38, 0.08);
+      --danger-border: rgba(220, 38, 38, 0.2);
+
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-page);
+      color: var(--text-primary);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      transition: background-color 0.2s, color 0.2s;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    a {
+      color: var(--accent-primary);
+      text-decoration: none;
+    }
+
+    /* ==========================================================================
+       HEADER & MULTI-PROJECT TABS
+       ========================================================================== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-header);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      gap: 16px;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-name {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+
+    .logo-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 600;
+    }
+
+    /* Universal Tabs */
+    .nav-tabs {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--bg-ribbon);
+      padding: 4px;
+      border-radius: 12px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .nav-tab {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      transition: all 0.2s;
+    }
+
+    .nav-tab:hover {
+      color: var(--text-primary);
+      background: var(--bg-card-alt);
+    }
+
+    .nav-tab.active {
+      background: var(--bg-card);
+      color: var(--text-primary);
+      border: 1px solid var(--border-strong);
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--pos);
+      box-shadow: 0 0 8px var(--pos);
+    }
+
+    .theme-toggle {
+      background: var(--bg-ribbon);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      border-radius: 9px;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    /* ==========================================================================
+       METRICS RIBBON
+       ========================================================================== */
+    .metrics-ribbon {
+      padding: 36px 0;
+      border-bottom: 1px solid var(--border-subtle);
+      background: var(--bg-ribbon);
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .metric-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 20px;
+    }
+
+    .metric-val {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--text-primary);
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 4px;
+    }
+
+    .metric-lbl {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ==========================================================================
+       HOT ACTION ALERT BANNER (GEMINI VERDICTS)
+       ========================================================================== */
+    .alert-banner-wrap {
+      padding: 32px 0 0;
+    }
+
+    .alert-banner {
+      background: linear-gradient(135deg, rgba(52, 211, 153, 0.12) 0%, rgba(16, 185, 129, 0.05) 100%);
+      border: 1px solid var(--pos-border);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .alert-banner-left {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .alert-badge-icon {
+      background: var(--pos);
+      color: #0f1218;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
+    .alert-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: var(--pos);
+    }
+
+    .alert-text {
+      font-size: 14px;
+      color: var(--text-secondary);
+      max-width: 780px;
+      line-height: 1.5;
+    }
+
+    /* ==========================================================================
+       MAIN CONTENT & CARDS
+       ========================================================================== */
+    .main-section {
+      padding: 48px 0 80px;
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 32px;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-secondary);
+      font-size: 13.5px;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-btn:hover {
+      color: var(--text-primary);
+      background: var(--bg-card);
+    }
+
+    .filter-btn.active {
+      color: var(--accent-primary);
+      background: var(--accent-primary-bg);
+      border-color: var(--accent-primary-border);
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(540px, 1fr));
+      gap: 24px;
+    }
+
+    .deal-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.2s ease;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .deal-card:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-2px);
+    }
+
+    .deal-card.card-strong-buy {
+      border: 1px solid var(--pos-border);
+      background: linear-gradient(180deg, var(--bg-card) 0%, rgba(52, 211, 153, 0.04) 100%);
+    }
+
+    .card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+
+    .route-codes {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .route-cities {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .price-box {
+      text-align: right;
+    }
+
+    .price-val {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--text-primary);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .price-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* Badges */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .badge-buy {
+      background: var(--pos-bg);
+      color: var(--pos);
+      border: 1px solid var(--pos-border);
+    }
+
+    .badge-fair {
+      background: var(--amber-bg);
+      color: var(--amber);
+      border: 1px solid var(--amber-border);
+    }
+
+    .badge-wait {
+      background: var(--bg-card-alt);
+      color: var(--text-muted);
+      border: 1px solid var(--border-subtle);
+    }
+
+    /* Detail Specs Grid */
+    .deal-specs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 16px 0;
+      padding: 12px;
+      background: var(--bg-card-alt);
+      border-radius: 10px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .spec-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .spec-label {
+      font-size: 10.5px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .spec-val {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    /* Gemini Audit Box */
+    .gemini-box {
+      background: var(--bg-ribbon);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 20px;
+    }
+
+    .gemini-box-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .gemini-badge {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent-primary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .gemini-rationale {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+
+    .gemini-gotchas {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 8px;
+    }
+
+    .gotcha-item {
+      font-size: 12px;
+      color: var(--amber);
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    .positive-item {
+      font-size: 12px;
+      color: var(--pos);
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    .card-action-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 18px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-buy {
+      background: var(--pos);
+      color: #0f1218;
+      font-weight: 700;
+    }
+    .btn-buy:hover {
+      opacity: 0.9;
+    }
+
+    .btn-view {
+      background: var(--bg-card-alt);
+      color: var(--text-primary);
+      border: 1px solid var(--border-strong);
+    }
+
+    /* Sparkline SVG */
+    .sparkline-svg {
+      width: 100px;
+      height: 28px;
+    }
+
+    @media (max-width: 860px) {
+      .metrics-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+      .alert-banner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .nav-tabs {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       UNIVERSAL NAVIGATION BAR (MATCHING PORTFOLIO)
+       ========================================================================== -->
+  <header>
+    <div class="container">
+      <div class="nav-wrap">
+        <a href="https://pdub1101.github.io/" class="logo-area">
+          <div class="logo-icon">✈️</div>
+          <div class="logo-text">
+            <span class="logo-name">DealScout</span>
+            <span class="logo-sub">Price Intelligence Engine</span>
+          </div>
+        </a>
+
+        <!-- Universal Project Switcher Tabs -->
+        <nav class="nav-tabs" aria-label="Projects Navigation">
+          <a href="https://pdub1101.github.io/" class="nav-tab">
+            <span>← Portfolio</span>
+          </a>
+          <a href="https://pdub1101.github.io/market-insight/" class="nav-tab">
+            <span>📈 Stock Model</span>
+          </a>
+          <a href="#" class="nav-tab active">
+            <span class="status-dot"></span>
+            <span>✈️ DealScout</span>
+          </a>
+        </nav>
+
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <a href="https://github.com/PDub1101" target="_blank" class="nav-tab" style="padding: 7px 12px; font-size: 12.5px;">
+            GitHub
+          </a>
+          <button id="themeToggle" class="theme-toggle" title="Toggle Theme" aria-label="Toggle Theme">
+            🌓
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       KEY METRICS RIBBON
+       ========================================================================== -->
+  <section class="metrics-ribbon">
+    <div class="container">
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-val" id="totalDollarsSaved">$951.07</div>
+          <div class="metric-lbl">Total User Dollars Saved</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-val" id="dealsToday">5</div>
+          <div class="metric-lbl">Hot Deals Triggered Today</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-val" id="totalTracked">8</div>
+          <div class="metric-lbl">Active Watchlist Items</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-val" id="lastScan">Today</div>
+          <div class="metric-lbl">Autonomous Daily Scan</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       ACTION ALERT BANNER (TOP HOT DEALS)
+       ========================================================================== -->
+  <div class="container alert-banner-wrap" id="alertSection">
+    <div class="alert-banner">
+      <div class="alert-banner-left">
+        <div class="alert-badge-icon">⚡</div>
+        <div>
+          <div class="alert-title" id="alertHeader">Top Deal Alert: ATL → JFK at $141 Roundtrip (Lowest 0.0%)</div>
+          <div class="alert-text" id="alertDesc">
+            Gemini Verdict: Non-stop JetBlue roundtrip at an all-time low. Carry-on restrictions apply on Blue Basic, but $58 instant savings vs typical fares.
+          </div>
+        </div>
+      </div>
+      <a href="https://www.google.com/travel/flights?q=flights+from+ATL+to+JFK" target="_blank" rel="noopener" class="btn btn-buy">
+        View Booking ↗
+      </a>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MAIN RADAR & CARDS
+       ========================================================================== -->
+  <main class="main-section">
+    <div class="container">
+      <div class="filter-tabs">
+        <button class="filter-btn active" data-filter="all">All Trackers (<span id="countAll">8</span>)</button>
+        <button class="filter-btn" data-filter="flight">✈️ Flights (<span id="countFlights">4</span>)</button>
+        <button class="filter-btn" data-filter="product">🎧 Gear & Tech (<span id="countProducts">4</span>)</button>
+        <button class="filter-btn" data-filter="buys">🔥 Strong Buys Only (<span id="countBuys">5</span>)</button>
+      </div>
+
+      <div class="cards-grid" id="cardsGrid">
+        <!-- Dynamically Populated by JavaScript -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Include generated deal data -->
+  <script src="deals_data.js"></script>
+
+  <script>
+    // Theme Switcher
+    const themeBtn = document.getElementById('themeToggle');
+    const htmlElem = document.documentElement;
+    themeBtn.addEventListener('click', () => {
+      const current = htmlElem.getAttribute('data-theme');
+      const next = current === 'slate' ? 'light' : 'slate';
+      htmlElem.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) htmlElem.setAttribute('data-theme', savedTheme);
+
+    // Render Dashboard Cards
+    const data = window.DEAL_DATA || { metadata: {}, flights: [], products: [] };
+
+    document.getElementById('totalDollarsSaved').textContent = `$${data.metadata.all_time_dollars_saved.toFixed(2)}`;
+    document.getElementById('dealsToday').textContent = data.metadata.qualified_deals_count;
+    document.getElementById('totalTracked').textContent = data.metadata.total_tracked;
+    document.getElementById('lastScan').textContent = "7:00 AM Scan";
+
+    const cardsGrid = document.getElementById('cardsGrid');
+
+    function createSparkline(history) {
+      if (!history || history.length < 2) return '';
+      const min = Math.min(...history);
+      const max = Math.max(...history);
+      const range = max - min || 1;
+      const w = 100, h = 24;
+      const pts = history.map((val, idx) => {
+        const x = (idx / (history.length - 1)) * w;
+        const y = h - ((val - min) / range) * (h - 6) - 3;
+        return `${x.toFixed(1)},${y.toFixed(1)}`;
+      }).join(' ');
+
+      return `
+        <svg class="sparkline-svg" viewBox="0 0 ${w} ${h}">
+          <polyline fill="none" stroke="#60a5fa" stroke-width="2" points="${pts}" />
+        </svg>
+      `;
+    }
+
+    function renderCard(item, type) {
+      const isFlight = type === 'flight';
+      const stats = item.stats || {};
+      const audit = item.audit || {};
+      const isStrongBuy = audit.verdict === 'BUY NOW';
+
+      const badgeClass = isStrongBuy ? 'badge-buy' : (audit.verdict === 'FAIR VALUE' ? 'badge-fair' : 'badge-wait');
+
+      let titleHtml = isFlight 
+        ? `<div class="route-codes">${item.origin} → ${item.destination}</div><div class="route-cities">${item.origin_city} to ${item.destination_city} • ${item.target_window}</div>`
+        : `<div class="route-codes" style="font-size:18px;">${item.name}</div><div class="route-cities">${item.category} • ${item.retailer}</div>`;
+
+      let specsHtml = isFlight
+        ? `
+          <div class="deal-specs">
+            <div class="spec-item"><span class="spec-label">Airline</span><span class="spec-val">${item.airline}</span></div>
+            <div class="spec-item"><span class="spec-label">Cabin</span><span class="spec-val">${item.cabin}</span></div>
+            <div class="spec-item"><span class="spec-label">Timing</span><span class="spec-val">${item.departure_time}</span></div>
+          </div>
+        `
+        : `
+          <div class="deal-specs">
+            <div class="spec-item"><span class="spec-label">Target</span><span class="spec-val">$${item.target_price.toFixed(2)}</span></div>
+            <div class="spec-item"><span class="spec-label">MSRP</span><span class="spec-val">$${item.retail_msrp.toFixed(2)}</span></div>
+            <div class="spec-item"><span class="spec-label">Status</span><span class="spec-val">${item.sale_tag}</span></div>
+          </div>
+        `;
+
+      let gotchasList = (audit.gotchas || []).map(g => `<div class="gotcha-item">⚠️ ${g}</div>`).join('');
+      let positivesList = (audit.positive_highlights || []).map(p => `<div class="positive-item">✓ ${p}</div>`).join('');
+
+      let actionLink = isFlight ? item.booking_url : item.url;
+      let actionLabel = isFlight ? 'View Flights ↗' : 'Check Store ↗';
+
+      return `
+        <div class="deal-card ${isStrongBuy ? 'card-strong-buy' : ''}" data-type="${type}" data-verdict="${audit.verdict}">
+          <div>
+            <div class="card-head">
+              <div>${titleHtml}</div>
+              <div class="price-box">
+                <div class="price-val">$${item.price}</div>
+                <div class="price-sub">${stats.percentile_rank}th percentile</div>
+              </div>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span class="badge ${badgeClass}">${audit.verdict}</span>
+              ${createSparkline(item.history_90d)}
+            </div>
+
+            ${specsHtml}
+
+            <div class="gemini-box">
+              <div class="gemini-box-head">
+                <span class="gemini-badge">✨ Gemini Value Audit</span>
+                <span style="font-size: 11.5px; color: var(--pos); font-weight: bold;">Save ~$${stats.estimated_savings}</span>
+              </div>
+              <p class="gemini-rationale">${audit.rationale}</p>
+              <div class="gemini-gotchas">
+                ${positivesList}
+                ${gotchasList}
+              </div>
+            </div>
+          </div>
+
+          <div class="card-action-bar">
+            <span style="font-size: 12px; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">
+              Range: $${stats.min_price} - $${stats.max_price}
+            </span>
+            <a href="${actionLink}" target="_blank" rel="noopener" class="btn ${isStrongBuy ? 'btn-buy' : 'btn-view'}">
+              ${actionLabel}
+            </a>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderAll(filter = 'all') {
+      cardsGrid.innerHTML = '';
+      
+      data.flights.forEach(f => {
+        if (filter === 'all' || filter === 'flight' || (filter === 'buys' && f.audit.verdict === 'BUY NOW')) {
+          cardsGrid.innerHTML += renderCard(f, 'flight');
+        }
+      });
+
+      data.products.forEach(p => {
+        if (filter === 'all' || filter === 'product' || (filter === 'buys' && p.audit.verdict === 'BUY NOW')) {
+          cardsGrid.innerHTML += renderCard(p, 'product');
+        }
+      });
+    }
+
+    renderAll('all');
+
+    // Filter Buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderAll(btn.getAttribute('data-filter'));
+      });
+    });
+  </script>
+</body>
+</html>
