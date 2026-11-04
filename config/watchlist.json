@@ -1,62 +1,62 @@
 {
   "flights": [
     {
-      "id": "fl_atl_jfk",
+      "id": "fl_atl_slc",
       "origin": "ATL",
-      "destination": "JFK",
+      "destination": "SLC",
       "origin_city": "Atlanta",
-      "destination_city": "New York",
+      "destination_city": "Salt Lake City",
       "trip_type": "roundtrip",
-      "target_window": "Next 60 Days",
+      "target_window": "Winter / Spring",
       "max_layover_hrs": 2,
-      "max_acceptable_price": 240,
-      "preferred_airlines": ["Delta", "JetBlue", "American"]
+      "max_acceptable_price": 260,
+      "preferred_airlines": ["Delta", "American", "Frontier"]
     },
     {
-      "id": "fl_atl_mia",
+      "id": "fl_atl_vld",
       "origin": "ATL",
-      "destination": "MIA",
+      "destination": "VLD",
       "origin_city": "Atlanta",
-      "destination_city": "Miami",
+      "destination_city": "Valdosta",
       "trip_type": "roundtrip",
-      "target_window": "Winter Getaway",
+      "target_window": "Regional Direct",
       "max_layover_hrs": 0,
-      "max_acceptable_price": 180,
+      "max_acceptable_price": 210,
+      "preferred_airlines": ["Delta Connection", "Delta"]
+    },
+    {
+      "id": "fl_atl_clt",
+      "origin": "ATL",
+      "destination": "CLT",
+      "origin_city": "Atlanta",
+      "destination_city": "Charlotte",
+      "trip_type": "roundtrip",
+      "target_window": "Frequent Shuttle",
+      "max_layover_hrs": 0,
+      "max_acceptable_price": 150,
       "preferred_airlines": ["Delta", "American"]
     },
     {
-      "id": "fl_atl_hnd",
-      "origin": "ATL",
-      "destination": "HND",
-      "origin_city": "Atlanta",
-      "destination_city": "Tokyo (Haneda)",
+      "id": "fl_clt_slc",
+      "origin": "CLT",
+      "destination": "SLC",
+      "origin_city": "Charlotte",
+      "destination_city": "Salt Lake City",
       "trip_type": "roundtrip",
-      "target_window": "Spring 2027",
-      "max_layover_hrs": 4,
-      "max_acceptable_price": 1150,
-      "preferred_airlines": ["Delta", "ANA", "Japan Airlines"]
-    },
-    {
-      "id": "fl_atl_lax",
-      "origin": "ATL",
-      "destination": "LAX",
-      "origin_city": "Atlanta",
-      "destination_city": "Los Angeles",
-      "trip_type": "roundtrip",
-      "target_window": "Summer 2027",
-      "max_layover_hrs": 1,
-      "max_acceptable_price": 280,
-      "preferred_airlines": ["Delta", "United", "American"]
+      "target_window": "Transcontinental",
+      "max_layover_hrs": 2,
+      "max_acceptable_price": 290,
+      "preferred_airlines": ["American", "Delta"]
     }
   ],
   "products": [
     {
       "id": "prod_sony_xm5",
       "name": "Sony WH-1000XM5 Noise-Canceling Headphones",
-      "category": "Audio / Tech",
+      "category": "Audio / Hardware",
       "target_price": 298.00,
       "retail_msrp": 399.99,
-      "retailer": "Amazon / Best Buy",
+      "retailer": "Best Buy / Amazon",
       "url": "https://www.bestbuy.com/site/sony-wh-1000xm5-wireless-noise-canceling-over-the-ear-headphones-black/6505727.p"
     },
     {
@@ -65,25 +65,25 @@
       "category": "Computers",
       "target_price": 899.00,
       "retail_msrp": 1099.00,
-      "retailer": "B&H / Apple / Best Buy",
+      "retailer": "B&H Photo / Apple",
       "url": "https://www.bhphotovideo.com/c/product/1815124-REG/apple_mrxt3ll_a_13_macbook_air_m3.html"
     },
     {
       "id": "prod_qi10_driver",
       "name": "TaylorMade Qi10 Driver (10.5° Regular)",
-      "category": "Golf / Sporting Goods",
+      "category": "Sporting Equipment",
       "target_price": 449.00,
       "retail_msrp": 599.99,
-      "retailer": "Golf Galaxy / PGA Superstore",
+      "retailer": "PGA Tour Superstore",
       "url": "https://www.pgatoursuperstore.com/qi10-driver/2000000037145.html"
     },
     {
       "id": "prod_jordan1_high",
       "name": "Nike Air Jordan 1 Retro High OG",
-      "category": "Footwear / Apparel",
+      "category": "Footwear",
       "target_price": 135.00,
       "retail_msrp": 180.00,
-      "retailer": "Nike / SNKRS",
+      "retailer": "Nike Store",
       "url": "https://www.nike.com/t/air-jordan-1-retro-high-og-shoes-0zPVaM"
     }
   ]
