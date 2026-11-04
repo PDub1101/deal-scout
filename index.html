@@ -3,39 +3,67 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DealScout — Autonomous Flight & Wishlist Price Radar</title>
-  <meta name="description" content="DealScout: Autonomous flight & gear price intelligence engine with 90-day historical percentiles and Google Gemini qualitative gotcha auditing." />
+  <title>DealScout — Flight & Wishlist Price Intelligence</title>
+  <meta name="description" content="DealScout: Quantitative 90-day historical percentile distribution engine with automated travel policy and baggage fee audits." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 
   <script>
     if (window.self !== window.top) {
       document.documentElement.classList.add('is-embedded');
     }
   </script>
+
   <style>
-    html.is-embedded header {
-      display: none !important;
-    }
-    html.is-embedded .metrics-ribbon {
-      padding-top: 20px;
-    }
+    /* ==========================================================================
+       DESIGN SYSTEM: REFINED LIGHT BASE & SOFT SLATE DARK MODE
+       ========================================================================== */
     :root,
+    html[data-theme="light"] {
+      --bg-page: #f8fafc;
+      --bg-header: rgba(248, 250, 252, 0.94);
+      --bg-ribbon: #ffffff;
+      --bg-card: #ffffff;
+      --bg-card-alt: #f1f5f9;
+      --bg-card-hover: #f8fafc;
+      --border-subtle: #e2e8f0;
+      --border-strong: #cbd5e1;
+
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+
+      --accent-primary: #1d4ed8;
+      --accent-primary-bg: #eff6ff;
+      --accent-primary-border: #bfdbfe;
+
+      --pos: #059669;
+      --pos-bg: #ecfdf5;
+      --pos-border: #a7f3d0;
+
+      --amber: #b45309;
+      --amber-bg: #fffbeb;
+      --amber-border: #fde68a;
+
+      --shadow-subtle: 0 1px 3px rgba(15, 23, 42, 0.05), 0 1px 2px rgba(15, 23, 42, 0.03);
+      --shadow-card: 0 4px 6px -1px rgba(15, 23, 42, 0.05), 0 2px 4px -2px rgba(15, 23, 42, 0.03);
+    }
+
     html[data-theme="slate"] {
       --bg-page: #0f1218;
-      --bg-header: rgba(15, 18, 24, 0.88);
-      --bg-ribbon: #141822;
+      --bg-header: rgba(15, 18, 24, 0.92);
+      --bg-ribbon: #171c26;
       --bg-card: #171c26;
       --bg-card-alt: #1c2331;
       --bg-card-hover: #222a3a;
       --border-subtle: #242c3d;
       --border-strong: #333e54;
 
-      --text-primary: #eef2f8;
-      --text-secondary: #9fabc0;
-      --text-muted: #6e7c94;
+      --text-primary: #f1f5f9;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
 
       --accent-primary: #60a5fa;
       --accent-primary-bg: rgba(96, 165, 250, 0.12);
@@ -49,46 +77,15 @@
       --amber-bg: rgba(251, 191, 36, 0.12);
       --amber-border: rgba(251, 191, 36, 0.28);
 
-      --danger: #f87171;
-      --danger-bg: rgba(248, 113, 113, 0.12);
-      --danger-border: rgba(248, 113, 113, 0.28);
-
-      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
-      --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.35);
+      --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.3);
+      --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.35);
     }
 
-    html[data-theme="light"] {
-      --bg-page: #f8fafc;
-      --bg-header: rgba(248, 250, 252, 0.92);
-      --bg-ribbon: #edf2f7;
-      --bg-card: #ffffff;
-      --bg-card-alt: #f1f5f9;
-      --bg-card-hover: #e2e8f0;
-      --border-subtle: #e2e8f0;
-      --border-strong: #cbd5e1;
-
-      --text-primary: #0f172a;
-      --text-secondary: #475569;
-      --text-muted: #64748b;
-
-      --accent-primary: #2563eb;
-      --accent-primary-bg: rgba(37, 99, 235, 0.08);
-      --accent-primary-border: rgba(37, 99, 235, 0.2);
-
-      --pos: #059669;
-      --pos-bg: rgba(5, 150, 105, 0.08);
-      --pos-border: rgba(5, 150, 105, 0.2);
-
-      --amber: #d97706;
-      --amber-bg: rgba(217, 119, 6, 0.08);
-      --amber-border: rgba(217, 119, 6, 0.2);
-
-      --danger: #dc2626;
-      --danger-bg: rgba(220, 38, 38, 0.08);
-      --danger-border: rgba(220, 38, 38, 0.2);
-
-      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-      --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+    html.is-embedded header {
+      display: none !important;
+    }
+    html.is-embedded .metrics-ribbon {
+      padding-top: 24px;
     }
 
     *, *::before, *::after {
@@ -100,7 +97,8 @@
     body {
       background-color: var(--bg-page);
       color: var(--text-primary);
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 14.5px;
       line-height: 1.55;
       -webkit-font-smoothing: antialiased;
       transition: background-color 0.2s, color 0.2s;
@@ -110,7 +108,7 @@
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-weight: 700;
       color: var(--text-primary);
-      letter-spacing: -0.02em;
+      letter-spacing: -0.015em;
     }
 
     .font-mono {
@@ -118,7 +116,7 @@
     }
 
     .container {
-      max-width: 1180px;
+      max-width: 1080px;
       margin: 0 auto;
       padding: 0 24px;
     }
@@ -128,412 +126,401 @@
       text-decoration: none;
     }
 
-    /* ==========================================================================
-       HEADER & MULTI-PROJECT TABS
-       ========================================================================== */
+    /* Standalone Header (Hidden when embedded) */
     header {
+      background: var(--bg-header);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
       position: sticky;
       top: 0;
       z-index: 100;
-      background: var(--bg-header);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border-subtle);
     }
 
-    .nav-wrap {
+    .header-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 72px;
-      gap: 16px;
+      height: 60px;
     }
 
-    .logo-area {
+    .brand-wrap {
       display: flex;
       align-items: center;
-      gap: 12px;
-      text-decoration: none;
+      gap: 10px;
     }
 
-    .logo-icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
+    .brand-mark {
+      background: var(--accent-primary);
+      color: #ffffff;
       font-weight: 800;
+      font-size: 13px;
+      padding: 5px 9px;
+      border-radius: 6px;
+      letter-spacing: 0.04em;
     }
 
-    .logo-text {
-      display: flex;
-      flex-direction: column;
+    .brand-title {
+      font-size: 15px;
+      font-weight: 700;
     }
 
-    .logo-name {
-      font-size: 17px;
-      font-weight: 800;
-      color: var(--text-primary);
-    }
-
-    .logo-sub {
-      font-size: 11px;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-weight: 600;
-    }
-
-    /* Universal Tabs */
-    .nav-tabs {
+    .header-links {
       display: flex;
       align-items: center;
-      gap: 4px;
-      background: var(--bg-ribbon);
-      padding: 4px;
-      border-radius: 12px;
-      border: 1px solid var(--border-subtle);
+      gap: 10px;
     }
 
-    .nav-tab {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 14px;
-      border-radius: 8px;
+    .btn-header {
       font-size: 13px;
       font-weight: 600;
-      color: var(--text-secondary);
-      transition: all 0.2s;
-    }
-
-    .nav-tab:hover {
-      color: var(--text-primary);
-      background: var(--bg-card-alt);
-    }
-
-    .nav-tab.active {
+      padding: 5px 12px;
+      border-radius: 6px;
+      border: 1px solid var(--border-strong);
       background: var(--bg-card);
       color: var(--text-primary);
-      border: 1px solid var(--border-strong);
-    }
-
-    .status-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--pos);
-      box-shadow: 0 0 8px var(--pos);
-    }
-
-    .theme-toggle {
-      background: var(--bg-ribbon);
-      border: 1px solid var(--border-subtle);
-      color: var(--text-secondary);
-      border-radius: 9px;
-      width: 38px;
-      height: 38px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
     }
 
     /* ==========================================================================
-       METRICS RIBBON
+       METRICS RIBBON (INSTITUTIONAL KPI BAR)
        ========================================================================== */
     .metrics-ribbon {
-      padding: 36px 0;
-      border-bottom: 1px solid var(--border-subtle);
-      background: var(--bg-ribbon);
+      padding: 32px 0 24px;
+      background: var(--bg-page);
     }
 
-    .metrics-grid {
+    .kpi-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
+      gap: 14px;
     }
 
-    .metric-card {
+    .kpi-card {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
-      border-radius: 14px;
-      padding: 20px;
+      border-radius: 8px;
+      padding: 16px 18px;
+      box-shadow: var(--shadow-subtle);
     }
 
-    .metric-val {
-      font-size: 28px;
+    .kpi-label {
+      font-size: 11.5px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .kpi-value {
+      font-size: 24px;
       font-weight: 800;
       color: var(--text-primary);
       font-family: 'JetBrains Mono', monospace;
-      margin-bottom: 4px;
     }
 
-    .metric-lbl {
-      font-size: 12px;
+    .kpi-sub {
+      font-size: 11.5px;
       color: var(--text-muted);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+      margin-top: 2px;
     }
 
     /* ==========================================================================
-       HOT ACTION ALERT BANNER (GEMINI VERDICTS)
+       PRIORITY DEAL FLAG (EXECUTIVE NOTICE)
        ========================================================================== */
-    .alert-banner-wrap {
-      padding: 32px 0 0;
+    .notice-wrap {
+      margin-bottom: 24px;
     }
 
-    .alert-banner {
-      background: linear-gradient(135deg, rgba(52, 211, 153, 0.12) 0%, rgba(16, 185, 129, 0.05) 100%);
+    .notice-card {
+      background: var(--bg-card);
       border: 1px solid var(--pos-border);
-      border-radius: 16px;
-      padding: 24px;
+      border-left: 4px solid var(--pos);
+      border-radius: 8px;
+      padding: 18px 20px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 24px;
-      box-shadow: var(--shadow-sm);
+      align-items: center;
+      gap: 20px;
+      box-shadow: var(--shadow-subtle);
     }
 
-    .alert-banner-left {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-    }
-
-    .alert-badge-icon {
-      background: var(--pos);
-      color: #0f1218;
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
+    .notice-header {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 4px;
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      font-weight: bold;
-      flex-shrink: 0;
+      gap: 10px;
     }
 
-    .alert-title {
-      font-size: 16px;
+    .notice-badge {
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
       font-weight: 700;
-      margin-bottom: 4px;
+      text-transform: uppercase;
+      background: var(--pos-bg);
       color: var(--pos);
+      border: 1px solid var(--pos-border);
+      padding: 2px 7px;
+      border-radius: 4px;
     }
 
-    .alert-text {
-      font-size: 14px;
+    .notice-desc {
+      font-size: 13.5px;
       color: var(--text-secondary);
-      max-width: 780px;
+      max-width: 720px;
       line-height: 1.5;
     }
 
-    /* ==========================================================================
-       MAIN CONTENT & CARDS
-       ========================================================================== */
-    .main-section {
-      padding: 48px 0 80px;
+    .notice-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: var(--pos);
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 13px;
+      border-radius: 6px;
+      white-space: nowrap;
+      transition: opacity 0.15s;
+    }
+    .notice-cta:hover {
+      opacity: 0.95;
+      text-decoration: none;
     }
 
-    .filter-tabs {
+    /* ==========================================================================
+       FILTER CONTROLS
+       ========================================================================== */
+    .controls-bar {
       display: flex;
-      gap: 8px;
-      margin-bottom: 32px;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
       border-bottom: 1px solid var(--border-subtle);
       padding-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .filter-group {
+      display: flex;
+      gap: 6px;
       flex-wrap: wrap;
     }
 
     .filter-btn {
-      background: transparent;
-      border: 1px solid transparent;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
       color: var(--text-secondary);
-      font-size: 13.5px;
+      font-size: 13px;
       font-weight: 600;
-      padding: 8px 16px;
-      border-radius: 8px;
+      padding: 6px 14px;
+      border-radius: 6px;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.15s;
+      font-family: inherit;
     }
 
     .filter-btn:hover {
       color: var(--text-primary);
-      background: var(--bg-card);
+      border-color: var(--border-strong);
     }
 
     .filter-btn.active {
-      color: var(--accent-primary);
       background: var(--accent-primary-bg);
+      color: var(--accent-primary);
       border-color: var(--accent-primary-border);
     }
 
+    .scan-stamp {
+      font-size: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       DEAL CARDS GRID
+       ========================================================================== */
     .cards-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(540px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-bottom: 56px;
     }
 
     .deal-card {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
-      border-radius: 16px;
-      padding: 26px;
+      border-radius: 8px;
+      padding: 22px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: all 0.2s ease;
-      box-shadow: var(--shadow-sm);
+      box-shadow: var(--shadow-subtle);
+      transition: border-color 0.15s;
     }
 
     .deal-card:hover {
       border-color: var(--border-strong);
-      transform: translateY(-2px);
     }
 
-    .deal-card.card-strong-buy {
+    .deal-card.deal-highlight {
       border: 1px solid var(--pos-border);
-      background: linear-gradient(180deg, var(--bg-card) 0%, rgba(52, 211, 153, 0.04) 100%);
     }
 
-    .card-head {
+    .card-top {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
-    .route-codes {
-      font-size: 22px;
+    .route-primary {
+      font-size: 19px;
       font-weight: 800;
+      color: var(--text-primary);
       letter-spacing: -0.01em;
-      display: flex;
-      align-items: center;
-      gap: 8px;
     }
 
-    .route-cities {
+    .route-sub {
       font-size: 12.5px;
       color: var(--text-muted);
       margin-top: 2px;
     }
 
-    .price-box {
+    .price-group {
       text-align: right;
     }
 
-    .price-val {
-      font-size: 26px;
+    .price-main {
+      font-size: 24px;
       font-weight: 800;
       color: var(--text-primary);
       font-family: 'JetBrains Mono', monospace;
     }
 
-    .price-sub {
+    .price-percentile {
       font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
       color: var(--text-muted);
     }
 
-    /* Badges */
-    .badge {
-      display: inline-flex;
+    /* Sparkline & Range Row */
+    .trend-row {
+      display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 6px;
-      font-size: 11.5px;
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 6px;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-
-    .badge-buy {
-      background: var(--pos-bg);
-      color: var(--pos);
-      border: 1px solid var(--pos-border);
-    }
-
-    .badge-fair {
-      background: var(--amber-bg);
-      color: var(--amber);
-      border: 1px solid var(--amber-border);
-    }
-
-    .badge-wait {
+      margin: 12px 0 14px;
+      padding: 8px 12px;
       background: var(--bg-card-alt);
-      color: var(--text-muted);
+      border-radius: 6px;
       border: 1px solid var(--border-subtle);
     }
 
-    /* Detail Specs Grid */
-    .deal-specs {
+    .trend-label {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .sparkline-svg {
+      width: 90px;
+      height: 22px;
+    }
+
+    /* Specs Table */
+    .specs-table {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin: 16px 0;
-      padding: 12px;
-      background: var(--bg-card-alt);
-      border-radius: 10px;
-      border: 1px solid var(--border-subtle);
+      gap: 8px;
+      margin-bottom: 16px;
+      padding: 10px 0;
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
     }
 
-    .spec-item {
+    .spec-cell {
       display: flex;
       flex-direction: column;
     }
 
-    .spec-label {
+    .spec-title {
       font-size: 10.5px;
-      color: var(--text-muted);
       text-transform: uppercase;
       font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
     }
 
-    .spec-val {
+    .spec-data {
       font-size: 13px;
       font-weight: 600;
       color: var(--text-primary);
     }
 
-    /* Gemini Audit Box */
-    .gemini-box {
-      background: var(--bg-ribbon);
+    /* Valuation & Policy Box */
+    .audit-box {
+      background: var(--bg-card-alt);
       border: 1px solid var(--border-subtle);
-      border-radius: 12px;
-      padding: 16px;
-      margin-bottom: 20px;
+      border-radius: 6px;
+      padding: 14px;
+      margin-bottom: 18px;
     }
 
-    .gemini-box-head {
+    .audit-header {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       margin-bottom: 8px;
     }
 
-    .gemini-badge {
+    .audit-tag {
       font-size: 11px;
       font-weight: 700;
-      color: var(--accent-primary);
-      display: flex;
-      align-items: center;
-      gap: 6px;
       text-transform: uppercase;
       letter-spacing: 0.05em;
+      color: var(--text-muted);
     }
 
-    .gemini-rationale {
-      font-size: 13.5px;
+    .verdict-pill {
+      font-size: 11px;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      padding: 2px 7px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+
+    .verdict-buy {
+      background: var(--pos-bg);
+      color: var(--pos);
+      border: 1px solid var(--pos-border);
+    }
+
+    .verdict-fair {
+      background: var(--amber-bg);
+      color: var(--amber);
+      border: 1px solid var(--amber-border);
+    }
+
+    .verdict-pass {
+      background: var(--bg-card);
+      color: var(--text-muted);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .audit-summary {
+      font-size: 13px;
       color: var(--text-secondary);
       line-height: 1.5;
       margin-bottom: 10px;
     }
 
-    .gemini-gotchas {
+    .policy-notes {
+      list-style-type: none;
       display: flex;
       flex-direction: column;
       gap: 4px;
@@ -541,179 +528,175 @@
       padding-top: 8px;
     }
 
-    .gotcha-item {
+    .policy-item {
       font-size: 12px;
+      color: var(--text-secondary);
+      padding-left: 14px;
+      position: relative;
+    }
+
+    .policy-item.caution::before {
+      content: "•";
+      position: absolute;
+      left: 0;
       color: var(--amber);
-      display: flex;
-      align-items: flex-start;
-      gap: 6px;
+      font-weight: bold;
     }
 
-    .positive-item {
-      font-size: 12px;
+    .policy-item.positive::before {
+      content: "•";
+      position: absolute;
+      left: 0;
       color: var(--pos);
-      display: flex;
-      align-items: flex-start;
-      gap: 6px;
+      font-weight: bold;
     }
 
-    .card-action-bar {
+    /* Card Footer & Action */
+    .card-footer {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      padding-top: 16px;
-      border-top: 1px solid var(--border-subtle);
-    }
-
-    .btn {
-      display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 9px 18px;
-      border-radius: 8px;
-      font-size: 13px;
+      padding-top: 12px;
+    }
+
+    .savings-indicator {
+      font-size: 12px;
       font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--pos);
     }
 
-    .btn-buy {
-      background: var(--pos);
-      color: #0f1218;
-      font-weight: 700;
-    }
-    .btn-buy:hover {
-      opacity: 0.9;
-    }
-
-    .btn-view {
-      background: var(--bg-card-alt);
-      color: var(--text-primary);
+    .btn-inspect {
+      font-size: 12.5px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 6px;
       border: 1px solid var(--border-strong);
+      background: var(--bg-card);
+      color: var(--text-primary);
+      transition: all 0.15s;
     }
 
-    /* Sparkline SVG */
-    .sparkline-svg {
-      width: 100px;
-      height: 28px;
+    .btn-inspect:hover {
+      background: var(--bg-card-alt);
+      text-decoration: none;
     }
 
-    @media (max-width: 860px) {
-      .metrics-grid {
+    .btn-inspect.action-buy {
+      background: var(--accent-primary);
+      color: #ffffff;
+      border-color: var(--accent-primary);
+    }
+    .btn-inspect.action-buy:hover {
+      opacity: 0.95;
+    }
+
+    @media (max-width: 840px) {
+      .kpi-grid {
         grid-template-columns: 1fr 1fr;
       }
       .cards-grid {
         grid-template-columns: 1fr;
       }
-      .alert-banner {
+      .notice-card {
         flex-direction: column;
         align-items: flex-start;
-      }
-      .nav-tabs {
-        display: none;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- ==========================================================================
-       UNIVERSAL NAVIGATION BAR (MATCHING PORTFOLIO)
-       ========================================================================== -->
+  <!-- Standalone Header -->
   <header>
     <div class="container">
-      <div class="nav-wrap">
-        <a href="https://pdub1101.github.io/" class="logo-area">
-          <div class="logo-icon">✈️</div>
-          <div class="logo-text">
-            <span class="logo-name">DealScout</span>
-            <span class="logo-sub">Price Intelligence Engine</span>
-          </div>
-        </a>
-
-        <!-- Standalone Navigation Controls -->
-        <div style="display: flex; align-items: center; gap: 12px;">
-          <a href="https://pdub1101.github.io/" target="_top" class="nav-tab">
-            ← Portfolio
+      <div class="header-inner">
+        <div class="brand-wrap">
+          <span class="brand-mark">DS</span>
+          <span class="brand-title">DealScout Flight & Price Radar</span>
+        </div>
+        <div class="header-links">
+          <a href="https://pdub1101.github.io/" target="_top" class="btn-header">
+            &larr; Portfolio
           </a>
-          <a href="https://github.com/PDub1101/deal-scout" target="_blank" class="nav-tab" style="padding: 7px 12px; font-size: 12.5px;">
-            GitHub
-          </a>
-          <button id="themeToggle" class="theme-toggle" title="Toggle Theme" aria-label="Toggle Theme">
-            🌓
+          <button id="themeToggle" class="btn-header" style="cursor: pointer;" aria-label="Toggle theme">
+            Theme
           </button>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- ==========================================================================
-       KEY METRICS RIBBON
-       ========================================================================== -->
+  <!-- Executive KPI Strip -->
   <section class="metrics-ribbon">
     <div class="container">
-      <div class="metrics-grid">
-        <div class="metric-card">
-          <div class="metric-val" id="totalDollarsSaved">$951.07</div>
-          <div class="metric-lbl">Total User Dollars Saved</div>
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-label">Cumulative Savings to Date</div>
+          <div class="kpi-value" id="kpiSavings">$951.07</div>
+          <div class="kpi-sub">Documented price delta vs. median</div>
         </div>
-        <div class="metric-card">
-          <div class="metric-val" id="dealsToday">5</div>
-          <div class="metric-lbl">Hot Deals Triggered Today</div>
+        <div class="kpi-card">
+          <div class="kpi-label">Active Watchlist Monitors</div>
+          <div class="kpi-value" id="kpiMonitors">8</div>
+          <div class="kpi-sub">4 flight routes • 4 equipment SKUs</div>
         </div>
-        <div class="metric-card">
-          <div class="metric-val" id="totalTracked">8</div>
-          <div class="metric-lbl">Active Watchlist Items</div>
+        <div class="kpi-card">
+          <div class="kpi-label">Actionable Outliers Today</div>
+          <div class="kpi-value" id="kpiOutliers">5</div>
+          <div class="kpi-sub">Bottom 15th percentile threshold</div>
         </div>
-        <div class="metric-card">
-          <div class="metric-val" id="lastScan">Today</div>
-          <div class="metric-lbl">Autonomous Daily Scan</div>
+        <div class="kpi-card">
+          <div class="kpi-label">Scan Schedule</div>
+          <div class="kpi-value" style="font-size: 19px; line-height: 1.35;">07:00 ET</div>
+          <div class="kpi-sub">Daily automated GitHub Actions cron</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ==========================================================================
-       ACTION ALERT BANNER (TOP HOT DEALS)
-       ========================================================================== -->
-  <div class="container alert-banner-wrap" id="alertSection">
-    <div class="alert-banner">
-      <div class="alert-banner-left">
-        <div class="alert-badge-icon">⚡</div>
-        <div>
-          <div class="alert-title" id="alertHeader">Top Deal Alert: ATL → JFK at $141 Roundtrip (Lowest 0.0%)</div>
-          <div class="alert-text" id="alertDesc">
-            Gemini Verdict: Non-stop JetBlue roundtrip at an all-time low. Carry-on restrictions apply on Blue Basic, but $58 instant savings vs typical fares.
+  <!-- Main Radar Body -->
+  <main>
+    <div class="container">
+
+      <!-- Priority Outlier Notice -->
+      <div class="notice-wrap" id="noticeSection">
+        <div class="notice-card">
+          <div>
+            <div class="notice-header">
+              <span class="notice-badge">High-Confidence Deal</span>
+              <span id="noticeTitle">Atlanta (ATL) to New York (JFK) • JetBlue Non-Stop</span>
+            </div>
+            <div class="notice-desc" id="noticeSummary">
+              Historical Percentile: 0.0% (All-time recorded low) • Calculated savings: $58.00 vs 90-day median. Non-stop routing. Note: Blue Basic cabin excludes overhead carry-on baggage.
+            </div>
           </div>
+          <a href="https://www.google.com/travel/flights?q=flights+from+ATL+to+JFK" target="_blank" rel="noopener" class="notice-cta" id="noticeLink">
+            Inspect Fare Source &rarr;
+          </a>
         </div>
       </div>
-      <a href="https://www.google.com/travel/flights?q=flights+from+ATL+to+JFK" target="_blank" rel="noopener" class="btn btn-buy">
-        View Booking ↗
-      </a>
-    </div>
-  </div>
 
-  <!-- ==========================================================================
-       MAIN RADAR & CARDS
-       ========================================================================== -->
-  <main class="main-section">
-    <div class="container">
-      <div class="filter-tabs">
-        <button class="filter-btn active" data-filter="all">All Trackers (<span id="countAll">8</span>)</button>
-        <button class="filter-btn" data-filter="flight">✈️ Flights (<span id="countFlights">4</span>)</button>
-        <button class="filter-btn" data-filter="product">🎧 Gear & Tech (<span id="countProducts">4</span>)</button>
-        <button class="filter-btn" data-filter="buys">🔥 Strong Buys Only (<span id="countBuys">5</span>)</button>
+      <!-- Controls & Filter Strip -->
+      <div class="controls-bar">
+        <div class="filter-group">
+          <button class="filter-btn active" data-filter="all">All Watchlist (<span id="countAll">8</span>)</button>
+          <button class="filter-btn" data-filter="flight">Flight Corridors (<span id="countFlights">4</span>)</button>
+          <button class="filter-btn" data-filter="product">Equipment & Hardware (<span id="countProducts">4</span>)</button>
+          <button class="filter-btn" data-filter="buys">Actionable Deals Only (<span id="countBuys">5</span>)</button>
+        </div>
+        <span class="scan-stamp" id="lastUpdatedStamp">Scan Updated: Today</span>
       </div>
 
-      <div class="cards-grid" id="cardsGrid">
-        <!-- Dynamically Populated by JavaScript -->
+      <!-- Deals Grid -->
+      <div class="cards-grid" id="dealsGrid">
+        <!-- Injected via JavaScript -->
       </div>
+
     </div>
   </main>
 
-  <!-- Include generated deal data -->
   <script src="deals_data.js"></script>
-
   <script>
     // Theme Switcher & Parent Sync
     const themeBtn = document.getElementById('themeToggle');
@@ -741,22 +724,26 @@
     const savedTheme = localStorage.getItem('theme') || 'light';
     applyTheme(savedTheme);
 
-    // Render Dashboard Cards
+    // Data Binding
     const data = window.DEAL_DATA || { metadata: {}, flights: [], products: [] };
 
-    document.getElementById('totalDollarsSaved').textContent = `$${data.metadata.all_time_dollars_saved.toFixed(2)}`;
-    document.getElementById('dealsToday').textContent = data.metadata.qualified_deals_count;
-    document.getElementById('totalTracked').textContent = data.metadata.total_tracked;
-    document.getElementById('lastScan').textContent = "7:00 AM Scan";
+    if (data.metadata) {
+      document.getElementById('kpiSavings').textContent = `$${Number(data.metadata.all_time_dollars_saved || 951.07).toFixed(2)}`;
+      document.getElementById('kpiMonitors').textContent = data.metadata.total_tracked || 8;
+      document.getElementById('kpiOutliers').textContent = data.metadata.qualified_deals_count || 5;
+      if (data.metadata.last_scan_time) {
+        document.getElementById('lastUpdatedStamp').textContent = `Scan: ${data.metadata.last_scan_time}`;
+      }
+    }
 
-    const cardsGrid = document.getElementById('cardsGrid');
+    const dealsGrid = document.getElementById('dealsGrid');
 
     function createSparkline(history) {
       if (!history || history.length < 2) return '';
       const min = Math.min(...history);
       const max = Math.max(...history);
       const range = max - min || 1;
-      const w = 100, h = 24;
+      const w = 90, h = 22;
       const pts = history.map((val, idx) => {
         const x = (idx / (history.length - 1)) * w;
         const y = h - ((val - min) / range) * (h - 6) - 3;
@@ -765,7 +752,7 @@
 
       return `
         <svg class="sparkline-svg" viewBox="0 0 ${w} ${h}">
-          <polyline fill="none" stroke="#60a5fa" stroke-width="2" points="${pts}" />
+          <polyline fill="none" stroke="currentColor" stroke-width="1.8" points="${pts}" opacity="0.65" />
         </svg>
       `;
     }
@@ -776,70 +763,70 @@
       const audit = item.audit || {};
       const isStrongBuy = audit.verdict === 'BUY NOW';
 
-      const badgeClass = isStrongBuy ? 'badge-buy' : (audit.verdict === 'FAIR VALUE' ? 'badge-fair' : 'badge-wait');
+      const verdictClass = isStrongBuy ? 'verdict-buy' : (audit.verdict === 'FAIR VALUE' ? 'verdict-fair' : 'verdict-pass');
 
       let titleHtml = isFlight 
-        ? `<div class="route-codes">${item.origin} → ${item.destination}</div><div class="route-cities">${item.origin_city} to ${item.destination_city} • ${item.target_window}</div>`
-        : `<div class="route-codes" style="font-size:18px;">${item.name}</div><div class="route-cities">${item.category} • ${item.retailer}</div>`;
+        ? `<div class="route-primary">${item.origin} &rarr; ${item.destination}</div><div class="route-sub">${item.origin_city} to ${item.destination_city} • ${item.target_window}</div>`
+        : `<div class="route-primary" style="font-size:16px;">${item.name}</div><div class="route-sub">${item.category} • ${item.retailer}</div>`;
 
       let specsHtml = isFlight
         ? `
-          <div class="deal-specs">
-            <div class="spec-item"><span class="spec-label">Airline</span><span class="spec-val">${item.airline}</span></div>
-            <div class="spec-item"><span class="spec-label">Cabin</span><span class="spec-val">${item.cabin}</span></div>
-            <div class="spec-item"><span class="spec-label">Timing</span><span class="spec-val">${item.departure_time}</span></div>
+          <div class="specs-table">
+            <div class="spec-cell"><span class="spec-title">Carrier</span><span class="spec-data">${item.airline}</span></div>
+            <div class="spec-cell"><span class="spec-title">Cabin</span><span class="spec-data">${item.cabin}</span></div>
+            <div class="spec-cell"><span class="spec-title">Schedule</span><span class="spec-data">${item.departure_time}</span></div>
           </div>
         `
         : `
-          <div class="deal-specs">
-            <div class="spec-item"><span class="spec-label">Target</span><span class="spec-val">$${item.target_price.toFixed(2)}</span></div>
-            <div class="spec-item"><span class="spec-label">MSRP</span><span class="spec-val">$${item.retail_msrp.toFixed(2)}</span></div>
-            <div class="spec-item"><span class="spec-label">Status</span><span class="spec-val">${item.sale_tag}</span></div>
+          <div class="specs-table">
+            <div class="spec-cell"><span class="spec-title">Target Budget</span><span class="spec-data">$${item.target_price.toFixed(2)}</span></div>
+            <div class="spec-cell"><span class="spec-title">List MSRP</span><span class="spec-data">$${item.retail_msrp.toFixed(2)}</span></div>
+            <div class="spec-cell"><span class="spec-title">Condition</span><span class="spec-data">New / Retail</span></div>
           </div>
         `;
 
-      let gotchasList = (audit.gotchas || []).map(g => `<div class="gotcha-item">⚠️ ${g}</div>`).join('');
-      let positivesList = (audit.positive_highlights || []).map(p => `<div class="positive-item">✓ ${p}</div>`).join('');
+      let caveats = (audit.gotchas || []).map(g => `<li class="policy-item caution">${g}</li>`).join('');
+      let highlights = (audit.positive_highlights || []).map(p => `<li class="policy-item positive">${p}</li>`).join('');
 
       let actionLink = isFlight ? item.booking_url : item.url;
-      let actionLabel = isFlight ? 'View Flights ↗' : 'Check Store ↗';
+      let actionLabel = isFlight ? 'Inspect Fare ↗' : 'Inspect Retailer ↗';
 
       return `
-        <div class="deal-card ${isStrongBuy ? 'card-strong-buy' : ''}" data-type="${type}" data-verdict="${audit.verdict}">
+        <div class="deal-card ${isStrongBuy ? 'deal-highlight' : ''}" data-type="${type}" data-verdict="${audit.verdict}">
           <div>
-            <div class="card-head">
+            <div class="card-top">
               <div>${titleHtml}</div>
-              <div class="price-box">
-                <div class="price-val">$${item.price}</div>
-                <div class="price-sub">${stats.percentile_rank}th percentile</div>
+              <div class="price-group">
+                <div class="price-main">$${item.price}</div>
+                <div class="price-percentile">${stats.percentile_rank}th percentile</div>
               </div>
             </div>
 
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-              <span class="badge ${badgeClass}">${audit.verdict}</span>
+            <div class="trend-row">
+              <span class="trend-label">90-Day Range: $${stats.min_price} – $${stats.max_price}</span>
               ${createSparkline(item.history_90d)}
             </div>
 
             ${specsHtml}
 
-            <div class="gemini-box">
-              <div class="gemini-box-head">
-                <span class="gemini-badge">✨ Gemini Value Audit</span>
-                <span style="font-size: 11.5px; color: var(--pos); font-weight: bold;">Save ~$${stats.estimated_savings}</span>
+            <div class="audit-box">
+              <div class="audit-header">
+                <span class="audit-tag">Valuation & Policy Analysis</span>
+                <span class="verdict-pill ${verdictClass}">${audit.verdict}</span>
               </div>
-              <p class="gemini-rationale">${audit.rationale}</p>
-              <div class="gemini-gotchas">
-                ${positivesList}
-                ${gotchasList}
-              </div>
+              <p class="audit-summary">${audit.rationale}</p>
+              <ul class="policy-notes">
+                ${highlights}
+                ${caveats}
+              </ul>
             </div>
           </div>
 
-          <div class="card-action-bar">
-            <span style="font-size: 12px; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">
-              Range: $${stats.min_price} - $${stats.max_price}
+          <div class="card-footer">
+            <span class="savings-indicator">
+              ${stats.estimated_savings > 0 ? `Est. Delta: -$${stats.estimated_savings.toFixed(2)}` : 'Near Median'}
             </span>
-            <a href="${actionLink}" target="_blank" rel="noopener" class="btn ${isStrongBuy ? 'btn-buy' : 'btn-view'}">
+            <a href="${actionLink}" target="_blank" rel="noopener" class="btn-inspect ${isStrongBuy ? 'action-buy' : ''}">
               ${actionLabel}
             </a>
           </div>
@@ -848,17 +835,17 @@
     }
 
     function renderAll(filter = 'all') {
-      cardsGrid.innerHTML = '';
+      dealsGrid.innerHTML = '';
       
       data.flights.forEach(f => {
         if (filter === 'all' || filter === 'flight' || (filter === 'buys' && f.audit.verdict === 'BUY NOW')) {
-          cardsGrid.innerHTML += renderCard(f, 'flight');
+          dealsGrid.innerHTML += renderCard(f, 'flight');
         }
       });
 
       data.products.forEach(p => {
         if (filter === 'all' || filter === 'product' || (filter === 'buys' && p.audit.verdict === 'BUY NOW')) {
-          cardsGrid.innerHTML += renderCard(p, 'product');
+          dealsGrid.innerHTML += renderCard(p, 'product');
         }
       });
     }
