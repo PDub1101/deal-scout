@@ -1,0 +1,90 @@
+{
+  "flights": [
+    {
+      "id": "fl_atl_jfk",
+      "origin": "ATL",
+      "destination": "JFK",
+      "origin_city": "Atlanta",
+      "destination_city": "New York",
+      "trip_type": "roundtrip",
+      "target_window": "Next 60 Days",
+      "max_layover_hrs": 2,
+      "max_acceptable_price": 240,
+      "preferred_airlines": ["Delta", "JetBlue", "American"]
+    },
+    {
+      "id": "fl_atl_mia",
+      "origin": "ATL",
+      "destination": "MIA",
+      "origin_city": "Atlanta",
+      "destination_city": "Miami",
+      "trip_type": "roundtrip",
+      "target_window": "Winter Getaway",
+      "max_layover_hrs": 0,
+      "max_acceptable_price": 180,
+      "preferred_airlines": ["Delta", "American"]
+    },
+    {
+      "id": "fl_atl_hnd",
+      "origin": "ATL",
+      "destination": "HND",
+      "origin_city": "Atlanta",
+      "destination_city": "Tokyo (Haneda)",
+      "trip_type": "roundtrip",
+      "target_window": "Spring 2027",
+      "max_layover_hrs": 4,
+      "max_acceptable_price": 1150,
+      "preferred_airlines": ["Delta", "ANA", "Japan Airlines"]
+    },
+    {
+      "id": "fl_atl_lax",
+      "origin": "ATL",
+      "destination": "LAX",
+      "origin_city": "Atlanta",
+      "destination_city": "Los Angeles",
+      "trip_type": "roundtrip",
+      "target_window": "Summer 2027",
+      "max_layover_hrs": 1,
+      "max_acceptable_price": 280,
+      "preferred_airlines": ["Delta", "United", "American"]
+    }
+  ],
+  "products": [
+    {
+      "id": "prod_sony_xm5",
+      "name": "Sony WH-1000XM5 Noise-Canceling Headphones",
+      "category": "Audio / Tech",
+      "target_price": 298.00,
+      "retail_msrp": 399.99,
+      "retailer": "Amazon / Best Buy",
+      "url": "https://www.bestbuy.com/site/sony-wh-1000xm5-wireless-noise-canceling-over-the-ear-headphones-black/6505727.p"
+    },
+    {
+      "id": "prod_macbook_m3",
+      "name": "Apple MacBook Air 13\" (M3, 16GB, 256GB)",
+      "category": "Computers",
+      "target_price": 899.00,
+      "retail_msrp": 1099.00,
+      "retailer": "B&H / Apple / Best Buy",
+      "url": "https://www.bhphotovideo.com/c/product/1815124-REG/apple_mrxt3ll_a_13_macbook_air_m3.html"
+    },
+    {
+      "id": "prod_qi10_driver",
+      "name": "TaylorMade Qi10 Driver (10.5° Regular)",
+      "category": "Golf / Sporting Goods",
+      "target_price": 449.00,
+      "retail_msrp": 599.99,
+      "retailer": "Golf Galaxy / PGA Superstore",
+      "url": "https://www.pgatoursuperstore.com/qi10-driver/2000000037145.html"
+    },
+    {
+      "id": "prod_jordan1_high",
+      "name": "Nike Air Jordan 1 Retro High OG",
+      "category": "Footwear / Apparel",
+      "target_price": 135.00,
+      "retail_msrp": 180.00,
+      "retailer": "Nike / SNKRS",
+      "url": "https://www.nike.com/t/air-jordan-1-retro-high-og-shoes-0zPVaM"
+    }
+  ]
+}
