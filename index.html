@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DealScout — Flight & Wishlist Price Intelligence</title>
-  <meta name="description" content="DealScout: Quantitative 90-day historical percentile distribution engine with automated travel policy and baggage fee audits." />
+  <title>DealScout — Flight, Live Music & Gear Price Intelligence</title>
+  <meta name="description" content="DealScout: Quantitative 90-day historical percentile distribution engine with Gemini qualitative fee, sightline, and schedule audits." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
 
   <script>
     if (window.self !== window.top) {
@@ -47,6 +47,10 @@
       --amber-bg: #fffbeb;
       --amber-border: #fde68a;
 
+      --purple: #7c3aed;
+      --purple-bg: #f5f3ff;
+      --purple-border: #ddd6fe;
+
       --shadow-subtle: 0 1px 3px rgba(15, 23, 42, 0.05), 0 1px 2px rgba(15, 23, 42, 0.03);
       --shadow-card: 0 4px 6px -1px rgba(15, 23, 42, 0.05), 0 2px 4px -2px rgba(15, 23, 42, 0.03);
     }
@@ -76,6 +80,10 @@
       --amber: #fbbf24;
       --amber-bg: rgba(251, 191, 36, 0.12);
       --amber-border: rgba(251, 191, 36, 0.28);
+
+      --purple: #a78bfa;
+      --purple-bg: rgba(167, 139, 250, 0.14);
+      --purple-border: rgba(167, 139, 250, 0.32);
 
       --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.3);
       --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.35);
@@ -116,7 +124,7 @@
     }
 
     .container {
-      max-width: 1080px;
+      max-width: 1120px;
       margin: 0 auto;
       padding: 0 24px;
     }
@@ -126,7 +134,7 @@
       text-decoration: none;
     }
 
-    /* Standalone Header (Hidden when embedded) */
+    /* Standalone Header */
     header {
       background: var(--bg-header);
       backdrop-filter: blur(12px);
@@ -164,6 +172,13 @@
       font-weight: 700;
     }
 
+    .brand-subtitle {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-left: 6px;
+      font-weight: 500;
+    }
+
     .header-links {
       display: flex;
       align-items: center;
@@ -184,7 +199,7 @@
        METRICS RIBBON (INSTITUTIONAL KPI BAR)
        ========================================================================== */
     .metrics-ribbon {
-      padding: 32px 0 24px;
+      padding: 30px 0 22px;
       background: var(--bg-page);
     }
 
@@ -252,6 +267,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      flex-wrap: wrap;
     }
 
     .notice-badge {
@@ -269,7 +285,7 @@
     .notice-desc {
       font-size: 13.5px;
       color: var(--text-secondary);
-      max-width: 720px;
+      max-width: 760px;
       line-height: 1.5;
     }
 
@@ -317,11 +333,14 @@
       color: var(--text-secondary);
       font-size: 13px;
       font-weight: 600;
-      padding: 6px 14px;
+      padding: 6px 13px;
       border-radius: 6px;
       cursor: pointer;
       transition: all 0.15s;
       font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
     }
 
     .filter-btn:hover {
@@ -342,7 +361,7 @@
     }
 
     /* ==========================================================================
-       DEAL CARDS GRID
+       DEAL CARDS GRID & CARDS
        ========================================================================== */
     .cards-grid {
       display: grid;
@@ -360,7 +379,7 @@
       flex-direction: column;
       justify-content: space-between;
       box-shadow: var(--shadow-subtle);
-      transition: border-color 0.15s;
+      transition: border-color 0.15s, transform 0.15s;
     }
 
     .deal-card:hover {
@@ -375,24 +394,30 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
-    .route-primary {
-      font-size: 19px;
+    .title-primary {
+      font-size: 18px;
       font-weight: 800;
       color: var(--text-primary);
       letter-spacing: -0.01em;
+      line-height: 1.25;
     }
 
-    .route-sub {
+    .title-sub {
       font-size: 12.5px;
       color: var(--text-muted);
-      margin-top: 2px;
+      margin-top: 3px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
     }
 
     .price-group {
       text-align: right;
+      min-width: 105px;
     }
 
     .price-main {
@@ -400,12 +425,98 @@
       font-weight: 800;
       color: var(--text-primary);
       font-family: 'JetBrains Mono', monospace;
+      line-height: 1.1;
+    }
+
+    .price-sub-allin {
+      font-size: 11.5px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      color: var(--purple);
+      margin-top: 2px;
     }
 
     .price-percentile {
       font-size: 11px;
       font-family: 'JetBrains Mono', monospace;
       color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* Date and Duration Ribbon */
+    .flight-timing-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--accent-primary-bg);
+      color: var(--accent-primary);
+      border: 1px solid var(--accent-primary-border);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      font-weight: 600;
+      padding: 4px 8px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    .ticket-timing-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--purple-bg);
+      color: var(--purple);
+      border: 1px solid var(--purple-border);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      font-weight: 600;
+      padding: 4px 8px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    .product-variant-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--bg-card-alt);
+      color: var(--text-secondary);
+      border: 1px solid var(--border-subtle);
+      font-size: 11.5px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    /* Sightline Alert Badges */
+    .sightline-badge-clear {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--pos-bg);
+      color: var(--pos);
+      border: 1px solid var(--pos-border);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .sightline-badge-warn {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--amber-bg);
+      color: var(--amber);
+      border: 1px solid var(--amber-border);
+      padding: 2px 6px;
+      border-radius: 4px;
     }
 
     /* Sparkline & Range Row */
@@ -413,7 +524,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin: 12px 0 14px;
+      margin: 10px 0 14px;
       padding: 8px 12px;
       background: var(--bg-card-alt);
       border-radius: 6px;
@@ -436,7 +547,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 8px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       padding: 10px 0;
       border-top: 1px solid var(--border-subtle);
       border-bottom: 1px solid var(--border-subtle);
@@ -456,9 +567,12 @@
     }
 
     .spec-data {
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 600;
       color: var(--text-primary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     /* Valuation & Policy Box */
@@ -523,7 +637,7 @@
       list-style-type: none;
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 5px;
       border-top: 1px solid var(--border-subtle);
       padding-top: 8px;
     }
@@ -533,6 +647,7 @@
       color: var(--text-secondary);
       padding-left: 14px;
       position: relative;
+      line-height: 1.4;
     }
 
     .policy-item.caution::before {
@@ -548,6 +663,14 @@
       position: absolute;
       left: 0;
       color: var(--pos);
+      font-weight: bold;
+    }
+
+    .policy-item.fee-note::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--purple);
       font-weight: bold;
     }
 
@@ -591,7 +714,7 @@
       opacity: 0.95;
     }
 
-    @media (max-width: 840px) {
+    @media (max-width: 860px) {
       .kpi-grid {
         grid-template-columns: 1fr 1fr;
       }
@@ -613,7 +736,8 @@
       <div class="header-inner">
         <div class="brand-wrap">
           <span class="brand-mark">DS</span>
-          <span class="brand-title">DealScout Flight & Price Radar</span>
+          <span class="brand-title">DealScout Intelligence</span>
+          <span class="brand-subtitle">Flights • Concert Tickets • Apparel • Tech</span>
         </div>
         <div class="header-links">
           <a href="https://pdub1101.github.io/" target="_top" class="btn-header">
@@ -633,23 +757,23 @@
       <div class="kpi-grid">
         <div class="kpi-card">
           <div class="kpi-label">Cumulative Savings to Date</div>
-          <div class="kpi-value" id="kpiSavings">$951.07</div>
-          <div class="kpi-sub">Documented price delta vs. median</div>
+          <div class="kpi-value" id="kpiSavings">$1,140.00</div>
+          <div class="kpi-sub">Documented price delta vs. 90d median</div>
         </div>
         <div class="kpi-card">
           <div class="kpi-label">Active Watchlist Monitors</div>
-          <div class="kpi-value" id="kpiMonitors">8</div>
-          <div class="kpi-sub">4 flight routes • 4 equipment SKUs</div>
+          <div class="kpi-value" id="kpiMonitors">16</div>
+          <div class="kpi-sub">5 flights • 4 concerts • 7 curated gear</div>
         </div>
         <div class="kpi-card">
           <div class="kpi-label">Actionable Outliers Today</div>
-          <div class="kpi-value" id="kpiOutliers">5</div>
-          <div class="kpi-sub">Bottom 15th percentile threshold</div>
+          <div class="kpi-value" id="kpiOutliers">--</div>
+          <div class="kpi-sub">Bottom 18th percentile threshold</div>
         </div>
         <div class="kpi-card">
-          <div class="kpi-label">Scan Schedule</div>
-          <div class="kpi-value" style="font-size: 19px; line-height: 1.35;">07:00 ET</div>
-          <div class="kpi-sub">Daily automated GitHub Actions cron</div>
+          <div class="kpi-label">AI Audit Engine</div>
+          <div class="kpi-value" style="font-size: 18px; line-height: 1.35;" id="kpiEngine">Gemini 3.5</div>
+          <div class="kpi-sub">Fee audit & percentile engine</div>
         </div>
       </div>
     </div>
@@ -664,15 +788,15 @@
         <div class="notice-card">
           <div>
             <div class="notice-header">
-              <span class="notice-badge">High-Confidence Deal</span>
-              <span id="noticeTitle">Atlanta (ATL) to New York (JFK) • JetBlue Non-Stop</span>
+              <span class="notice-badge">Top Priority Deal</span>
+              <span id="noticeTitle">Scanning live intelligence...</span>
             </div>
             <div class="notice-desc" id="noticeSummary">
-              Historical Percentile: 0.0% (All-time recorded low) • Calculated savings: $58.00 vs 90-day median. Non-stop routing. Note: Blue Basic cabin excludes overhead carry-on baggage.
+              Historical percentile analysis and Gemini audit in progress.
             </div>
           </div>
-          <a href="https://www.google.com/travel/flights?q=flights+from+ATL+to+JFK" target="_blank" rel="noopener" class="notice-cta" id="noticeLink">
-            Inspect Fare Source &rarr;
+          <a href="#" target="_blank" rel="noopener" class="notice-cta" id="noticeLink">
+            Inspect Deal Source &rarr;
           </a>
         </div>
       </div>
@@ -680,17 +804,19 @@
       <!-- Controls & Filter Strip -->
       <div class="controls-bar">
         <div class="filter-group">
-          <button class="filter-btn active" data-filter="all">All Watchlist (<span id="countAll">8</span>)</button>
-          <button class="filter-btn" data-filter="flight">Flight Corridors (<span id="countFlights">4</span>)</button>
-          <button class="filter-btn" data-filter="product">Equipment & Hardware (<span id="countProducts">4</span>)</button>
-          <button class="filter-btn" data-filter="buys">Actionable Deals Only (<span id="countBuys">5</span>)</button>
+          <button class="filter-btn active" data-filter="all">All Monitors (<span id="countAll">16</span>)</button>
+          <button class="filter-btn" data-filter="flight">Flights (<span id="countFlights">5</span>)</button>
+          <button class="filter-btn" data-filter="ticket">Concert Tickets (<span id="countTickets">4</span>)</button>
+          <button class="filter-btn" data-filter="apparel">Apparel & Boots (<span id="countApparel">5</span>)</button>
+          <button class="filter-btn" data-filter="tech">Tech & EDC (<span id="countTech">2</span>)</button>
+          <button class="filter-btn" data-filter="buys">Actionable Deals Only (<span id="countBuys">0</span>)</button>
         </div>
-        <span class="scan-stamp" id="lastUpdatedStamp">Scan Updated: Today</span>
+        <span class="scan-stamp" id="lastUpdatedStamp">Scan Updated: Loading...</span>
       </div>
 
       <!-- Deals Grid -->
       <div class="cards-grid" id="dealsGrid">
-        <!-- Injected via JavaScript -->
+        <!-- Rendered via JavaScript -->
       </div>
 
     </div>
@@ -725,36 +851,62 @@
     applyTheme(savedTheme);
 
     // Data Binding
-    const data = window.DEAL_DATA || { metadata: {}, flights: [], products: [] };
+    const data = window.DEAL_DATA || { metadata: {}, flights: [], tickets: [], products: [] };
+
+    const flights = data.flights || [];
+    const tickets = data.tickets || [];
+    const products = data.products || [];
+
+    // Separate apparel and tech products
+    const apparelProducts = products.filter(p => (p.category || '').includes('Apparel') || (p.category || '').includes('Footwear'));
+    const techProducts = products.filter(p => (p.category || '').includes('Tech'));
+
+    const allItems = [
+      ...flights.map(f => ({ ...f, _type: 'flight' })),
+      ...tickets.map(t => ({ ...t, _type: 'ticket' })),
+      ...apparelProducts.map(p => ({ ...p, _type: 'apparel' })),
+      ...techProducts.map(p => ({ ...p, _type: 'tech' }))
+    ];
+
+    const buyNowItems = allItems.filter(item => item.audit && item.audit.verdict === 'BUY NOW');
 
     if (data.metadata) {
-      document.getElementById('kpiSavings').textContent = `$${Number(data.metadata.all_time_dollars_saved || 951.07).toFixed(2)}`;
-      document.getElementById('kpiMonitors').textContent = data.metadata.total_tracked || 8;
-      document.getElementById('kpiOutliers').textContent = data.metadata.qualified_deals_count || 5;
+      if (data.metadata.all_time_dollars_saved) {
+        document.getElementById('kpiSavings').textContent = `$${Number(data.metadata.all_time_dollars_saved).toFixed(2)}`;
+      }
+      document.getElementById('kpiMonitors').textContent = allItems.length;
+      document.getElementById('kpiOutliers').textContent = buyNowItems.length;
       if (data.metadata.last_scan_time) {
         document.getElementById('lastUpdatedStamp').textContent = `Scan: ${data.metadata.last_scan_time}`;
       }
     }
 
-    // Dynamic Top Priority Notice
-    const bestFlight = (data.flights || []).find(f => f.audit && f.audit.verdict === 'BUY NOW') || (data.flights || [])[0];
-    if (bestFlight) {
-      document.getElementById('noticeTitle').textContent = `${bestFlight.origin_city} (${bestFlight.origin}) to ${bestFlight.destination_city} (${bestFlight.destination}) • ${bestFlight.airline} ($${bestFlight.price})`;
-      document.getElementById('noticeSummary').textContent = `Historical Percentile: ${bestFlight.stats.percentile_rank}% • Delta vs 90d Median: -$${bestFlight.stats.estimated_savings.toFixed(2)}. ${bestFlight.audit.rationale}`;
-      document.getElementById('noticeLink').href = bestFlight.booking_url;
+    // Counts
+    document.getElementById('countAll').textContent = allItems.length;
+    document.getElementById('countFlights').textContent = flights.length;
+    document.getElementById('countTickets').textContent = tickets.length;
+    document.getElementById('countApparel').textContent = apparelProducts.length;
+    document.getElementById('countTech').textContent = techProducts.length;
+    document.getElementById('countBuys').textContent = buyNowItems.length;
+
+    // Top Priority Notice Selection
+    const topDeal = buyNowItems[0] || allItems[0];
+    if (topDeal) {
+      if (topDeal._type === 'flight') {
+        document.getElementById('noticeTitle').textContent = `${topDeal.origin_city} (${topDeal.origin}) ↔ ${topDeal.destination_city} (${topDeal.destination}) • ${topDeal.airline} ($${topDeal.price})`;
+        document.getElementById('noticeSummary').textContent = `Window: ${topDeal.window_name} (${topDeal.date_display}, ${topDeal.duration_label}) • 90d Percentile: ${topDeal.stats.percentile_rank}%. ${topDeal.audit.rationale}`;
+        document.getElementById('noticeLink').href = topDeal.booking_url;
+      } else if (topDeal._type === 'ticket') {
+        const allInStr = topDeal.audit.all_in_price ? `$${topDeal.audit.all_in_price.toFixed(2)} all-in` : `$${topDeal.all_in_price.toFixed(2)} all-in`;
+        document.getElementById('noticeTitle').textContent = `${topDeal.artist} @ ${topDeal.venue} • $${topDeal.price} list (${allInStr})`;
+        document.getElementById('noticeSummary').textContent = `${topDeal.city} (${topDeal.event_date}) • ${topDeal.seat_detail}. ${topDeal.audit.fee_audit_note || ''} ${topDeal.audit.rationale}`;
+        document.getElementById('noticeLink').href = topDeal.url;
+      } else {
+        document.getElementById('noticeTitle').textContent = `${topDeal.name} • $${topDeal.price} (${topDeal.retailer})`;
+        document.getElementById('noticeSummary').textContent = `MSRP $${topDeal.retail_msrp} (Target: $${topDeal.target_price}) • 90d Percentile: ${topDeal.stats.percentile_rank}%. ${topDeal.audit.rationale}`;
+        document.getElementById('noticeLink').href = topDeal.url;
+      }
     }
-
-    // Filter count updates
-    const cFlights = (data.flights || []).length;
-    const cProducts = (data.products || []).length;
-    const cBuys = (data.flights || []).filter(f => f.audit && f.audit.verdict === 'BUY NOW').length + (data.products || []).filter(p => p.audit && p.audit.verdict === 'BUY NOW').length;
-
-    document.getElementById('countAll').textContent = cFlights + cProducts;
-    document.getElementById('countFlights').textContent = cFlights;
-    document.getElementById('countProducts').textContent = cProducts;
-    document.getElementById('countBuys').textContent = cBuys;
-
-    const dealsGrid = document.getElementById('dealsGrid');
 
     function createSparkline(history) {
       if (!history || history.length < 2) return '';
@@ -775,49 +927,33 @@
       `;
     }
 
-    function renderCard(item, type) {
-      const isFlight = type === 'flight';
+    function renderFlightCard(item) {
       const stats = item.stats || {};
       const audit = item.audit || {};
       const isStrongBuy = audit.verdict === 'BUY NOW';
-
       const verdictClass = isStrongBuy ? 'verdict-buy' : (audit.verdict === 'FAIR VALUE' ? 'verdict-fair' : 'verdict-pass');
-
-      let titleHtml = isFlight 
-        ? `<div class="route-primary">${item.origin} &rarr; ${item.destination}</div><div class="route-sub">${item.origin_city} to ${item.destination_city} • ${item.target_window}</div>`
-        : `<div class="route-primary" style="font-size:16px;">${item.name}</div><div class="route-sub">${item.category} • ${item.retailer}</div>`;
-
-      let specsHtml = isFlight
-        ? `
-          <div class="specs-table">
-            <div class="spec-cell"><span class="spec-title">Carrier</span><span class="spec-data">${item.airline}</span></div>
-            <div class="spec-cell"><span class="spec-title">Cabin</span><span class="spec-data">${item.cabin}</span></div>
-            <div class="spec-cell"><span class="spec-title">Schedule</span><span class="spec-data">${item.departure_time}</span></div>
-          </div>
-        `
-        : `
-          <div class="specs-table">
-            <div class="spec-cell"><span class="spec-title">Target Budget</span><span class="spec-data">$${item.target_price.toFixed(2)}</span></div>
-            <div class="spec-cell"><span class="spec-title">List MSRP</span><span class="spec-data">$${item.retail_msrp.toFixed(2)}</span></div>
-            <div class="spec-cell"><span class="spec-title">Condition</span><span class="spec-data">New / Retail</span></div>
-          </div>
-        `;
 
       let caveats = (audit.gotchas || []).map(g => `<li class="policy-item caution">${g}</li>`).join('');
       let highlights = (audit.positive_highlights || []).map(p => `<li class="policy-item positive">${p}</li>`).join('');
 
-      let actionLink = isFlight ? item.booking_url : item.url;
-      let actionLabel = isFlight ? 'Inspect Fare ↗' : 'Inspect Retailer ↗';
-
       return `
-        <div class="deal-card ${isStrongBuy ? 'deal-highlight' : ''}" data-type="${type}" data-verdict="${audit.verdict}">
+        <div class="deal-card ${isStrongBuy ? 'deal-highlight' : ''}" data-type="flight" data-verdict="${audit.verdict}">
           <div>
             <div class="card-top">
-              <div>${titleHtml}</div>
+              <div>
+                <div class="title-primary">${item.origin} &rarr; ${item.destination}</div>
+                <div class="title-sub">${item.origin_city} to ${item.destination_city} • ${item.window_name}</div>
+              </div>
               <div class="price-group">
                 <div class="price-main">$${item.price}</div>
                 <div class="price-percentile">${stats.percentile_rank}th percentile</div>
               </div>
+            </div>
+
+            <div class="flight-timing-badge">
+              <span>📅 ${item.date_display}</span>
+              <span>•</span>
+              <span>⏱ ${item.duration_label}</span>
             </div>
 
             <div class="trend-row">
@@ -825,11 +961,15 @@
               ${createSparkline(item.history_90d)}
             </div>
 
-            ${specsHtml}
+            <div class="specs-table">
+              <div class="spec-cell"><span class="spec-title">Carrier</span><span class="spec-data" title="${item.airline}">${item.airline}</span></div>
+              <div class="spec-cell"><span class="spec-title">Cabin & Routing</span><span class="spec-data" title="${item.cabin}">${item.cabin}</span></div>
+              <div class="spec-cell"><span class="spec-title">Departure</span><span class="spec-data">${item.departure_time}</span></div>
+            </div>
 
             <div class="audit-box">
               <div class="audit-header">
-                <span class="audit-tag">Valuation & Policy Analysis</span>
+                <span class="audit-tag">Gemini Flight & Policy Audit</span>
                 <span class="verdict-pill ${verdictClass}">${audit.verdict}</span>
               </div>
               <p class="audit-summary">${audit.rationale}</p>
@@ -842,35 +982,182 @@
 
           <div class="card-footer">
             <span class="savings-indicator">
-              ${stats.estimated_savings > 0 ? `Est. Delta: -$${stats.estimated_savings.toFixed(2)}` : 'Near Median'}
+              ${stats.estimated_savings > 0 ? `Est. Delta: -$${stats.estimated_savings.toFixed(2)}` : 'Near Historical Median'}
             </span>
-            <a href="${actionLink}" target="_blank" rel="noopener" class="btn-inspect ${isStrongBuy ? 'action-buy' : ''}">
-              ${actionLabel}
+            <a href="${item.booking_url}" target="_blank" rel="noopener" class="btn-inspect ${isStrongBuy ? 'action-buy' : ''}">
+              Google Flights Search ↗
             </a>
           </div>
         </div>
       `;
     }
 
+    function renderTicketCard(item) {
+      const stats = item.stats || {};
+      const audit = item.audit || {};
+      const isStrongBuy = audit.verdict === 'BUY NOW';
+      const verdictClass = isStrongBuy ? 'verdict-buy' : (audit.verdict === 'FAIR VALUE' ? 'verdict-fair' : 'verdict-pass');
+
+      const allIn = audit.all_in_price || item.all_in_price;
+      const feeNote = audit.fee_audit_note ? `<li class="policy-item fee-note">${audit.fee_audit_note}</li>` : '';
+      let caveats = (audit.gotchas || []).map(g => `<li class="policy-item caution">${g}</li>`).join('');
+      let highlights = (audit.positive_highlights || []).map(p => `<li class="policy-item positive">${p}</li>`).join('');
+
+      const sightlineHtml = item.is_obstructed 
+        ? `<span class="sightline-badge-warn">⚠ Obstructed View Flag</span>`
+        : `<span class="sightline-badge-clear">✓ Clear Sightline</span>`;
+
+      return `
+        <div class="deal-card ${isStrongBuy ? 'deal-highlight' : ''}" data-type="ticket" data-verdict="${audit.verdict}">
+          <div>
+            <div class="card-top">
+              <div>
+                <div class="title-primary">${item.artist}</div>
+                <div class="title-sub">${item.venue} • ${item.city}</div>
+              </div>
+              <div class="price-group">
+                <div class="price-main">$${item.price}</div>
+                <div class="price-sub-allin">$${allIn.toFixed(2)} all-in</div>
+                <div class="price-percentile">${stats.percentile_rank}th percentile</div>
+              </div>
+            </div>
+
+            <div class="ticket-timing-badge">
+              <span>🎤 ${item.event_date}</span>
+              <span>•</span>
+              <span>🚪 Doors ${item.doors_time}</span>
+              <span>•</span>
+              ${sightlineHtml}
+            </div>
+
+            <div class="trend-row">
+              <span class="trend-label">90-Day Resale: $${stats.min_price} – $${stats.max_price}</span>
+              ${createSparkline(item.history_90d)}
+            </div>
+
+            <div class="specs-table">
+              <div class="spec-cell"><span class="spec-title">Platform</span><span class="spec-data" title="${item.platform}">${item.platform}</span></div>
+              <div class="spec-cell"><span class="spec-title">Face Value MSRP</span><span class="spec-data">$${item.face_value.toFixed(2)}</span></div>
+              <div class="spec-cell"><span class="spec-title">Seat Location</span><span class="spec-data" title="${item.seat_detail}">${item.seat_detail}</span></div>
+            </div>
+
+            <div class="audit-box">
+              <div class="audit-header">
+                <span class="audit-tag">Gemini Junk Fee & Sightline Audit</span>
+                <span class="verdict-pill ${verdictClass}">${audit.verdict}</span>
+              </div>
+              <p class="audit-summary">${audit.rationale}</p>
+              <ul class="policy-notes">
+                ${feeNote}
+                ${highlights}
+                ${caveats}
+              </ul>
+            </div>
+          </div>
+
+          <div class="card-footer">
+            <span class="savings-indicator">
+              ${stats.estimated_savings > 0 ? `Est. Delta: -$${stats.estimated_savings.toFixed(2)} vs Floor` : 'Fair Resale Rate'}
+            </span>
+            <a href="${item.url}" target="_blank" rel="noopener" class="btn-inspect ${isStrongBuy ? 'action-buy' : ''}">
+              Inspect Tickets ↗
+            </a>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderProductCard(item, subcategory) {
+      const stats = item.stats || {};
+      const audit = item.audit || {};
+      const isStrongBuy = audit.verdict === 'BUY NOW';
+      const verdictClass = isStrongBuy ? 'verdict-buy' : (audit.verdict === 'FAIR VALUE' ? 'verdict-fair' : 'verdict-pass');
+
+      let caveats = (audit.gotchas || []).map(g => `<li class="policy-item caution">${g}</li>`).join('');
+      let highlights = (audit.positive_highlights || []).map(p => `<li class="policy-item positive">${p}</li>`).join('');
+
+      return `
+        <div class="deal-card ${isStrongBuy ? 'deal-highlight' : ''}" data-type="${subcategory}" data-verdict="${audit.verdict}">
+          <div>
+            <div class="card-top">
+              <div>
+                <div class="title-primary" style="font-size: 16.5px;">${item.name}</div>
+                <div class="title-sub">${item.category} • ${item.retailer}</div>
+              </div>
+              <div class="price-group">
+                <div class="price-main">$${item.price.toFixed(2)}</div>
+                <div class="price-percentile">${stats.percentile_rank}th percentile</div>
+              </div>
+            </div>
+
+            <div class="product-variant-badge">
+              <span>🏷 ${item.sale_tag || 'Official Retail'}</span>
+              <span>•</span>
+              <span title="${item.variant}">${item.variant || item.stock_status}</span>
+            </div>
+
+            <div class="trend-row">
+              <span class="trend-label">90-Day Range: $${stats.min_price} – $${stats.max_price}</span>
+              ${createSparkline(item.history_90d)}
+            </div>
+
+            <div class="specs-table">
+              <div class="spec-cell"><span class="spec-title">Target Budget</span><span class="spec-data">$${item.target_price.toFixed(2)}</span></div>
+              <div class="spec-cell"><span class="spec-title">Retail MSRP</span><span class="spec-data">$${item.retail_msrp.toFixed(2)}</span></div>
+              <div class="spec-cell"><span class="spec-title">Vendor / Status</span><span class="spec-data" title="${item.stock_status}">${item.stock_status}</span></div>
+            </div>
+
+            <div class="audit-box">
+              <div class="audit-header">
+                <span class="audit-tag">Gemini Material & Value Audit</span>
+                <span class="verdict-pill ${verdictClass}">${audit.verdict}</span>
+              </div>
+              <p class="audit-summary">${audit.rationale}</p>
+              <ul class="policy-notes">
+                ${highlights}
+                ${caveats}
+              </ul>
+            </div>
+          </div>
+
+          <div class="card-footer">
+            <span class="savings-indicator">
+              ${stats.estimated_savings > 0 ? `Est. Delta: -$${stats.estimated_savings.toFixed(2)}` : 'Standard Price'}
+            </span>
+            <a href="${item.url}" target="_blank" rel="noopener" class="btn-inspect ${isStrongBuy ? 'action-buy' : ''}">
+              Inspect Retailer ↗
+            </a>
+          </div>
+        </div>
+      `;
+    }
+
+    const dealsGrid = document.getElementById('dealsGrid');
+
     function renderAll(filter = 'all') {
       dealsGrid.innerHTML = '';
-      
-      data.flights.forEach(f => {
-        if (filter === 'all' || filter === 'flight' || (filter === 'buys' && f.audit.verdict === 'BUY NOW')) {
-          dealsGrid.innerHTML += renderCard(f, 'flight');
-        }
-      });
 
-      data.products.forEach(p => {
-        if (filter === 'all' || filter === 'product' || (filter === 'buys' && p.audit.verdict === 'BUY NOW')) {
-          dealsGrid.innerHTML += renderCard(p, 'product');
+      allItems.forEach(item => {
+        const type = item._type;
+        const matchesFilter = (filter === 'all') 
+          || (filter === type)
+          || (filter === 'buys' && item.audit && item.audit.verdict === 'BUY NOW');
+
+        if (!matchesFilter) return;
+
+        if (type === 'flight') {
+          dealsGrid.innerHTML += renderFlightCard(item);
+        } else if (type === 'ticket') {
+          dealsGrid.innerHTML += renderTicketCard(item);
+        } else {
+          dealsGrid.innerHTML += renderProductCard(item, type);
         }
       });
     }
 
     renderAll('all');
 
-    // Filter Buttons
+    // Filter Buttons Listener
     document.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
