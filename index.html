@@ -10,7 +10,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
 
+  <script>
+    if (window.self !== window.top) {
+      document.documentElement.classList.add('is-embedded');
+    }
+  </script>
   <style>
+    html.is-embedded header {
+      display: none !important;
+    }
+    html.is-embedded .metrics-ribbon {
+      padding-top: 20px;
+    }
     :root,
     html[data-theme="slate"] {
       --bg-page: #0f1218;
@@ -620,22 +631,12 @@
           </div>
         </a>
 
-        <!-- Universal Project Switcher Tabs -->
-        <nav class="nav-tabs" aria-label="Projects Navigation">
-          <a href="https://pdub1101.github.io/" class="nav-tab">
-            <span>← Portfolio</span>
-          </a>
-          <a href="https://pdub1101.github.io/market-insight/" class="nav-tab">
-            <span>📈 Stock Model</span>
-          </a>
-          <a href="#" class="nav-tab active">
-            <span class="status-dot"></span>
-            <span>✈️ DealScout</span>
-          </a>
-        </nav>
-
+        <!-- Standalone Navigation Controls -->
         <div style="display: flex; align-items: center; gap: 12px;">
-          <a href="https://github.com/PDub1101" target="_blank" class="nav-tab" style="padding: 7px 12px; font-size: 12.5px;">
+          <a href="https://pdub1101.github.io/" target="_top" class="nav-tab">
+            ← Portfolio
+          </a>
+          <a href="https://github.com/PDub1101/deal-scout" target="_blank" class="nav-tab" style="padding: 7px 12px; font-size: 12.5px;">
             GitHub
           </a>
           <button id="themeToggle" class="theme-toggle" title="Toggle Theme" aria-label="Toggle Theme">
