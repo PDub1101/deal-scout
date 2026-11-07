@@ -1,10 +1,10 @@
 window.DEAL_DATA = {
   "metadata": {
-    "last_scan_time": "November 06, 2026 at 06:39 PM",
+    "last_scan_time": "November 07, 2026 at 05:09 PM",
     "total_tracked": 16,
-    "qualified_deals_count": 12,
-    "total_savings_opportunity": 765.43,
-    "all_time_dollars_saved": 1905.43,
+    "qualified_deals_count": 11,
+    "total_savings_opportunity": 605.7,
+    "all_time_dollars_saved": 1745.7,
     "system_status": "Operational & Active",
     "model_engine": "Gemini 3.5 Flash Lite + 90-Day Percentile Engine",
     "verticals_breakdown": {
@@ -26,12 +26,12 @@ window.DEAL_DATA = {
       "end_date": "2027-01-03",
       "duration_nights": 14,
       "duration_label": "14 Nights (Holiday Break)",
-      "airline": "American Airlines",
-      "price": 347,
-      "stops": 1,
-      "layover_hrs": 1.4,
-      "departure_time": "10:15 AM",
-      "cabin": "Main Cabin (via DFW)",
+      "airline": "Delta Air Lines",
+      "price": 358,
+      "stops": 0,
+      "layover_hrs": 0,
+      "departure_time": "8:40 AM",
+      "cabin": "Main Cabin (Direct)",
       "booking_url": "https://www.google.com/travel/flights?q=flights+from+ATL+to+SLC+on+2026-12-20+through+2027-01-03",
       "stats": {
         "percentile_rank": 7.8,
@@ -39,18 +39,19 @@ window.DEAL_DATA = {
         "max_price": 615,
         "median_price": 457.0,
         "avg_price": 462.47,
-        "price_score": 0.088,
+        "price_score": 0.126,
         "is_deal": true,
         "tier": "STRONG BUY",
-        "estimated_savings": 110.0
+        "estimated_savings": 99.0
       },
       "audit": {
         "verdict": "BUY NOW",
         "gotchas": [],
         "positive_highlights": [
+          "Non-stop direct routing with zero connection risk",
           "Main Cabin standard fare: overhead carry-on roller & personal item included"
         ],
-        "rationale": "Rare price bottom for American Airlines during Christmas / Holiday Window, ranking in the lowest 7.8% of historical fares. Book before seats fill."
+        "rationale": "Rare price bottom for Delta Air Lines during Christmas / Holiday Window, ranking in the lowest 7.8% of historical fares. Book before seats fill."
       },
       "history_90d": [
         479,
@@ -81,33 +82,32 @@ window.DEAL_DATA = {
       "end_date": "2027-06-20",
       "duration_nights": 8,
       "duration_label": "8 Nights (Summer Mountain)",
-      "airline": "Frontier Airlines",
-      "price": 162,
+      "airline": "Delta Air Lines",
+      "price": 242,
       "stops": 0,
       "layover_hrs": 0,
-      "departure_time": "6:10 AM",
-      "cabin": "Basic Economy (Unbundled baggage fees)",
+      "departure_time": "1:20 PM",
+      "cabin": "Main Cabin (Direct)",
       "booking_url": "https://www.google.com/travel/flights?q=flights+from+ATL+to+SLC+on+2027-06-12+through+2027-06-20",
       "stats": {
-        "percentile_rank": 0.0,
+        "percentile_rank": 1.1,
         "min_price": 235,
         "max_price": 413,
         "median_price": 333.5,
         "avg_price": 333.61,
-        "price_score": 0.0,
+        "price_score": 0.039,
         "is_deal": true,
         "tier": "STRONG BUY",
-        "estimated_savings": 171.5
+        "estimated_savings": 91.5
       },
       "audit": {
         "verdict": "BUY NOW",
-        "gotchas": [
-          "Basic Economy fare: overhead carry-on bag restricted or incur $35\u2013$65 unbundled fees"
-        ],
+        "gotchas": [],
         "positive_highlights": [
-          "Non-stop direct routing with zero connection risk"
+          "Non-stop direct routing with zero connection risk",
+          "Main Cabin standard fare: overhead carry-on roller & personal item included"
         ],
-        "rationale": "Rare price bottom for Frontier Airlines during Summer Mountain Window, ranking in the lowest 0.0% of historical fares. Book before seats fill."
+        "rationale": "Rare price bottom for Delta Air Lines during Summer Mountain Window, ranking in the lowest 1.1% of historical fares. Book before seats fill."
       },
       "history_90d": [
         287,
@@ -139,25 +139,25 @@ window.DEAL_DATA = {
       "duration_nights": 13,
       "duration_label": "13 Nights (Delta Connection)",
       "airline": "Delta Connection (SkyWest)",
-      "price": 204,
+      "price": 279,
       "stops": 0,
       "layover_hrs": 0,
-      "departure_time": "4:45 PM",
-      "cabin": "Main Cabin (CRJ-900 Direct)",
+      "departure_time": "8:30 PM",
+      "cabin": "First Class (Complimentary bag & seat)",
       "booking_url": "https://www.google.com/travel/flights?q=flights+from+ATL+to+VLD+on+2026-12-22+through+2027-01-04",
       "stats": {
-        "percentile_rank": 0.0,
+        "percentile_rank": 57.8,
         "min_price": 205,
         "max_price": 360,
         "median_price": 276.0,
         "avg_price": 278.62,
-        "price_score": 0.0,
-        "is_deal": true,
-        "tier": "STRONG BUY",
-        "estimated_savings": 72.0
+        "price_score": 0.477,
+        "is_deal": false,
+        "tier": "AVERAGE",
+        "estimated_savings": 0.0
       },
       "audit": {
-        "verdict": "BUY NOW",
+        "verdict": "WAIT / PASS",
         "gotchas": [
           "Regional jet (CRJ-900): standard roller carry-ons require complimentary gate valet-check"
         ],
@@ -165,7 +165,7 @@ window.DEAL_DATA = {
           "Non-stop direct routing with zero connection risk",
           "Main Cabin standard fare: overhead carry-on roller & personal item included"
         ],
-        "rationale": "Rare price bottom for Delta Connection (SkyWest) during Holiday Semester Break, ranking in the lowest 0.0% of historical fares. Book before seats fill."
+        "rationale": "Price sits around historical medians ($276.0). High likelihood of fare softening 6-8 weeks out."
       },
       "history_90d": [
         266,
@@ -196,23 +196,23 @@ window.DEAL_DATA = {
       "end_date": "2027-07-12",
       "duration_nights": 3,
       "duration_label": "3 Nights (Weekend Shuttle)",
-      "airline": "American Airlines",
-      "price": 112,
+      "airline": "Delta Air Lines",
+      "price": 132,
       "stops": 0,
       "layover_hrs": 0,
-      "departure_time": "3:25 PM",
+      "departure_time": "12:10 PM",
       "cabin": "Main Cabin (Non-stop)",
       "booking_url": "https://www.google.com/travel/flights?q=flights+from+ATL+to+CLT+on+2027-07-09+through+2027-07-12",
       "stats": {
-        "percentile_rank": 0.0,
+        "percentile_rank": 3.3,
         "min_price": 120,
         "max_price": 270,
         "median_price": 192.0,
         "avg_price": 194.62,
-        "price_score": 0.0,
+        "price_score": 0.08,
         "is_deal": true,
         "tier": "STRONG BUY",
-        "estimated_savings": 80.0
+        "estimated_savings": 60.0
       },
       "audit": {
         "verdict": "BUY NOW",
@@ -221,7 +221,7 @@ window.DEAL_DATA = {
           "Non-stop direct routing with zero connection risk",
           "Main Cabin standard fare: overhead carry-on roller & personal item included"
         ],
-        "rationale": "Rare price bottom for American Airlines during Summer Weekend Shuttle, ranking in the lowest 0.0% of historical fares. Book before seats fill."
+        "rationale": "Rare price bottom for Delta Air Lines during Summer Weekend Shuttle, ranking in the lowest 3.3% of historical fares. Book before seats fill."
       },
       "history_90d": [
         132,
@@ -252,32 +252,31 @@ window.DEAL_DATA = {
       "end_date": "2027-01-02",
       "duration_nights": 10,
       "duration_label": "10 Nights (Christmas Ski Week)",
-      "airline": "American Airlines",
-      "price": 366,
-      "stops": 0,
-      "layover_hrs": 0,
-      "departure_time": "10:45 AM",
-      "cabin": "Main Cabin (Transcontinental Direct)",
+      "airline": "Delta Air Lines",
+      "price": 336,
+      "stops": 1,
+      "layover_hrs": 1.1,
+      "departure_time": "1:30 PM",
+      "cabin": "Main Cabin (via ATL)",
       "booking_url": "https://www.google.com/travel/flights?q=flights+from+CLT+to+SLC+on+2026-12-23+through+2027-01-02",
       "stats": {
-        "percentile_rank": 7.8,
+        "percentile_rank": 0.0,
         "min_price": 341,
         "max_price": 613,
         "median_price": 479.0,
         "avg_price": 475.39,
-        "price_score": 0.092,
+        "price_score": 0.0,
         "is_deal": true,
         "tier": "STRONG BUY",
-        "estimated_savings": 113.0
+        "estimated_savings": 143.0
       },
       "audit": {
         "verdict": "BUY NOW",
         "gotchas": [],
         "positive_highlights": [
-          "Non-stop direct routing with zero connection risk",
           "Main Cabin standard fare: overhead carry-on roller & personal item included"
         ],
-        "rationale": "Rare price bottom for American Airlines during Christmas Ski Week, ranking in the lowest 7.8% of historical fares. Book before seats fill."
+        "rationale": "Rare price bottom for Delta Air Lines during Christmas Ski Week, ranking in the lowest 0.0% of historical fares. Book before seats fill."
       },
       "history_90d": [
         503,
@@ -307,42 +306,42 @@ window.DEAL_DATA = {
       "event_date": "Feb 19, 2027",
       "doors_time": "8:00 PM EST",
       "seat_type": "General Admission Floor",
-      "seat_detail": "GA Standing Room (Resale Floor)",
+      "seat_detail": "General Admission Floor \u2014 Unrestricted Center Sightline",
       "is_obstructed": false,
-      "obstruction_detail": "None \u2014 direct stage sightline",
+      "obstruction_detail": "None \u2014 open multi-tiered floor with clear acoustic line",
       "platform": "SeatGeek / AXS",
-      "price": 36.84,
+      "price": 42.72,
       "target_price": 42.0,
       "face_value": 35.0,
-      "fee_rate": 0.29,
-      "fee_rate_percent": 29.0,
-      "junk_fee_amount": 10.68,
-      "all_in_price": 47.52,
+      "fee_rate": 0.28,
+      "fee_rate_percent": 28.0,
+      "junk_fee_amount": 11.96,
+      "all_in_price": 54.68,
       "url": "https://seatgeek.com/the-stews-tickets",
       "stats": {
-        "percentile_rank": 0.0,
+        "percentile_rank": 2.2,
         "min_price": 38.15,
         "max_price": 80.19,
         "median_price": 59.15,
         "avg_price": 59.55,
-        "price_score": 0.0,
+        "price_score": 0.109,
         "is_deal": true,
         "tier": "STRONG BUY",
-        "estimated_savings": 22.31
+        "estimated_savings": 16.43
       },
       "audit": {
         "verdict": "BUY NOW",
-        "all_in_price": 47.52,
-        "junk_fee_estimate": 10.68,
-        "fee_audit_note": "+29% fee adds $10.68 bringing true checkout total to $47.52.",
+        "all_in_price": 54.68,
+        "junk_fee_estimate": 11.96,
+        "fee_audit_note": "+28% fee adds $11.96 bringing true checkout total to $54.68.",
         "sightline_status": "STANDING_ROOM",
         "gotchas": [
-          "Checkout fee alert: +$10.68 (+29%) in service & facility fees added at final payment"
+          "Checkout fee alert: +$11.96 (+28%) in service & facility fees added at final payment"
         ],
         "positive_highlights": [
           "Direct unobstructed sightline to main stage"
         ],
-        "rationale": "All-in price of $47.52 sits at the bottom 0.0% of recent resale quotes for The Eastern. High demand event; grab before prices rebound."
+        "rationale": "All-in price of $54.68 sits at the bottom 2.2% of recent resale quotes for The Eastern. High demand event; grab before prices rebound."
       },
       "history_90d": [
         66.13,
@@ -374,38 +373,38 @@ window.DEAL_DATA = {
       "is_obstructed": false,
       "obstruction_detail": "None \u2014 front rail elevated center view",
       "platform": "Ticketmaster / Georgia Theatre Box Office",
-      "price": 45.62,
+      "price": 48.75,
       "target_price": 36.0,
       "face_value": 30.0,
       "fee_rate": 0.26,
       "fee_rate_percent": 26.0,
-      "junk_fee_amount": 11.86,
-      "all_in_price": 57.48,
+      "junk_fee_amount": 12.68,
+      "all_in_price": 61.43,
       "url": "https://www.ticketmaster.com/the-stews-tickets/artist/2873402",
       "stats": {
-        "percentile_rank": 35.6,
+        "percentile_rank": 42.2,
         "min_price": 31.93,
         "max_price": 73.67,
         "median_price": 50.95,
         "avg_price": 51.19,
-        "price_score": 0.328,
+        "price_score": 0.403,
         "is_deal": false,
         "tier": "AVERAGE",
-        "estimated_savings": 5.33
+        "estimated_savings": 2.2
       },
       "audit": {
         "verdict": "FAIR VALUE",
-        "all_in_price": 57.48,
-        "junk_fee_estimate": 11.86,
-        "fee_audit_note": "+26% fee adds $11.86 bringing true checkout total to $57.48.",
+        "all_in_price": 61.43,
+        "junk_fee_estimate": 12.68,
+        "fee_audit_note": "+26% fee adds $12.68 bringing true checkout total to $61.43.",
         "sightline_status": "STANDING_ROOM",
         "gotchas": [
-          "Checkout fee alert: +$11.86 (+26%) in service & facility fees added at final payment"
+          "Checkout fee alert: +$12.68 (+26%) in service & facility fees added at final payment"
         ],
         "positive_highlights": [
           "Direct unobstructed sightline to main stage"
         ],
-        "rationale": "Reasonable rate on Ticketmaster / Georgia Theatre Box Office with an all-in total of $57.48. Fair purchase if you want guaranteed entry."
+        "rationale": "Reasonable rate on Ticketmaster / Georgia Theatre Box Office with an all-in total of $61.43. Fair purchase if you want guaranteed entry."
       },
       "history_90d": [
         41.16,
@@ -433,42 +432,42 @@ window.DEAL_DATA = {
       "event_date": "Mar 27, 2027",
       "doors_time": "8:00 PM EST",
       "seat_type": "GA Standing Room",
-      "seat_detail": "General Admission Club Floor",
+      "seat_detail": "Early Tier GA Floor Entry",
       "is_obstructed": false,
-      "obstruction_detail": "None \u2014 club room intimacy, crisp sound",
+      "obstruction_detail": "None \u2014 direct floor view",
       "platform": "SeatGeek / Ticketmaster",
-      "price": 27.66,
+      "price": 26.26,
       "target_price": 28.0,
       "face_value": 25.0,
-      "fee_rate": 0.28,
-      "fee_rate_percent": 28.0,
-      "junk_fee_amount": 7.74,
-      "all_in_price": 35.4,
+      "fee_rate": 0.26,
+      "fee_rate_percent": 26.0,
+      "junk_fee_amount": 6.83,
+      "all_in_price": 33.09,
       "url": "https://seatgeek.com/penelope-road-tickets",
       "stats": {
-        "percentile_rank": 6.7,
+        "percentile_rank": 0.0,
         "min_price": 26.35,
         "max_price": 51.54,
         "median_price": 35.98,
         "avg_price": 36.55,
-        "price_score": 0.052,
+        "price_score": 0.0,
         "is_deal": true,
         "tier": "STRONG BUY",
-        "estimated_savings": 8.32
+        "estimated_savings": 9.72
       },
       "audit": {
         "verdict": "BUY NOW",
-        "all_in_price": 35.4,
-        "junk_fee_estimate": 7.74,
-        "fee_audit_note": "+28% fee adds $7.74 bringing true checkout total to $35.40.",
+        "all_in_price": 33.09,
+        "junk_fee_estimate": 6.83,
+        "fee_audit_note": "+26% fee adds $6.83 bringing true checkout total to $33.09.",
         "sightline_status": "CLEAR",
         "gotchas": [
-          "Checkout fee alert: +$7.74 (+28%) in service & facility fees added at final payment"
+          "Checkout fee alert: +$6.83 (+26%) in service & facility fees added at final payment"
         ],
         "positive_highlights": [
           "Direct unobstructed sightline to main stage"
         ],
-        "rationale": "All-in price of $35.40 sits at the bottom 6.7% of recent resale quotes for Terminal West. High demand event; grab before prices rebound."
+        "rationale": "All-in price of $33.09 sits at the bottom 0.0% of recent resale quotes for Terminal West. High demand event; grab before prices rebound."
       },
       "history_90d": [
         43.17,
@@ -496,42 +495,42 @@ window.DEAL_DATA = {
       "event_date": "May 7\u20139, 2027",
       "doors_time": "11:30 AM Daily",
       "seat_type": "3-Day GA Wristband",
-      "seat_detail": "3-Day General Admission \u2014 Official RFID Fabric Wristband with shipping",
+      "seat_detail": "3-Day General Admission \u2014 Verified Resale Pass",
       "is_obstructed": false,
-      "obstruction_detail": "None \u2014 multi-stage outdoor festival grounds in Central Park",
+      "obstruction_detail": "Festival lawn sightline \u2014 soundboard tower can block sightlines beyond 150ft",
       "platform": "SeatGeek Resale / Ticketmaster Verified",
-      "price": 296.64,
+      "price": 284.73,
       "target_price": 290.0,
       "face_value": 335.0,
-      "fee_rate": 0.29,
-      "fee_rate_percent": 29.0,
-      "junk_fee_amount": 86.03,
-      "all_in_price": 382.67,
+      "fee_rate": 0.3,
+      "fee_rate_percent": 30.0,
+      "junk_fee_amount": 85.42,
+      "all_in_price": 370.15,
       "url": "https://seatgeek.com/shaky-knees-music-festival-tickets",
       "stats": {
-        "percentile_rank": 2.2,
+        "percentile_rank": 0.0,
         "min_price": 289.3,
         "max_price": 468.12,
         "median_price": 362.14,
         "avg_price": 364.62,
-        "price_score": 0.041,
+        "price_score": 0.0,
         "is_deal": true,
         "tier": "STRONG BUY",
-        "estimated_savings": 65.5
+        "estimated_savings": 77.41
       },
       "audit": {
         "verdict": "BUY NOW",
-        "all_in_price": 382.67,
-        "junk_fee_estimate": 86.03,
-        "fee_audit_note": "+29% fee adds $86.03 bringing true checkout total to $382.67.",
+        "all_in_price": 370.15,
+        "junk_fee_estimate": 85.42,
+        "fee_audit_note": "+30% fee adds $85.42 bringing true checkout total to $370.15.",
         "sightline_status": "CLEAR",
         "gotchas": [
-          "Checkout fee alert: +$86.03 (+29%) in service & facility fees added at final payment"
+          "Checkout fee alert: +$85.42 (+30%) in service & facility fees added at final payment"
         ],
         "positive_highlights": [
           "Direct unobstructed sightline to main stage"
         ],
-        "rationale": "All-in price of $382.67 sits at the bottom 2.2% of recent resale quotes for Central Park. High demand event; grab before prices rebound."
+        "rationale": "All-in price of $370.15 sits at the bottom 0.0% of recent resale quotes for Central Park. High demand event; grab before prices rebound."
       },
       "history_90d": [
         306.9,
@@ -556,7 +555,7 @@ window.DEAL_DATA = {
       "id": "prod_patagonia_better_sweater",
       "name": "Patagonia Better Sweater 1/4-Zip Fleece",
       "category": "Apparel & Outerwear",
-      "price": 97.59,
+      "price": 99.5,
       "target_price": 95.0,
       "retail_msrp": 159.0,
       "retailer": "Backcountry",
@@ -571,10 +570,10 @@ window.DEAL_DATA = {
         "max_price": 156.6,
         "median_price": 129.07,
         "avg_price": 127.61,
-        "price_score": 0.022,
+        "price_score": 0.053,
         "is_deal": true,
         "tier": "STRONG BUY",
-        "estimated_savings": 31.48
+        "estimated_savings": 29.57
       },
       "audit": {
         "verdict": "BUY NOW",
@@ -584,9 +583,9 @@ window.DEAL_DATA = {
         "positive_highlights": [
           "Sold by trusted authorized vendor (Backcountry)",
           "Covered by manufacturer warranty",
-          "Rare sub-$100 threshold reached ($97.59 vs $159 MSRP)"
+          "Rare sub-$100 threshold reached ($99.5 vs $159 MSRP)"
         ],
-        "rationale": "All-time competitive rate for Patagonia Better Sweater 1/4-Zip Fleece at $97.59, delivering approximately $31.48 savings vs median. Outstanding value."
+        "rationale": "All-time competitive rate for Patagonia Better Sweater 1/4-Zip Fleece at $99.5, delivering approximately $29.57 savings vs median. Outstanding value."
       },
       "history_90d": [
         106.21,
@@ -609,7 +608,7 @@ window.DEAL_DATA = {
       "id": "prod_carhartt_active_jacket",
       "name": "Carhartt Duck Canvas Insulated Active Jacket",
       "category": "Apparel & Outerwear",
-      "price": 120.1,
+      "price": 120.82,
       "target_price": 99.0,
       "retail_msrp": 129.99,
       "retailer": "Carhartt Online",
@@ -619,12 +618,12 @@ window.DEAL_DATA = {
       "specs": "Heavyweight 12-oz firm-hand 100% ring-spun cotton duck, 3M Thinsulate insulation, storm cuffs",
       "url": "https://www.carhartt.com/product/J130/loose-fit-firm-duck-insulated-active-jacket",
       "stats": {
-        "percentile_rank": 50.0,
+        "percentile_rank": 53.3,
         "min_price": 99.88,
         "max_price": 135.94,
         "median_price": 119.95,
         "avg_price": 118.4,
-        "price_score": 0.561,
+        "price_score": 0.581,
         "is_deal": false,
         "tier": "AVERAGE",
         "estimated_savings": 0.0
@@ -637,7 +636,7 @@ window.DEAL_DATA = {
           "Covered by manufacturer warranty",
           "12-oz firm duck canvas with 3M Thinsulate insulation"
         ],
-        "rationale": "Current price ($120.1) hovers near typical market average. Recommend holding out for next seasonal promotional cycle."
+        "rationale": "Current price ($120.82) hovers near typical market average. Recommend holding out for next seasonal promotional cycle."
       },
       "history_90d": [
         109.2,
@@ -660,7 +659,7 @@ window.DEAL_DATA = {
       "id": "prod_blundstone_550",
       "name": "Blundstone Classic 550 Chelsea Boots",
       "category": "Footwear & Boots",
-      "price": 164.59,
+      "price": 164.46,
       "target_price": 165.0,
       "retail_msrp": 229.95,
       "retailer": "REI Co-op Member Sale",
@@ -678,7 +677,7 @@ window.DEAL_DATA = {
         "price_score": 0.0,
         "is_deal": true,
         "tier": "STRONG BUY",
-        "estimated_savings": 31.96
+        "estimated_savings": 32.09
       },
       "audit": {
         "verdict": "BUY NOW",
@@ -690,7 +689,7 @@ window.DEAL_DATA = {
           "Covered by manufacturer warranty",
           "Premium water-resistant leather with XRD shock absorption"
         ],
-        "rationale": "All-time competitive rate for Blundstone Classic 550 Chelsea Boots at $164.59, delivering approximately $31.96 savings vs median. Outstanding value."
+        "rationale": "All-time competitive rate for Blundstone Classic 550 Chelsea Boots at $164.46, delivering approximately $32.09 savings vs median. Outstanding value."
       },
       "history_90d": [
         211.93,
@@ -713,34 +712,34 @@ window.DEAL_DATA = {
       "id": "prod_nike_gt_cut",
       "name": "Nike G.T. Cut 3 Basketball Shoes",
       "category": "Footwear & Athletic",
-      "price": 156.58,
+      "price": 124.15,
       "target_price": 125.0,
       "retail_msrp": 190.0,
-      "retailer": "Dick's Sporting Goods",
-      "variant": "Nike G.T. Cut Cross (Black / Bright Crimson)",
-      "sale_tag": "COURT PROMO",
-      "stock_status": "In Stock",
+      "retailer": "Nike Store Member Pass",
+      "variant": "Nike G.T. Cut 3 (Summit White / Laser Orange)",
+      "sale_tag": "NIKE APP FLASH DISCOUNT",
+      "stock_status": "In Stock (Men's 9.5-12)",
       "specs": "Full-length ZoomX foam responsive cushioning, flywire lacing, herringbone multi-directional traction",
       "url": "https://www.nike.com/t/gt-cut-3-basketball-shoes",
       "stats": {
-        "percentile_rank": 51.1,
+        "percentile_rank": 2.2,
         "min_price": 121.04,
         "max_price": 189.27,
         "median_price": 156.01,
         "avg_price": 155.22,
-        "price_score": 0.521,
-        "is_deal": false,
-        "tier": "AVERAGE",
-        "estimated_savings": 0.0
+        "price_score": 0.046,
+        "is_deal": true,
+        "tier": "STRONG BUY",
+        "estimated_savings": 31.86
       },
       "audit": {
-        "verdict": "WAIT / PASS",
+        "verdict": "BUY NOW",
         "gotchas": [],
         "positive_highlights": [
-          "Sold by trusted authorized vendor (Dick's Sporting Goods)",
+          "Sold by trusted authorized vendor (Nike Store Member Pass)",
           "Covered by manufacturer warranty"
         ],
-        "rationale": "Current price ($156.58) hovers near typical market average. Recommend holding out for next seasonal promotional cycle."
+        "rationale": "All-time competitive rate for Nike G.T. Cut 3 Basketball Shoes at $124.15, delivering approximately $31.86 savings vs median. Outstanding value."
       },
       "history_90d": [
         152.59,
@@ -763,7 +762,7 @@ window.DEAL_DATA = {
       "id": "prod_adidas_samba_gazelle",
       "name": "Adidas Samba OG / Gazelle Classics",
       "category": "Footwear & Classics",
-      "price": 73.73,
+      "price": 73.44,
       "target_price": 75.0,
       "retail_msrp": 100.0,
       "retailer": "Adidas Official / Confirmed",
@@ -778,10 +777,10 @@ window.DEAL_DATA = {
         "max_price": 102.06,
         "median_price": 88.56,
         "avg_price": 87.81,
-        "price_score": 0.055,
+        "price_score": 0.045,
         "is_deal": true,
         "tier": "STRONG BUY",
-        "estimated_savings": 14.83
+        "estimated_savings": 15.12
       },
       "audit": {
         "verdict": "BUY NOW",
@@ -791,7 +790,7 @@ window.DEAL_DATA = {
           "Covered by manufacturer warranty",
           "Timeless leather construction with durable gum rubber traction"
         ],
-        "rationale": "All-time competitive rate for Adidas Samba OG / Gazelle Classics at $73.73, delivering approximately $14.83 savings vs median. Outstanding value."
+        "rationale": "All-time competitive rate for Adidas Samba OG / Gazelle Classics at $73.44, delivering approximately $15.12 savings vs median. Outstanding value."
       },
       "history_90d": [
         84.79,
@@ -814,35 +813,35 @@ window.DEAL_DATA = {
       "id": "prod_sony_xm5",
       "name": "Sony WH-1000XM5 Noise-Canceling Headphones",
       "category": "Tech & Audio",
-      "price": 296.78,
+      "price": 347.97,
       "target_price": 298.0,
       "retail_msrp": 399.99,
-      "retailer": "Best Buy / Amazon",
-      "variant": "Sony WH-1000XM5 Wireless Headphones (Midnight Blue / Silver)",
-      "sale_tag": "PRIME / PRICE MATCH PROMO",
-      "stock_status": "Authorized Dealer New in Box",
+      "retailer": "B&H Photo Video",
+      "variant": "Sony WH-1000XM5 (Black)",
+      "sale_tag": "AUTHORIZED RETAIL",
+      "stock_status": "In Stock",
       "specs": "Integrated Processor V1 + HD QN1, 8-mic array, 30hr battery, LDAC & Speak-to-Chat",
       "url": "https://www.bestbuy.com/site/sony-wh-1000xm5-wireless-noise-canceling-over-the-ear-headphones-black/6505727.p",
       "stats": {
-        "percentile_rank": 8.9,
+        "percentile_rank": 60.0,
         "min_price": 279.52,
         "max_price": 386.02,
         "median_price": 341.31,
         "avg_price": 338.23,
-        "price_score": 0.162,
-        "is_deal": true,
-        "tier": "STRONG BUY",
-        "estimated_savings": 44.53
+        "price_score": 0.643,
+        "is_deal": false,
+        "tier": "AVERAGE",
+        "estimated_savings": 0.0
       },
       "audit": {
-        "verdict": "BUY NOW",
+        "verdict": "WAIT / PASS",
         "gotchas": [],
         "positive_highlights": [
-          "Sold by trusted authorized vendor (Best Buy / Amazon)",
+          "Sold by trusted authorized vendor (B&H Photo Video)",
           "Covered by manufacturer warranty",
           "Industry-leading active noise canceling with dual processor setup"
         ],
-        "rationale": "All-time competitive rate for Sony WH-1000XM5 Noise-Canceling Headphones at $296.78, delivering approximately $44.53 savings vs median. Outstanding value."
+        "rationale": "Current price ($347.97) hovers near typical market average. Recommend holding out for next seasonal promotional cycle."
       },
       "history_90d": [
         376.57,
@@ -865,7 +864,7 @@ window.DEAL_DATA = {
       "id": "prod_peak_design_tech_pouch",
       "name": "Peak Design Tech Pouch (Storage & Organization)",
       "category": "Tech & EDC",
-      "price": 60.47,
+      "price": 58.72,
       "target_price": 49.95,
       "retail_msrp": 64.95,
       "retailer": "REI Co-op",
@@ -875,12 +874,12 @@ window.DEAL_DATA = {
       "specs": "Origami-style internal divider pockets, weatherproof 200D recycled nylon canvas, external zip passport pocket",
       "url": "https://www.peakdesign.com/products/tech-pouch",
       "stats": {
-        "percentile_rank": 78.9,
+        "percentile_rank": 75.6,
         "min_price": 44.33,
         "max_price": 63.86,
         "median_price": 55.77,
         "avg_price": 55.55,
-        "price_score": 0.826,
+        "price_score": 0.737,
         "is_deal": false,
         "tier": "OVERPRICED",
         "estimated_savings": 0.0
@@ -893,7 +892,7 @@ window.DEAL_DATA = {
           "Covered by manufacturer warranty",
           "Weatherproof 200D recycled nylon with origami pocket layout"
         ],
-        "rationale": "Current price ($60.47) hovers near typical market average. Recommend holding out for next seasonal promotional cycle."
+        "rationale": "Current price ($58.72) hovers near typical market average. Recommend holding out for next seasonal promotional cycle."
       },
       "history_90d": [
         58.33,
