@@ -1,63 +1,68 @@
-# DealScout — Flight, Concert & Gear Price Intelligence Engine
+# DealScout — Flight Price Intelligence & Corridor Radar
 
 Live Production Dashboard: [https://pdub1101.github.io/deal-scout/](https://pdub1101.github.io/deal-scout/)  
 Master Portfolio Hub: [https://pdub1101.github.io/](https://pdub1101.github.io/)
 
-DealScout is an automated personal price intelligence dashboard that tracks tailored flight corridors, live concert tickets, outdoor apparel, footwear, and premium tech/EDC gear. It cuts through deceptive sales tactics using **rolling 90-day historical percentile distributions** combined with **Google Gemini qualitative fee, sightline, and schedule auditing**.
+DealScout is an automated personal flight price intelligence engine. It continuously tracks tailored travel corridors (holiday breaks, ski trips, weekend shuttles, seasonal vacations) using **rolling 90-day historical percentile distributions** combined with **Google Gemini qualitative fee, baggage, connection, and schedule audits**.
 
 ---
 
-## Tailored Intelligence Verticals
+## Active Monitored Flight Corridors
 
-### 1. Flights with Explicit Travel Windows & Direct Google Flights Links
-- **ATL ↔ SLC (Holiday Break):** Dec 20, 2026 – Jan 3, 2027 (14 Nights • Christmas/New Year peak ski window).
-- **ATL ↔ SLC (Summer Mountain):** Jun 12, 2027 – Jun 20, 2027 (8 Nights • Wasatch summer hiking window).
-- **ATL ↔ VLD (Holiday Semester Break):** Dec 22, 2026 – Jan 4, 2027 (13 Nights • Delta Connection SkyWest CRJ-900 Direct).
-- **ATL ↔ CLT (Summer Weekend Shuttle):** Jul 9, 2027 – Jul 12, 2027 (3 Nights • Nonstop shuttle).
-- **CLT ↔ SLC (Christmas Ski Week):** Dec 23, 2026 – Jan 2, 2027 (10 Nights • Transcontinental ski week).
-- *Each flight card displays exact calendar dates, trip durations, and direct Google Flights search links.*
+Each corridor provides exact calendar dates, trip durations, carrier schedules, baggage status, and pre-populated direct booking links for **Google Flights** and **Kayak**:
 
-### 2. Live Music & Concert Tickets (SeatGeek / Ticketmaster)
-- **The Stews (Atlanta):** The Eastern, Atlanta, GA (GA Floor & Mezzanine).
-- **The Stews (Athens):** Georgia Theatre, Athens, GA (Balcony & GA Floor headline).
-- **Penelope Road:** Terminal West / Aisle 5, Atlanta, GA (Southern Jam & Indie Rock club night).
-- **Shaky Knees Music Festival:** Central Park, Atlanta, GA (3-Day GA pass resale floor tracker).
-- **Gemini Junk Fee & Sightline Audit:** Audits secondary ticketing +25–30% service/facility junk fees and detects obstructed view seats (e.g. historic theater pillars or outdoor festival sound towers).
-
-### 3. Apparel, Footwear & Boots
-- **Patagonia Better Sweater 1/4-Zip Fleece:** Tracks end-of-season colorway clearance under $100 vs $159 MSRP across REI and Backcountry.
-- **Carhartt Duck Canvas Active Jacket / WIP:** 12-oz firm-hand cotton duck canvas with 3M Thinsulate insulation.
-- **Blundstone 500 / 550 Chelsea Boots:** Premium water-resistant leather with XRD shock-absorption technology.
-- **Nike Basketball:** Nike G.T. Cut series (Cut 3 / Cut Cross) featuring full-length ZoomX foam cushioning.
-- **Adidas Classics:** Adidas Samba OG and Gazelle low-tops with suede T-toe and gum rubber sole.
-
-### 4. Tech & EDC
-- **Sony WH-1000XM5:** Flagship wireless noise-canceling headphones (V1 + QN1 dual processors).
-- **Peak Design Tech Pouch:** Weatherproof 200D recycled nylon protective travel organizer with origami pockets.
+1. **ATL ↔ SLC (Christmas / Holiday Ski Break):** Dec 20, 2026 – Jan 3, 2027 (14 Nights • Wasatch peak ski window).
+2. **ATL ↔ SLC (Wasatch Summer Mountain Hiking):** Jun 12, 2027 – Jun 20, 2027 (8 Nights • Cottonwood Canyon hiking).
+3. **ATL ↔ VLD (Holiday Semester Break):** Dec 22, 2026 – Jan 4, 2027 (13 Nights • Delta Connection SkyWest CRJ-900 Direct).
+4. **ATL ↔ CLT (Summer Weekend Shuttle):** Jul 9, 2027 – Jul 12, 2027 (3 Nights • Nonstop Southeast shuttle).
+5. **CLT ↔ SLC (Christmas Ski Week):** Dec 23, 2026 – Jan 2, 2027 (10 Nights • Transcon ski corridor).
+6. **ATL ↔ DEN (MLK Long Weekend Ski):** Jan 15, 2027 – Jan 19, 2027 (4 Nights • Summit County ski getaway).
+7. **ATL ↔ MCO (Spring Break Florida Getaway):** Mar 12, 2027 – Mar 16, 2027 (4 Nights • Nonstop Florida trip).
+8. **CLT ↔ MIA (South Beach Spring Escape):** Apr 9, 2027 – Apr 12, 2027 (3 Nights • American Airlines hub-to-hub).
 
 ---
 
-## System Architecture
+## Key Features
 
-1. **Watchlist Configuration (`config/watchlist.json`):**
-   - Central JSON schema defining origin/destination, exact travel windows, artists, venues, retailer URLs, MSRP, and target budgets.
-2. **Scout Layer (`scouts/`):**
-   - `flight_scout.py`: Corridors with dates, durations, and deep Google Flights links.
-   - `ticket_scout.py`: Primary and secondary ticket quote ingestion with all-in 25-30% junk fee calculations and sightline metadata.
-   - `product_scout.py`: Curated clearance and retail quotes for apparel, footwear, and tech.
-3. **Statistical Percentile Engine (`engine/percentile.py`):**
-   - Computes empirical price percentiles against 90-day time-series envelopes, isolating true bottom 15–18% outliers.
-4. **Gemini Qualitative Gotcha Auditor (`engine/gemini_auditor.py`):**
-   - Leverages `gemini-3.5-flash-lite` with structured JSON output:
-     - Baggage policies (Basic Economy unbundled fees vs Main Cabin, regional CRJ-900 valet gate-checks).
-     - Ticket fee loads (+25-30% checkout damage) and structural obstruction flags.
-     - Authorized retailer verification and clearance return policies.
-5. **Responsive Dashboard UI (`index.html`):**
-   - Refined Light Base & Soft Slate Dark Mode (supports standalone viewing and embedded iframe mode).
-   - Category filtering: All Monitors, Flights, Concert Tickets, Apparel & Boots, Tech & EDC, Actionable Deals Only.
-   - Interactive SVG sparklines and price percentile indicators.
-6. **Autonomous Daily GitHub Actions Cron (`.github/workflows/daily_scout.yml`):**
-   - Runs daily at 7:00 AM EST (12:00 UTC) to scan prices, run Gemini audits, and auto-deploy to GitHub Pages.
+- **Empirical 90-Day Percentile Distributions:** Identifies true bottom 15–20% outliers vs historical median fares rather than misleading airline "sale" banners.
+- **Gemini Qualitative Gotcha Auditor:** Audits each flight deal using Google GenAI:
+  - *Baggage Rules:* Basic Economy carry-on bans (United) vs unbundled bag fees (Frontier/Spirit) vs 2 free checked bags (Southwest).
+  - *Regional Jet Gotchas:* Pink valet gate-check tags on CRJ-900/ERJ-175 for standard roller bags.
+  - *Connection & Winter Hub Risk:* Flags tight connections (< 50 mins) and winter de-icing delays in snow hubs (DEN, ORD, JFK).
+  - *Holiday Supply Tightness:* Assesses seat inventory compression during Thanksgiving, Christmas, and Spring Break.
+- **1-Click Deep Booking Links:** Directly launches pre-filled Google Flights and Kayak queries for exact travel dates and airport pairs.
+- **Interactive Quick Flight Explorer:** Built-in dashboard drawer enabling search across any custom origin, destination, and travel dates.
+- **Theme & Embedding Support:** Clean Light theme and Soft Slate Dark mode; seamlessly adapts inside iframes.
+
+---
+
+## How to Customize Your Flight Corridors
+
+To track your own routes, edit `config/watchlist.json`:
+
+```json
+{
+  "id": "fl_your_route_id",
+  "origin": "ATL",
+  "destination": "JFK",
+  "origin_city": "Atlanta, GA",
+  "destination_city": "New York, NY",
+  "trip_type": "roundtrip",
+  "window_name": "Fall Weekend Getaway",
+  "category": "Weekend Shuttle",
+  "start_date": "2027-10-15",
+  "end_date": "2027-10-18",
+  "date_display": "Oct 15, 2027 – Oct 18, 2027",
+  "duration_nights": 3,
+  "duration_label": "3 Nights (Weekend Trip)",
+  "target_price": 140,
+  "max_acceptable_price": 190,
+  "preferred_airlines": ["Delta", "JetBlue"],
+  "preferred_cabin": "Main Cabin",
+  "max_layover_hrs": 0,
+  "direct_preferred": true
+}
+```
 
 ---
 
@@ -67,10 +72,10 @@ DealScout is an automated personal price intelligence dashboard that tracks tail
 # 1. Install dependencies
 pip install google-genai python-dotenv requests
 
-# 2. Seed 90-day historical envelopes
+# 2. Seed 90-day historical flight envelopes
 python data/seed_history.py
 
-# 3. Execute DealScout Multi-Vertical Intelligence Scan
+# 3. Execute DealScout Flight Intelligence Scan
 python scout_deals.py
 
 # 4. Deploy to GitHub Pages
