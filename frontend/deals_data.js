@@ -1,11 +1,11 @@
 window.DEAL_DATA = {
   "metadata": {
-    "last_scan_time": "November 09, 2026 at 09:43 PM",
+    "last_scan_time": "November 10, 2026 at 07:01 PM",
     "total_corridors": 8,
     "qualified_deals_count": 8,
-    "total_savings_opportunity": 734.0,
-    "max_single_savings": 150.0,
-    "average_flight_price": 200.5,
+    "total_savings_opportunity": 742.0,
+    "max_single_savings": 186.0,
+    "average_flight_price": 199.5,
     "system_status": "Operational & Active",
     "model_engine": "Gemini Qualitative Auditor + 90-Day Percentile Engine"
   },
@@ -24,41 +24,43 @@ window.DEAL_DATA = {
       "end_date": "2027-01-03",
       "duration_nights": 14,
       "duration_label": "14 Nights (Holiday Break)",
-      "airline": "American Airlines",
-      "price": 324,
+      "airline": "United Airlines",
+      "price": 350,
       "target_price": 350,
       "max_acceptable_price": 420,
       "stops": 1,
-      "layover_hrs": 1.4,
-      "connection": "DFW",
-      "departure_time": "10:15 AM",
-      "arrival_time": "2:40 PM",
-      "flight_duration_hrs": "6h 25m",
-      "cabin": "Main Cabin (via DFW)",
+      "layover_hrs": 1.6,
+      "connection": "DEN",
+      "departure_time": "7:05 AM",
+      "arrival_time": "11:35 AM",
+      "flight_duration_hrs": "6h 30m",
+      "cabin": "Economy (via DEN)",
       "booking_url": "https://www.google.com/travel/flights?q=flights+from+ATL+to+SLC+on+2026-12-20+through+2027-01-03",
       "kayak_url": "https://www.kayak.com/flights/ATL-SLC/2026-12-20/2027-01-03",
       "notes": "Peak Christmas & New Year ski travel window into Wasatch Range. Track direct Delta vs DFW 1-stop.",
       "stats": {
-        "percentile_rank": 0.0,
+        "percentile_rank": 4.4,
         "min_price": 330,
         "max_price": 619,
         "median_price": 457.5,
         "avg_price": 457.63,
-        "price_score": 0.0,
+        "price_score": 0.069,
         "is_deal": true,
         "tier": "STRONG BUY",
-        "estimated_savings": 133.5
+        "estimated_savings": 107.5
       },
       "audit": {
         "verdict": "BUY NOW",
         "baggage_status": "Standard Main Cabin: Overhead roller carry-on & personal item included",
-        "gotchas": [],
+        "gotchas": [
+          "Winter hub caution: DEN connections are subject to de-icing and snow delays"
+        ],
         "positive_highlights": [
-          "Manageable 1.4h connection in DFW",
-          "Full Main Cabin ticket on American Airlines with standard seat choice & carry-on bag",
+          "Manageable 1.6h connection in DEN",
+          "Full Main Cabin ticket on United Airlines with standard seat choice & carry-on bag",
           "Peak holiday window: high demand period where seat inventory drops rapidly"
         ],
-        "rationale": "Rare price bottom for American Airlines during Christmas / Holiday Ski Break, ranking in the lowest 0.0% of historical fares ($$134 below median). Secure this seat before fares surge."
+        "rationale": "Rare price bottom for United Airlines during Christmas / Holiday Ski Break, ranking in the lowest 4.4% of historical fares ($$108 below median). Secure this seat before fares surge."
       },
       "history_90d": [
         490,
@@ -91,17 +93,17 @@ window.DEAL_DATA = {
       "end_date": "2027-06-20",
       "duration_nights": 8,
       "duration_label": "8 Nights (Summer Hiking)",
-      "airline": "American Airlines",
-      "price": 208,
+      "airline": "Frontier Airlines",
+      "price": 142,
       "target_price": 220,
       "max_acceptable_price": 280,
-      "stops": 1,
-      "layover_hrs": 1.2,
-      "connection": "CLT",
-      "departure_time": "9:35 AM",
-      "arrival_time": "1:50 PM",
-      "flight_duration_hrs": "6h 15m",
-      "cabin": "Main Cabin (via CLT)",
+      "stops": 0,
+      "layover_hrs": 0,
+      "connection": null,
+      "departure_time": "6:10 AM",
+      "arrival_time": "8:45 AM",
+      "flight_duration_hrs": "4h 35m",
+      "cabin": "Basic Economy (Unbundled carry-on & seat fees)",
       "booking_url": "https://www.google.com/travel/flights?q=flights+from+ATL+to+SLC+on+2027-06-12+through+2027-06-20",
       "kayak_url": "https://www.kayak.com/flights/ATL-SLC/2027-06-12/2027-06-20",
       "notes": "Wildflower & hiking season in Big/Little Cottonwood Canyons.",
@@ -114,17 +116,19 @@ window.DEAL_DATA = {
         "price_score": 0.0,
         "is_deal": true,
         "tier": "STRONG BUY",
-        "estimated_savings": 120.0
+        "estimated_savings": 186.0
       },
       "audit": {
         "verdict": "BUY NOW",
-        "baggage_status": "Standard Main Cabin: Overhead roller carry-on & personal item included",
-        "gotchas": [],
-        "positive_highlights": [
-          "Manageable 1.2h connection in CLT",
-          "Full Main Cabin ticket on American Airlines with standard seat choice & carry-on bag"
+        "baggage_status": "Unbundled Fare: Overhead carry-on roller incurs $45\u2013$65 fee each way",
+        "gotchas": [
+          "Ultra-low-cost carrier: seat selection, overhead carry-on bags, and water cost extra",
+          "Early morning departure (6:10 AM) requires arriving at airport by 4:30 AM"
         ],
-        "rationale": "Rare price bottom for American Airlines during Wasatch Summer Mountain Hiking, ranking in the lowest 0.0% of historical fares ($$120 below median). Secure this seat before fares surge."
+        "positive_highlights": [
+          "Nonstop direct service (4h 35m) with zero layover disruption risk"
+        ],
+        "rationale": "Rare price bottom for Frontier Airlines during Wasatch Summer Mountain Hiking, ranking in the lowest 0.0% of historical fares ($$186 below median). Secure this seat before fares surge."
       },
       "history_90d": [
         310,
@@ -158,29 +162,29 @@ window.DEAL_DATA = {
       "duration_nights": 13,
       "duration_label": "13 Nights (Regional Direct)",
       "airline": "Delta Connection (SkyWest)",
-      "price": 186,
+      "price": 212,
       "target_price": 195,
       "max_acceptable_price": 250,
       "stops": 0,
       "layover_hrs": 0,
       "connection": null,
-      "departure_time": "4:45 PM",
-      "arrival_time": "5:42 PM",
+      "departure_time": "11:15 AM",
+      "arrival_time": "12:12 PM",
       "flight_duration_hrs": "0h 57m",
       "cabin": "Main Cabin (CRJ-900 Direct)",
       "booking_url": "https://www.google.com/travel/flights?q=flights+from+ATL+to+VLD+on+2026-12-22+through+2027-01-04",
       "kayak_url": "https://www.kayak.com/flights/ATL-VLD/2026-12-22/2027-01-04",
       "notes": "SkyWest CRJ-900 regional service. Nonstop 55-minute hop. Roller bags get pink gate-checked.",
       "stats": {
-        "percentile_rank": 0.0,
+        "percentile_rank": 1.1,
         "min_price": 207,
         "max_price": 358,
         "median_price": 279.0,
         "avg_price": 282.27,
-        "price_score": 0.0,
+        "price_score": 0.033,
         "is_deal": true,
         "tier": "STRONG BUY",
-        "estimated_savings": 93.0
+        "estimated_savings": 67.0
       },
       "audit": {
         "verdict": "BUY NOW",
@@ -193,7 +197,7 @@ window.DEAL_DATA = {
           "Full Main Cabin ticket on Delta Connection (SkyWest) with standard seat choice & carry-on bag",
           "Peak holiday window: high demand period where seat inventory drops rapidly"
         ],
-        "rationale": "Rare price bottom for Delta Connection (SkyWest) during Holiday Semester Break, ranking in the lowest 0.0% of historical fares ($$93 below median). Secure this seat before fares surge."
+        "rationale": "Rare price bottom for Delta Connection (SkyWest) during Holiday Semester Break, ranking in the lowest 1.1% of historical fares ($$67 below median). Secure this seat before fares surge."
       },
       "history_90d": [
         252,
@@ -227,7 +231,7 @@ window.DEAL_DATA = {
       "duration_nights": 3,
       "duration_label": "3 Nights (Weekend Shuttle)",
       "airline": "Delta Air Lines",
-      "price": 133,
+      "price": 119,
       "target_price": 115,
       "max_acceptable_price": 160,
       "stops": 0,
@@ -241,15 +245,15 @@ window.DEAL_DATA = {
       "kayak_url": "https://www.kayak.com/flights/ATL-CLT/2027-07-09/2027-07-12",
       "notes": "High frequency Southeast corporate/leisure shuttle route. Nonstop under 1 hr 15 mins.",
       "stats": {
-        "percentile_rank": 1.1,
+        "percentile_rank": 0.0,
         "min_price": 132,
         "max_price": 267,
         "median_price": 188.5,
         "avg_price": 193.88,
-        "price_score": 0.007,
+        "price_score": 0.0,
         "is_deal": true,
         "tier": "STRONG BUY",
-        "estimated_savings": 55.5
+        "estimated_savings": 69.5
       },
       "audit": {
         "verdict": "BUY NOW",
@@ -259,7 +263,7 @@ window.DEAL_DATA = {
           "Nonstop direct service (1h 12m) with zero layover disruption risk",
           "Full Main Cabin ticket on Delta Air Lines with standard seat choice & carry-on bag"
         ],
-        "rationale": "Rare price bottom for Delta Air Lines during Summer Weekend Shuttle, ranking in the lowest 1.1% of historical fares ($$56 below median). Secure this seat before fares surge."
+        "rationale": "Rare price bottom for Delta Air Lines during Summer Weekend Shuttle, ranking in the lowest 0.0% of historical fares ($$70 below median). Secure this seat before fares surge."
       },
       "history_90d": [
         188,
@@ -293,7 +297,7 @@ window.DEAL_DATA = {
       "duration_nights": 10,
       "duration_label": "10 Nights (Transcon Ski)",
       "airline": "Delta Air Lines",
-      "price": 333,
+      "price": 322,
       "target_price": 340,
       "max_acceptable_price": 410,
       "stops": 1,
@@ -315,7 +319,7 @@ window.DEAL_DATA = {
         "price_score": 0.0,
         "is_deal": true,
         "tier": "STRONG BUY",
-        "estimated_savings": 150.0
+        "estimated_savings": 161.0
       },
       "audit": {
         "verdict": "BUY NOW",
@@ -326,7 +330,7 @@ window.DEAL_DATA = {
           "Full Main Cabin ticket on Delta Air Lines with standard seat choice & carry-on bag",
           "Peak holiday window: high demand period where seat inventory drops rapidly"
         ],
-        "rationale": "Rare price bottom for Delta Air Lines during Christmas Ski Week, ranking in the lowest 0.0% of historical fares ($$150 below median). Secure this seat before fares surge."
+        "rationale": "Rare price bottom for Delta Air Lines during Christmas Ski Week, ranking in the lowest 0.0% of historical fares ($$161 below median). Secure this seat before fares surge."
       },
       "history_90d": [
         388,
@@ -359,40 +363,40 @@ window.DEAL_DATA = {
       "end_date": "2027-01-19",
       "duration_nights": 4,
       "duration_label": "4 Nights (Long Weekend)",
-      "airline": "Delta Air Lines",
-      "price": 187,
+      "airline": "Southwest Airlines",
+      "price": 170,
       "target_price": 185,
       "max_acceptable_price": 240,
       "stops": 0,
       "layover_hrs": 0,
       "connection": null,
-      "departure_time": "2:30 PM",
-      "arrival_time": "4:00 PM",
-      "flight_duration_hrs": "3h 30m",
-      "cabin": "Main Cabin (Direct Nonstop)",
+      "departure_time": "11:20 AM",
+      "arrival_time": "12:55 PM",
+      "flight_duration_hrs": "3h 35m",
+      "cabin": "Wanna Get Away (2 Free Checked Bags)",
       "booking_url": "https://www.google.com/travel/flights?q=flights+from+ATL+to+DEN+on+2027-01-15+through+2027-01-19",
       "kayak_url": "https://www.kayak.com/flights/ATL-DEN/2027-01-15/2027-01-19",
       "notes": "Quick ski escape to Summit County / Winter Park via Denver. Winter weather connection caution at DEN.",
       "stats": {
-        "percentile_rank": 4.4,
+        "percentile_rank": 0.0,
         "min_price": 176,
         "max_price": 337,
         "median_price": 236.5,
         "avg_price": 242.2,
-        "price_score": 0.068,
+        "price_score": 0.0,
         "is_deal": true,
         "tier": "STRONG BUY",
-        "estimated_savings": 49.5
+        "estimated_savings": 66.5
       },
       "audit": {
         "verdict": "BUY NOW",
-        "baggage_status": "Standard Main Cabin: Overhead roller carry-on & personal item included",
+        "baggage_status": "Generous: 2 Free Checked Bags + Full Carry-on & Personal Item",
         "gotchas": [],
         "positive_highlights": [
-          "Nonstop direct service (3h 30m) with zero layover disruption risk",
-          "Full Main Cabin ticket on Delta Air Lines with standard seat choice & carry-on bag"
+          "Nonstop direct service (3h 35m) with zero layover disruption risk",
+          "Southwest perk: 2 free checked bags included, saving up to $140 roundtrip"
         ],
-        "rationale": "Rare price bottom for Delta Air Lines during MLK Long Weekend Ski, ranking in the lowest 4.4% of historical fares ($$50 below median). Secure this seat before fares surge."
+        "rationale": "Rare price bottom for Southwest Airlines during MLK Long Weekend Ski, ranking in the lowest 0.0% of historical fares ($$66 below median). Secure this seat before fares surge."
       },
       "history_90d": [
         221,
@@ -425,40 +429,40 @@ window.DEAL_DATA = {
       "end_date": "2027-03-16",
       "duration_nights": 4,
       "duration_label": "4 Nights (Spring Break)",
-      "airline": "Southwest Airlines",
-      "price": 94,
+      "airline": "Delta Air Lines",
+      "price": 127,
       "target_price": 110,
       "max_acceptable_price": 150,
       "stops": 0,
       "layover_hrs": 0,
       "connection": null,
-      "departure_time": "1:45 PM",
-      "arrival_time": "3:10 PM",
+      "departure_time": "10:15 AM",
+      "arrival_time": "11:40 AM",
       "flight_duration_hrs": "1h 25m",
-      "cabin": "Wanna Get Away (2 Free Bags Included)",
+      "cabin": "Main Cabin (Direct Nonstop)",
       "booking_url": "https://www.google.com/travel/flights?q=flights+from+ATL+to+MCO+on+2027-03-12+through+2027-03-16",
       "kayak_url": "https://www.kayak.com/flights/ATL-MCO/2027-03-12/2027-03-16",
       "notes": "Nonstop 1 hour 20 min flight. Very high Spring Break family volume.",
       "stats": {
-        "percentile_rank": 0.0,
+        "percentile_rank": 16.7,
         "min_price": 106,
         "max_price": 230,
         "median_price": 155.5,
         "avg_price": 156.16,
-        "price_score": 0.0,
-        "is_deal": true,
-        "tier": "STRONG BUY",
-        "estimated_savings": 61.5
+        "price_score": 0.169,
+        "is_deal": false,
+        "tier": "GOOD VALUE",
+        "estimated_savings": 28.5
       },
       "audit": {
         "verdict": "BUY NOW",
-        "baggage_status": "Generous: 2 Free Checked Bags + Full Carry-on & Personal Item",
+        "baggage_status": "Standard Main Cabin: Overhead roller carry-on & personal item included",
         "gotchas": [],
         "positive_highlights": [
           "Nonstop direct service (1h 25m) with zero layover disruption risk",
-          "Southwest perk: 2 free checked bags included, saving up to $140 roundtrip"
+          "Full Main Cabin ticket on Delta Air Lines with standard seat choice & carry-on bag"
         ],
-        "rationale": "Rare price bottom for Southwest Airlines during Spring Break Florida Getaway, ranking in the lowest 0.0% of historical fares ($$62 below median). Secure this seat before fares surge."
+        "rationale": "Rare price bottom for Delta Air Lines during Spring Break Florida Getaway, ranking in the lowest 16.7% of historical fares ($$28 below median). Secure this seat before fares surge."
       },
       "history_90d": [
         139,
@@ -492,7 +496,7 @@ window.DEAL_DATA = {
       "duration_nights": 3,
       "duration_label": "3 Nights (Weekend Escape)",
       "airline": "American Airlines",
-      "price": 139,
+      "price": 154,
       "target_price": 140,
       "max_acceptable_price": 195,
       "stops": 0,
@@ -506,15 +510,15 @@ window.DEAL_DATA = {
       "kayak_url": "https://www.kayak.com/flights/CLT-MIA/2027-04-09/2027-04-12",
       "notes": "American hub-to-hub direct corridor. 2-hour nonstop flight.",
       "stats": {
-        "percentile_rank": 0.0,
+        "percentile_rank": 4.4,
         "min_price": 144,
         "max_price": 279,
         "median_price": 210.0,
         "avg_price": 208.07,
-        "price_score": 0.0,
+        "price_score": 0.074,
         "is_deal": true,
         "tier": "STRONG BUY",
-        "estimated_savings": 71.0
+        "estimated_savings": 56.0
       },
       "audit": {
         "verdict": "BUY NOW",
@@ -524,7 +528,7 @@ window.DEAL_DATA = {
           "Nonstop direct service (2h 05m) with zero layover disruption risk",
           "Full Main Cabin ticket on American Airlines with standard seat choice & carry-on bag"
         ],
-        "rationale": "Rare price bottom for American Airlines during South Beach Spring Escape, ranking in the lowest 0.0% of historical fares ($$71 below median). Secure this seat before fares surge."
+        "rationale": "Rare price bottom for American Airlines during South Beach Spring Escape, ranking in the lowest 4.4% of historical fares ($$56 below median). Secure this seat before fares surge."
       },
       "history_90d": [
         229,
