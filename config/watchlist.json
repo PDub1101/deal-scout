@@ -19,7 +19,7 @@
       "preferred_airlines": ["Delta", "American", "United"],
       "preferred_cabin": "Main Cabin",
       "max_layover_hrs": 2.0,
-      "direct_preferred": true,
+      "direct_preferred": false,
       "notes": "Peak Christmas & New Year ski travel window into Wasatch Range. Track direct Delta vs DFW 1-stop.",
       "google_flights_url": "https://www.google.com/travel/flights?q=flights+from+ATL+to+SLC+on+2026-12-20+through+2027-01-03",
       "kayak_url": "https://www.kayak.com/flights/ATL-SLC/2026-12-20/2027-01-03"
@@ -43,7 +43,7 @@
       "preferred_airlines": ["Delta", "American", "Frontier"],
       "preferred_cabin": "Main Cabin",
       "max_layover_hrs": 2.0,
-      "direct_preferred": true,
+      "direct_preferred": false,
       "notes": "Wildflower & hiking season in Big/Little Cottonwood Canyons.",
       "google_flights_url": "https://www.google.com/travel/flights?q=flights+from+ATL+to+SLC+on+2027-06-12+through+2027-06-20",
       "kayak_url": "https://www.kayak.com/flights/ATL-SLC/2027-06-12/2027-06-20"
@@ -67,7 +67,7 @@
       "preferred_airlines": ["Delta Connection"],
       "preferred_cabin": "Main Cabin",
       "max_layover_hrs": 0,
-      "direct_preferred": true,
+      "direct_preferred": false,
       "notes": "SkyWest CRJ-900 regional service. Nonstop 55-minute hop. Roller bags get pink gate-checked.",
       "google_flights_url": "https://www.google.com/travel/flights?q=flights+from+ATL+to+VLD+on+2026-12-22+through+2027-01-04",
       "kayak_url": "https://www.kayak.com/flights/ATL-VLD/2026-12-22/2027-01-04"
@@ -91,7 +91,7 @@
       "preferred_airlines": ["Delta", "American"],
       "preferred_cabin": "Main Cabin",
       "max_layover_hrs": 0,
-      "direct_preferred": true,
+      "direct_preferred": false,
       "notes": "High frequency Southeast corporate/leisure shuttle route. Nonstop under 1 hr 15 mins.",
       "google_flights_url": "https://www.google.com/travel/flights?q=flights+from+ATL+to+CLT+on+2027-07-09+through+2027-07-12",
       "kayak_url": "https://www.kayak.com/flights/ATL-CLT/2027-07-09/2027-07-12"
@@ -139,7 +139,7 @@
       "preferred_airlines": ["United", "Delta", "Southwest"],
       "preferred_cabin": "Main Cabin",
       "max_layover_hrs": 1.5,
-      "direct_preferred": true,
+      "direct_preferred": false,
       "notes": "Quick ski escape to Summit County / Winter Park via Denver. Winter weather connection caution at DEN.",
       "google_flights_url": "https://www.google.com/travel/flights?q=flights+from+ATL+to+DEN+on+2027-01-15+through+2027-01-19",
       "kayak_url": "https://www.kayak.com/flights/ATL-DEN/2027-01-15/2027-01-19"
@@ -163,7 +163,7 @@
       "preferred_airlines": ["Delta", "Southwest", "Frontier"],
       "preferred_cabin": "Main Cabin",
       "max_layover_hrs": 0,
-      "direct_preferred": true,
+      "direct_preferred": false,
       "notes": "Nonstop 1 hour 20 min flight. Very high Spring Break family volume.",
       "google_flights_url": "https://www.google.com/travel/flights?q=flights+from+ATL+to+MCO+on+2027-03-12+through+2027-03-16",
       "kayak_url": "https://www.kayak.com/flights/ATL-MCO/2027-03-12/2027-03-16"
@@ -187,7 +187,7 @@
       "preferred_airlines": ["American", "Delta"],
       "preferred_cabin": "Main Cabin",
       "max_layover_hrs": 0,
-      "direct_preferred": true,
+      "direct_preferred": false,
       "notes": "American hub-to-hub direct corridor. 2-hour nonstop flight.",
       "google_flights_url": "https://www.google.com/travel/flights?q=flights+from+CLT+to+MIA+on+2027-04-09+through+2027-04-12",
       "kayak_url": "https://www.kayak.com/flights/CLT-MIA/2027-04-09/2027-04-12"
