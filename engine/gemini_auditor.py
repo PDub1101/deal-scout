@@ -8,6 +8,7 @@ from __future__ import annotations
 import os
 import json
 import re
+import concurrent.futures
 from typing import Dict, Any, List
 from dotenv import load_dotenv
 
@@ -75,19 +76,24 @@ Return ONLY valid JSON matching this schema:
 }}
 """
         if self.client:
+            executor = concurrent.futures.ThreadPoolExecutor(max_workers=1)
             try:
                 from google.genai import types
                 config = types.GenerateContentConfig(response_mime_type="application/json")
-                res = self.client.models.generate_content(
+                future = executor.submit(
+                    self.client.models.generate_content,
                     model=self.model_name,
                     contents=prompt,
                     config=config
                 )
+                res = future.result(timeout=6.0)
                 raw = res.text.strip()
                 parsed = json.loads(raw)
                 return parsed
             except Exception as e:
-                print(f"[GeminiAuditor] LLM API note for {origin}->{destination}: {e}. Using expert heuristic engine.")
+                print(f"[GeminiAuditor] LLM note for {origin}->{destination}: {e}. Using expert heuristic engine.")
+            finally:
+                executor.shutdown(wait=False, cancel_futures=True)
 
         # Expert heuristic fallback engine
         gotchas = []
