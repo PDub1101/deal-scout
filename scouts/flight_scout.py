@@ -79,17 +79,12 @@ class FlightScout:
             if not flight_list:
                 return None
 
-            # Selection strategy:
-            # 1. Direct flights if preferred and available
-            direct_flights = [f for f in flight_list if len(f.flights) == 1]
-            chosen = None
+            # Selection strategy: Absolute Lowest Price First
+            # Finds the cheapest bookable flight regardless of airline or layover
+            chosen = min(flight_list, key=lambda x: x.price)
 
-            if direct_pref and direct_flights:
-                pref_direct = [f for f in direct_flights if any(p in " ".join(f.airlines).lower() for p in preferred_airlines)]
-                chosen = min(pref_direct, key=lambda x: x.price) if pref_direct else min(direct_flights, key=lambda x: x.price)
-            else:
-                pref_flights = [f for f in flight_list if any(p in " ".join(f.airlines).lower() for p in preferred_airlines)]
-                chosen = min(pref_flights, key=lambda x: x.price) if pref_flights else min(flight_list, key=lambda x: x.price)
+            direct_flights = [f for f in flight_list if len(f.flights) == 1]
+            cheapest_direct = min(direct_flights, key=lambda x: x.price) if direct_flights else None
 
             legs = chosen.flights
             stops = len(legs) - 1
@@ -123,7 +118,7 @@ class FlightScout:
             planes = [leg.plane_type for leg in legs if leg.plane_type]
             plane_str = f" • {planes[0]}" if planes else ""
 
-            cabin_str = f"Main Cabin (Direct Nonstop{plane_str})" if stops == 0 else f"Main Cabin (via {connection}{plane_str})"
+            cabin_str = f"Economy (Direct Nonstop{plane_str})" if stops == 0 else f"Economy ({stops} stop via {connection}{plane_str})"
 
             if start_date and end_date:
                 google_url = f"https://www.google.com/travel/flights?q=flights+from+{origin}+to+{dest}+on+{start_date}+through+{end_date}"
@@ -133,6 +128,10 @@ class FlightScout:
                 kayak_url = f"https://www.kayak.com/flights/{origin}-{dest}"
 
             real_price = int(chosen.price)
+
+            flight_notes = item.get("notes", "")
+            if stops > 0 and cheapest_direct:
+                flight_notes = f"Cheapest flight (${real_price}). Nonstop direct available at ${int(cheapest_direct.price)}."
 
             return {
                 "id": item["id"],
@@ -161,9 +160,9 @@ class FlightScout:
                 "cabin": cabin_str,
                 "booking_url": google_url,
                 "kayak_url": kayak_url,
-                "notes": item.get("notes", ""),
+                "notes": flight_notes,
                 "is_live": True,
-                "quote_source": "Live Google Flights Quote",
+                "quote_source": "Lowest Live Google Flights Fare",
             }
         except Exception as e:
             print(f"  [Notice] Live Google Flights query for {origin}->{dest} passed to baseline: {e}")
