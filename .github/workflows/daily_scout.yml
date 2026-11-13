@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install google-genai python-dotenv requests
+          pip install google-genai python-dotenv requests fast-flights protobuf selectolax
 
       - name: Run DealScout Intelligence Scan
         env:
