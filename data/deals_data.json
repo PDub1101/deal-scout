@@ -1,9 +1,9 @@
 {
   "metadata": {
-    "last_scan_time": "November 12, 2026 at 08:34 PM",
+    "last_scan_time": "November 12, 2026 at 08:40 PM",
     "total_corridors": 8,
     "live_verified_count": 7,
-    "qualified_deals_count": 4,
+    "qualified_deals_count": 3,
     "total_savings_opportunity": 71.0,
     "max_single_savings": 71.0,
     "average_flight_price": 587.4,
@@ -44,9 +44,9 @@
       "stats": {
         "percentile_rank": 100.0,
         "min_price": 330,
-        "max_price": 619,
-        "median_price": 457.5,
-        "avg_price": 457.63,
+        "max_price": 929,
+        "median_price": 462.0,
+        "avg_price": 463.58,
         "price_score": 1.0,
         "is_deal": false,
         "tier": "OVERPRICED",
@@ -54,20 +54,19 @@
       },
       "audit": {
         "verdict": "BUY NOW",
-        "baggage_status": "Free Overhead Roller Included",
+        "baggage_status": "Free Overhead Roller Included (Standard Delta Main Cabin allowance of 1 personal item and 1 standard carry-on bag, plus normal checked bag fees)",
         "gotchas": [
-          "Peak holiday pricing with 100th percentile historical baseline",
-          "Late night arrival into SLC at 11:54 PM"
+          "100.0th percentile historical pricing reflects extreme holiday surge pricing for peak Christmas-to-New-Year ski week travel",
+          "Late-night arrival into SLC at 11:54 PM requires advance ground transportation planning"
         ],
         "positive_highlights": [
-          "Direct nonstop routing eliminating connection risks",
-          "Operated on a mainline Airbus A321 avoiding regional jet gate-check hassle",
-          "Standard Delta Main Cabin includes free carry-on roller bag and personal item"
+          "Direct Nonstop routing on an Airbus A321 eliminates winter connection and missed layover risks",
+          "Prime holiday travel dates (Dec 20 - Jan 3) secured without any multi-stop itinerary compromises",
+          "Full Main Cabin booking includes standard carry-on and the flexibility of Delta's network reliability"
         ],
-        "rationale": "Given that this is peak Christmas and New Year holiday travel for a major ski corridor at 100th percentile pricing, fares will not drop and are likely to sell out. Lock in this nonstop Delta Main Cabin itinerary immediately to secure holiday availability."
+        "rationale": "Prices for this peak Christmas-to-New-Year holiday window are at their absolute historical ceiling (100th percentile), and waiting will only result in higher fares or complete sell-outs for nonstop inventory. Book immediately to lock in this direct routing for your winter ski trip."
       },
       "history_90d": [
-        389,
         456,
         396,
         487,
@@ -80,6 +79,7 @@
         476,
         466,
         330,
+        929,
         929
       ]
     },
@@ -116,9 +116,9 @@
       "stats": {
         "percentile_rank": 100.0,
         "min_price": 228,
-        "max_price": 404,
+        "max_price": 798,
         "median_price": 328.0,
-        "avg_price": 325.11,
+        "avg_price": 330.29,
         "price_score": 1.0,
         "is_deal": false,
         "tier": "OVERPRICED",
@@ -126,21 +126,15 @@
       },
       "audit": {
         "verdict": "WAIT / PASS",
-        "baggage_status": "Free Overhead Roller Included",
-        "gotchas": [
-          "Quoted price is at the 100.0th historical percentile ($798 roundtrip)",
-          "Summer hiking season pricing is currently severely inflated",
-          "Estimated savings vs median is $0.0"
-        ],
+        "baggage_status": "Standard Main Cabin: Overhead roller carry-on & personal item included",
+        "gotchas": [],
         "positive_highlights": [
-          "Delta Air Lines Main Cabin includes standard overhead carry-on and personal item",
-          "Direct nonstop routing on Airbus A321",
-          "Favorable departure time (10:30 AM) with zero stops"
+          "Nonstop direct service (4h 17m) with zero layover disruption risk",
+          "Full Main Cabin ticket on Delta Air Lines with standard seat choice & carry-on bag"
         ],
-        "rationale": "At the 100th percentile, paying $798 for a domestic June ticket is heavily inflated with no savings versus the median. You should wait for fare drops or monitor alternative dates to avoid overpaying for this corridor."
+        "rationale": "Fare sits near median historical levels ($328.0). Recommend tracking this corridor for typical fare dips 4-6 weeks out."
       },
       "history_90d": [
-        257,
         244,
         280,
         378,
@@ -153,6 +147,7 @@
         233,
         354,
         355,
+        798,
         798
       ]
     },
@@ -187,11 +182,11 @@
       "is_live": false,
       "quote_source": "Benchmark (Route unavailable on Google Flights)",
       "stats": {
-        "percentile_rank": 1.1,
+        "percentile_rank": 2.2,
         "min_price": 207,
         "max_price": 358,
         "median_price": 279.0,
-        "avg_price": 282.27,
+        "avg_price": 281.21,
         "price_score": 0.007,
         "is_deal": true,
         "tier": "STRONG BUY",
@@ -201,18 +196,17 @@
         "verdict": "BUY NOW",
         "baggage_status": "Free Overhead Roller Included (Standard Delta Main Cabin rules apply)",
         "gotchas": [
-          "Regional jet (CRJ-900) requires gate valet pink-tagging for standard rolling carry-ons",
-          "Holiday peak demand window with high load factors"
+          "Regional jet CRJ-900 operations require gate-valet 'pink tag' for large roller bags due to limited overhead space",
+          "Holiday semester break peak demand makes regional inventory volatile"
         ],
         "positive_highlights": [
-          "Rare nonstop direct regional flight under an hour",
-          "Exceptional 1.1th historical percentile pricing for holiday travel",
-          "Estimated savings of $71.0 compared to the seasonal median"
+          "Operates in the 2.2nd historical percentile, saving an estimated $71 vs. the route median",
+          "Nonstop direct flight with a total travel time under 1 hour",
+          "Delta Main Cabin fare includes standard carry-on and personal item"
         ],
-        "rationale": "At the 1.1th historical percentile for the holiday semester break, this $208 nonstop fare represents an extreme pricing anomaly. Secure this ticket immediately before Delta adjusts regional inventory."
+        "rationale": "At the 2.2nd historical percentile for the busy holiday semester break, this $208 nonstop fare represents an extreme anomaly below median pricing. Secure this itinerary immediately before regional holiday inventory sells out."
       },
       "history_90d": [
-        270,
         308,
         255,
         287,
@@ -225,6 +219,7 @@
         343,
         320,
         286,
+        208,
         208
       ]
     },
@@ -261,9 +256,9 @@
       "stats": {
         "percentile_rank": 100.0,
         "min_price": 132,
-        "max_price": 267,
-        "median_price": 188.5,
-        "avg_price": 193.88,
+        "max_price": 571,
+        "median_price": 190.5,
+        "avg_price": 198.43,
         "price_score": 1.0,
         "is_deal": false,
         "tier": "OVERPRICED",
@@ -273,19 +268,18 @@
         "verdict": "WAIT / PASS",
         "baggage_status": "Free Overhead Roller Included",
         "gotchas": [
-          "100.0th percentile historically, indicating extreme peak pricing",
-          "Operated on a Boeing 717 regional/narrowbody aircraft",
-          "Zero estimated savings versus the historical median"
+          "100.0th percentile pricing indicates extreme peak surge for this short regional shuttle",
+          "Operated on a Boeing 717 regional-density aircraft",
+          "Extremely high cost per flight hour for a brief 75-minute nonstop hop"
         ],
         "positive_highlights": [
-          "Nonstop direct routing with a quick 1h 15m travel time",
-          "Delta Main Cabin includes standard overhead carry-on and personal item",
-          "Early morning 7:25 AM departure maximizes the weekend schedule"
+          "Nonstop direct routing with zero connections",
+          "Delta Main Cabin includes full overhead carry-on and personal item",
+          "Early morning departure maximizes weekend schedule"
         ],
-        "rationale": "At the 100th percentile, this $571 roundtrip fare is severely overpriced for a brief regional hop between Atlanta and Charlotte. You should wait for prices to drop significantly or explore alternative routings and carriers."
+        "rationale": "At the 100th percentile for historical pricing, this fare extracts a severe peak-season premium for a very short regional hop. You should wait or explore alternative carriers and dates unless your travel schedule is completely inflexible."
       },
       "history_90d": [
-        172,
         222,
         254,
         161,
@@ -298,6 +292,7 @@
         175,
         187,
         173,
+        571,
         571
       ]
     },
@@ -334,9 +329,9 @@
       "stats": {
         "percentile_rank": 100.0,
         "min_price": 341,
-        "max_price": 647,
+        "max_price": 983,
         "median_price": 483.0,
-        "avg_price": 488.27,
+        "avg_price": 493.62,
         "price_score": 1.0,
         "is_deal": false,
         "tier": "OVERPRICED",
@@ -346,19 +341,18 @@
         "verdict": "BUY NOW",
         "baggage_status": "Free Overhead Roller Included",
         "gotchas": [
-          "High winter weather exposure and tight 30-minute layover at Denver International Airport (DEN)",
-          "Operating aircraft is a Boeing 737 MAX 8 with standard mainline overhead bin limits",
-          "100th percentile historical pricing driven by extreme Christmas/New Year peak holiday demand"
+          "Winter connection risk at Denver (DEN)",
+          "Tight 30-minute layover in Denver during peak winter season",
+          "Operated on a Boeing 737MAX 8"
         ],
         "positive_highlights": [
-          "United Airlines Main Cabin fare includes a full-size overhead carry-on bag and personal item",
-          "Reasonable morning departure time (8:31 AM) avoiding crack-of-dawn airport rushes",
-          "Secures inventory during the highest-demand ski week of the winter season before further capacity constraints"
+          "Includes full size carry-on bag in Main Cabin",
+          "Locks in holiday ski week travel dates far in advance",
+          "Decent total travel time for a 1-stop transcontinental routing"
         ],
-        "rationale": "At the 100th percentile for historical pricing, this fare reflects peak Christmas ski week inflation where prices will only climb or sell out entirely. Secure this booking immediately to lock in holiday inventory despite the tight Denver connection."
+        "rationale": "Although priced at the 100th percentile due to extreme Christmas week demand, waiting will only result in higher fares or total sell-outs. Secure this booking immediately to lock down your holiday ski trip."
       },
       "history_90d": [
-        577,
         391,
         452,
         476,
@@ -371,6 +365,7 @@
         534,
         406,
         545,
+        983,
         983
       ]
     },
@@ -408,30 +403,29 @@
         "percentile_rank": 75.6,
         "min_price": 176,
         "max_price": 337,
-        "median_price": 236.5,
-        "avg_price": 242.2,
+        "median_price": 237.5,
+        "avg_price": 242.61,
         "price_score": 0.565,
         "is_deal": false,
         "tier": "OVERPRICED",
         "estimated_savings": 0.0
       },
       "audit": {
-        "verdict": "BUY NOW",
-        "baggage_status": "Free Overhead Roller Included",
+        "verdict": "WAIT / PASS",
+        "baggage_status": "Free Overhead Roller Included (Delta Main Cabin includes carry-on and personal item)",
         "gotchas": [
-          "75.6th percentile historical pricing",
-          "MLK holiday weekend peak demand period",
-          "Late evening arrival into Denver (9:59 PM)"
+          "Quoted price sits in the 75.6th historical percentile, indicating inflated holiday pricing.",
+          "Late evening arrival (9:59 PM MST) eats into the first night of your trip.",
+          "MLK weekend demand keeps fares elevated compared to standard January baselines."
         ],
         "positive_highlights": [
-          "Delta Air Lines Main Cabin includes full overhead carry-on and personal item",
-          "Direct Nonstop flight on Airbus A321neo with zero connections",
-          "Ideal long weekend duration (4 nights) avoiding extra PTO"
+          "Nonstop direct routing on an Airbus A321neo ensures zero winter hub connection risks.",
+          "Operated by Delta Air Lines, offering top-tier schedule reliability.",
+          "Standard Main Cabin ticket includes full carry-on privileges and free seat selection."
         ],
-        "rationale": "Even though this fare sits at the 75.6th percentile, it is a peak MLK holiday weekend ski trip on a nonstop Delta Main Cabin itinerary. Secure this price immediately to lock in holiday availability, as prices for this corridor are unlikely to drop further."
+        "rationale": "At the 75.6th historical percentile for this route, $267 is overpriced for an MLK weekend getaway despite the convenience of a Delta nonstop. Wait to see if minor fare adjustments occur, or consider booking alternate winter dates to secure true bottom-tier pricing."
       },
       "history_90d": [
-        282,
         300,
         308,
         238,
@@ -444,6 +438,7 @@
         267,
         292,
         233,
+        267,
         267
       ]
     },
@@ -480,9 +475,9 @@
       "stats": {
         "percentile_rank": 100.0,
         "min_price": 106,
-        "max_price": 230,
+        "max_price": 258,
         "median_price": 155.5,
-        "avg_price": 156.16,
+        "avg_price": 157.06,
         "price_score": 1.0,
         "is_deal": false,
         "tier": "OVERPRICED",
@@ -492,18 +487,17 @@
         "verdict": "WAIT / PASS",
         "baggage_status": "$45+ Carry-on Fee (Personal item only included)",
         "gotchas": [
-          "100th percentile historical pricing indicates peak Spring Break surge",
-          "Frontier unbundled fare excludes overhead carry-on and seat selection",
-          "Ultra-low-cost carrier fees can easily exceed the base fare"
+          "100.0th percentile historical pricing indicates severe Spring Break peak markup",
+          "Unbundled ultra-low-cost carrier fare means seat selection and baggage fees will significantly increase the total cost",
+          "Airbus A320neo operated by Frontier with strict size checks for personal items"
         ],
         "positive_highlights": [
-          "Direct nonstop routing under 2 hours",
-          "Convenient mid-morning departure time"
+          "Convenient direct nonstop routing taking only 1 hour and 43 minutes",
+          "Favorable mid-morning departure time of 10:05 AM avoiding brutal crack-of-dawn airport rushes"
         ],
-        "rationale": "At the 100th historical percentile for this route, you are paying absolute peak Spring Break markup for a stripped-down ultra-low-cost carrier ticket. Consider waiting for alternative carrier seat sales or bundling bag fees before pulling the trigger."
+        "rationale": "At the 100th percentile for historical pricing, this fare extracts maximum Spring Break surge premiums while offering zero unbundled inclusions. You should pass or wait for alternative airline seat sales unless locked into exact peak holiday dates."
       },
       "history_90d": [
-        171,
         174,
         167,
         135,
@@ -516,6 +510,7 @@
         164,
         134,
         155,
+        258,
         258
       ]
     },
@@ -551,10 +546,10 @@
       "quote_source": "Live Google Flights Quote",
       "stats": {
         "percentile_rank": 100.0,
-        "min_price": 144,
-        "max_price": 279,
-        "median_price": 210.0,
-        "avg_price": 208.07,
+        "min_price": 150,
+        "max_price": 685,
+        "median_price": 210.5,
+        "avg_price": 214.08,
         "price_score": 1.0,
         "is_deal": false,
         "tier": "OVERPRICED",
@@ -562,21 +557,20 @@
       },
       "audit": {
         "verdict": "WAIT / PASS",
-        "baggage_status": "Free Overhead Roller Included",
+        "baggage_status": "Free Overhead Roller Included (American Main Cabin standard policy)",
         "gotchas": [
-          "100.0th percentile historical pricing indicates extreme peak surge",
-          "5:00 AM departure requires a very early morning arrival at CLT",
-          "High-demand April spring escape timing heavily inflates the fare"
+          "100.0th percentile historic pricing indicates severe peak period inflation",
+          "Brutal 5:00 AM departure requires an extremely early airport arrival",
+          "Zero estimated savings vs the median historical price"
         ],
         "positive_highlights": [
-          "Direct nonstop service on a Boeing 737",
-          "American Airlines Main Cabin includes standard carry-on baggage",
-          "Optimal 3-night weekend getaway schedule with zero connection risk"
+          "Direct nonstop routing operated on a Boeing 737 mainline aircraft",
+          "Includes standard carry-on baggage without unbundled basic economy restrictions",
+          "Optimal 3-night weekend timing for a South Beach escape"
         ],
-        "rationale": "At the 100th percentile, this $685 fare represents maximum historical price gouging for a short domestic hop during peak spring demand. You should wait for dynamic airline pricing adjustments or consider alternative dates to avoid severe overpayment."
+        "rationale": "At the 100th percentile, this $685 fare represents maximum seasonal price gouging for a short domestic hop. Unless your dates are strictly locked in, you should wait or pass as prices are statistically guaranteed to drop before April."
       },
       "history_90d": [
-        217,
         223,
         225,
         225,
@@ -589,6 +583,7 @@
         163,
         182,
         170,
+        685,
         685
       ]
     }
