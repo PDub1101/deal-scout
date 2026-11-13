@@ -8,6 +8,7 @@ Includes resilient fallback presets for regional routes without public GDS searc
 from __future__ import annotations
 import os
 import random
+import concurrent.futures
 from typing import List, Dict, Any
 from dotenv import load_dotenv
 
@@ -290,8 +291,19 @@ class FlightScout:
             start_date = item.get("start_date", "")
             end_date = item.get("end_date", "")
 
-            # 1. Try real live Google Flights lookup
-            live_quote = self._fetch_live_google_flight(item)
+            # 1. Try real live Google Flights lookup with 6s watchdog timeout
+            live_quote = None
+            executor = concurrent.futures.ThreadPoolExecutor(max_workers=1)
+            try:
+                future = executor.submit(self._fetch_live_google_flight, item)
+                live_quote = future.result(timeout=6.0)
+            except concurrent.futures.TimeoutError:
+                print(f"  [TIMEOUT] {origin} -> {dest}: Google Flights query took >6s, using baseline.")
+            except Exception as e:
+                print(f"  [NOTICE] {origin} -> {dest}: Query notice: {e}")
+            finally:
+                executor.shutdown(wait=False, cancel_futures=True)
+
             if live_quote:
                 print(f"  [LIVE GOOGLE FLIGHTS] {origin} -> {dest}: ${live_quote['price']} on {live_quote['airline']}")
                 quotes.append(live_quote)
