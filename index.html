@@ -1078,7 +1078,7 @@
     </div>
   </main>
 
-  <script src="deals_data.js"></script>
+  <script src="deals_data.js?v=20261112_2055"></script>
   <script>
     // Theme Switcher & Embedding Sync
     const themeBtn = document.getElementById('themeToggle');
@@ -1143,54 +1143,61 @@
       window.open(url, '_blank');
     });
 
-    // Ingest Data
-    const data = window.DEAL_DATA || { metadata: {}, flights: [] };
-    const flights = data.flights || [];
+    let allFlights = [];
+    let currentFilter = 'all';
+    let searchQuery = '';
 
-    // KPI Metrics Ribbon Update
-    if (data.metadata) {
-      document.getElementById('kpiCorridors').textContent = flights.length;
-      document.getElementById('kpiOutliers').textContent = data.metadata.qualified_deals_count || 0;
-      if (data.metadata.live_verified_count !== undefined) {
-        document.getElementById('kpiCorridorsSub').textContent = `${data.metadata.live_verified_count}/${flights.length} verified live on Google Flights`;
+    function initDashboard(data) {
+      if (!data) return;
+      allFlights = data.flights || [];
+      const flights = allFlights;
+
+      // KPI Metrics Ribbon Update
+      if (data.metadata) {
+        document.getElementById('kpiCorridors').textContent = flights.length;
+        document.getElementById('kpiOutliers').textContent = data.metadata.qualified_deals_count || 0;
+        if (data.metadata.live_verified_count !== undefined) {
+          document.getElementById('kpiCorridorsSub').textContent = `${data.metadata.live_verified_count}/${flights.length} verified live on Google Flights`;
+        }
+        if (data.metadata.max_single_savings) {
+          document.getElementById('kpiMaxSavings').textContent = `$${Number(data.metadata.max_single_savings).toFixed(2)}`;
+        }
+        if (data.metadata.last_scan_time) {
+          document.getElementById('lastUpdatedStamp').textContent = `Scan: ${data.metadata.last_scan_time}`;
+        }
+        if (data.metadata.model_engine) {
+          document.getElementById('kpiEngine').textContent = "Live Market + Gemini";
+        }
       }
-      if (data.metadata.max_single_savings) {
-        document.getElementById('kpiMaxSavings').textContent = `$${Number(data.metadata.max_single_savings).toFixed(2)}`;
+
+      // Counts Calculation
+      const buyNowFlights = flights.filter(f => f.audit && f.audit.verdict === 'BUY NOW');
+      const nonstopFlights = flights.filter(f => f.stops === 0);
+      const atlFlights = flights.filter(f => f.origin === 'ATL');
+      const cltFlights = flights.filter(f => f.origin === 'CLT');
+      const holidayFlights = flights.filter(f => (f.category || '').includes('Holiday') || (f.window_name || '').includes('Holiday') || (f.window_name || '').includes('Christmas'));
+
+      document.getElementById('countAll').textContent = flights.length;
+      document.getElementById('countBuys').textContent = buyNowFlights.length;
+      document.getElementById('countNonstop').textContent = nonstopFlights.length;
+      document.getElementById('countAtl').textContent = atlFlights.length;
+      document.getElementById('countClt').textContent = cltFlights.length;
+      document.getElementById('countHoliday').textContent = holidayFlights.length;
+
+      // Spotlight Selection
+      const sortedBySavings = [...flights].sort((a, b) => (b.stats?.estimated_savings || 0) - (a.stats?.estimated_savings || 0));
+      const spotlightItem = sortedBySavings[0] || flights[0];
+
+      if (spotlightItem) {
+        const stats = spotlightItem.stats || {};
+        const audit = spotlightItem.audit || {};
+        document.getElementById('spotlightTitle').textContent = `${spotlightItem.origin_city} (${spotlightItem.origin}) ➔ ${spotlightItem.destination_city} (${spotlightItem.destination}) • ${spotlightItem.airline} ($${spotlightItem.price} roundtrip)`;
+        document.getElementById('spotlightSummary').textContent = `${spotlightItem.window_name} (${spotlightItem.date_display}, ${spotlightItem.duration_label}) • 90d Percentile: ${stats.percentile_rank || 0}th% (Saves ~$${stats.estimated_savings || 0} vs median). ${audit.rationale || ''}`;
+        document.getElementById('spotlightGoogleBtn').href = spotlightItem.booking_url;
+        document.getElementById('spotlightKayakBtn').href = spotlightItem.kayak_url || spotlightItem.booking_url;
       }
-      if (data.metadata.last_scan_time) {
-        document.getElementById('lastUpdatedStamp').textContent = `Scan: ${data.metadata.last_scan_time}`;
-      }
-      if (data.metadata.model_engine) {
-        document.getElementById('kpiEngine').textContent = "Live Market + Gemini";
-      }
-    }
 
-    // Counts Calculation
-    const buyNowFlights = flights.filter(f => f.audit && f.audit.verdict === 'BUY NOW');
-    const nonstopFlights = flights.filter(f => f.stops === 0);
-    const atlFlights = flights.filter(f => f.origin === 'ATL');
-    const cltFlights = flights.filter(f => f.origin === 'CLT');
-    const holidayFlights = flights.filter(f => (f.category || '').includes('Holiday') || (f.window_name || '').includes('Holiday') || (f.window_name || '').includes('Christmas'));
-
-    document.getElementById('countAll').textContent = flights.length;
-    document.getElementById('countBuys').textContent = buyNowFlights.length;
-    document.getElementById('countNonstop').textContent = nonstopFlights.length;
-    document.getElementById('countAtl').textContent = atlFlights.length;
-    document.getElementById('countClt').textContent = cltFlights.length;
-    document.getElementById('countHoliday').textContent = holidayFlights.length;
-
-    // Spotlight Selection
-    // Pick the flight with the highest estimated savings or lowest percentile
-    const sortedBySavings = [...flights].sort((a, b) => (b.stats?.estimated_savings || 0) - (a.stats?.estimated_savings || 0));
-    const spotlightItem = sortedBySavings[0] || flights[0];
-
-    if (spotlightItem) {
-      const stats = spotlightItem.stats || {};
-      const audit = spotlightItem.audit || {};
-      document.getElementById('spotlightTitle').textContent = `${spotlightItem.origin_city} (${spotlightItem.origin}) ➔ ${spotlightItem.destination_city} (${spotlightItem.destination}) • ${spotlightItem.airline} ($${spotlightItem.price} roundtrip)`;
-      document.getElementById('spotlightSummary').textContent = `${spotlightItem.window_name} (${spotlightItem.date_display}, ${spotlightItem.duration_label}) • 90d Percentile: ${stats.percentile_rank || 0}th% (Saves ~$${stats.estimated_savings || 0} vs median). ${audit.rationale || ''}`;
-      document.getElementById('spotlightGoogleBtn').href = spotlightItem.booking_url;
-      document.getElementById('spotlightKayakBtn').href = spotlightItem.kayak_url || spotlightItem.booking_url;
+      applyFilters();
     }
 
     // Sparkline Generator
@@ -1353,17 +1360,12 @@
       grid.innerHTML = itemsToRender.map(renderCard).join('');
     }
 
-    // Initial Render
-    renderGrid(flights);
-
     // Filtering System
     const filterButtons = document.querySelectorAll('.filter-btn');
     const searchInput = document.getElementById('searchFilter');
-    let currentFilter = 'all';
-    let searchQuery = '';
 
     function applyFilters() {
-      const filtered = flights.filter(f => {
+      const filtered = allFlights.filter(f => {
         // Text Search
         if (searchQuery) {
           const haystack = (f.origin + ' ' + f.destination + ' ' + f.origin_city + ' ' + f.destination_city + ' ' + f.airline + ' ' + f.window_name).toLowerCase();
@@ -1408,6 +1410,26 @@
         applyFilters();
       });
     }
+
+    // Initial render from embedded data
+    if (window.DEAL_DATA) {
+      initDashboard(window.DEAL_DATA);
+    }
+
+    // Always fetch latest data with cache: 'no-store' to guarantee fresh data without browser cache
+    fetch('data/deals_data.json?_t=' + Date.now(), { cache: 'no-store' })
+      .then(res => {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return res.json();
+      })
+      .then(freshData => {
+        if (freshData && freshData.flights && freshData.flights.length > 0) {
+          initDashboard(freshData);
+        }
+      })
+      .catch(err => {
+        console.warn('Direct fetch note (falling back to bundle):', err);
+      });
   </script>
 </body>
 </html>
