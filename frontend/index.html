@@ -1151,11 +1151,17 @@
     if (data.metadata) {
       document.getElementById('kpiCorridors').textContent = flights.length;
       document.getElementById('kpiOutliers').textContent = data.metadata.qualified_deals_count || 0;
+      if (data.metadata.live_verified_count !== undefined) {
+        document.getElementById('kpiCorridorsSub').textContent = `${data.metadata.live_verified_count}/${flights.length} verified live on Google Flights`;
+      }
       if (data.metadata.max_single_savings) {
         document.getElementById('kpiMaxSavings').textContent = `$${Number(data.metadata.max_single_savings).toFixed(2)}`;
       }
       if (data.metadata.last_scan_time) {
         document.getElementById('lastUpdatedStamp').textContent = `Scan: ${data.metadata.last_scan_time}`;
+      }
+      if (data.metadata.model_engine) {
+        document.getElementById('kpiEngine').textContent = "Live Market + Gemini";
       }
     }
 
@@ -1222,6 +1228,10 @@
         ? `<span class="nonstop-badge">&#10003; Nonstop</span>`
         : `<span class="layover-badge">${item.stops} stop (${item.layover_hrs}h in ${item.connection || 'hub'})</span>`;
 
+      const liveBadge = item.is_live
+        ? `<span class="live-badge" style="background: rgba(52, 211, 153, 0.15); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.35); padding: 2px 7px; border-radius: 999px; font-size: 11px; font-weight: 600; display: inline-flex; align-items: center; gap: 4px;">🟢 Live Fare</span>`
+        : `<span class="benchmark-badge" style="background: rgba(148, 163, 184, 0.15); color: #94a3b8; border: 1px solid rgba(148, 163, 184, 0.35); padding: 2px 7px; border-radius: 999px; font-size: 11px; font-weight: 600; display: inline-flex; align-items: center; gap: 4px;">⚪ Benchmark</span>`;
+
       let gotchas = (audit.gotchas || []).map(g => `<li class="audit-bullet caution">${g}</li>`).join('');
       let highlights = (audit.positive_highlights || []).map(p => `<li class="audit-bullet positive">${p}</li>`).join('');
 
@@ -1252,11 +1262,13 @@
               <div class="price-box">
                 <div class="price-main">$${item.price}</div>
                 <div class="price-percentile-badge ${pClass}">${percentile}th percentile</div>
+                <div style="font-size: 10px; color: var(--text-muted); margin-top: 3px; font-weight: 500;">${item.quote_source || 'Market Quote'}</div>
               </div>
             </div>
 
             <!-- Badges Row -->
             <div class="badges-row">
+              ${liveBadge}
               <span class="window-badge">&#128197; ${item.date_display}</span>
               <span class="category-badge">${item.window_name}</span>
               ${routingBadge}
