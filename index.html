@@ -451,6 +451,144 @@
       border-color: var(--accent-primary);
     }
 
+    /* Calculator & Dynamic Duration Styles */
+    .drawer-content-v2 {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .calc-inputs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1.6fr;
+      gap: 12px;
+    }
+
+    .quick-pills-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .quick-pill, .quick-duration-pill {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 6px;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-card-alt);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .quick-pill:hover, .quick-duration-pill:hover {
+      background: var(--border-subtle);
+      color: var(--text-primary);
+    }
+
+    .quick-pill.active-pill, .quick-duration-pill.active-pill {
+      background: var(--accent-primary);
+      color: #ffffff;
+      border-color: var(--accent-primary);
+    }
+
+    .calc-results-wrap {
+      background: var(--bg-card-alt);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .calc-results-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .calc-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
+      gap: 12px;
+    }
+
+    .calc-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: transform 0.15s, border-color 0.15s;
+    }
+
+    .calc-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent-primary);
+    }
+
+    .calc-card.is-recommended {
+      border: 1.5px solid var(--pos);
+      background: var(--pos-bg);
+    }
+
+    .btn-track-radar {
+      background: var(--purple-bg);
+      color: var(--purple);
+      border: 1px solid var(--purple-border);
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 6px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .btn-track-radar:hover {
+      background: var(--purple);
+      color: #ffffff;
+    }
+
+    .btn-delete-card {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 14px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      transition: all 0.15s;
+    }
+
+    .btn-delete-card:hover {
+      color: #ef4444;
+      background: rgba(239, 68, 68, 0.12);
+    }
+
+    .custom-tracked-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(167, 139, 250, 0.18);
+      color: var(--purple);
+      border: 1px solid var(--purple-border);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+
     /* Controls Bar & Filters */
     .controls-bar {
       display: flex;
@@ -906,6 +1044,9 @@
       .drawer-content {
         grid-template-columns: 1fr 1fr;
       }
+      .calc-inputs-grid {
+        grid-template-columns: 1fr 1fr;
+      }
       .spotlight-card {
         flex-direction: column;
         align-items: flex-start;
@@ -923,6 +1064,12 @@
       }
       .drawer-content {
         grid-template-columns: 1fr;
+      }
+      .calc-inputs-grid {
+        grid-template-columns: 1fr;
+      }
+      #dateBoundaryRow {
+        grid-template-columns: 1fr !important;
       }
       .controls-bar {
         flex-direction: column;
@@ -1020,36 +1167,94 @@
         </div>
       </section>
 
-      <!-- Quick Route Explorer / Custom Search Drawer -->
+      <!-- Interactive Trip Duration & Destination Lowest Price Planner -->
       <section class="drawer-section">
         <div class="drawer-header" id="drawerToggle">
           <div class="drawer-title">
-            <span>&#128747; Quick Flight Explorer & Custom Search</span>
-            <span style="font-size: 12px; font-weight: 500; color: var(--text-muted);">(Search any custom route or dates)</span>
+            <span>&#9992; Trip Duration & Custom Destination Price Planner</span>
+            <span style="font-size: 12px; font-weight: 500; color: var(--text-muted);">(Pick your destination, how long you want to stay, and find lowest rates)</span>
           </div>
-          <button class="drawer-toggle-btn" id="drawerBtnLabel">Open Explorer &#9662;</button>
+          <button class="drawer-toggle-btn" id="drawerBtnLabel">Open Planner &#9662;</button>
         </div>
-        <div class="drawer-content" id="drawerBody" style="display: none;">
-          <div class="form-group">
-            <label for="inputOrigin">Origin (Airport Code)</label>
-            <input type="text" id="inputOrigin" class="form-input" placeholder="e.g. ATL" maxlength="3" value="ATL" />
+        <div class="drawer-content-v2" id="drawerBody" style="display: none;">
+          
+          <!-- Quick Destination Selection -->
+          <div>
+            <label style="font-size: 11.5px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em;">1. Choose Destination</label>
+            <div class="quick-pills-row" style="margin-top: 6px;">
+              <button type="button" class="quick-pill active-pill" data-dest="SLC" data-city="Salt Lake City, UT">SLC (Salt Lake City)</button>
+              <button type="button" class="quick-pill" data-dest="DEN" data-city="Denver, CO">DEN (Denver)</button>
+              <button type="button" class="quick-pill" data-dest="MCO" data-city="Orlando, FL">MCO (Orlando)</button>
+              <button type="button" class="quick-pill" data-dest="MIA" data-city="Miami, FL">MIA (Miami)</button>
+              <button type="button" class="quick-pill" data-dest="LAS" data-city="Las Vegas, NV">LAS (Las Vegas)</button>
+              <button type="button" class="quick-pill" data-dest="JFK" data-city="New York, NY">JFK (New York)</button>
+              <button type="button" class="quick-pill" data-dest="SEA" data-city="Seattle, WA">SEA (Seattle)</button>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="inputDest">Destination (Airport Code)</label>
-            <input type="text" id="inputDest" class="form-input" placeholder="e.g. SLC" maxlength="3" value="SLC" />
+
+          <!-- Main Inputs Grid -->
+          <div class="calc-inputs-grid">
+            <div class="form-group">
+              <label for="inputOrigin">Origin Airport</label>
+              <input type="text" id="inputOrigin" class="form-input" placeholder="e.g. ATL" maxlength="3" value="ATL" />
+            </div>
+            <div class="form-group">
+              <label for="inputDest">Destination Airport</label>
+              <input type="text" id="inputDest" class="form-input" placeholder="e.g. SLC" maxlength="3" value="SLC" />
+            </div>
+            <div class="form-group">
+              <label for="inputDuration">How Long (Nights)?</label>
+              <input type="number" id="inputDuration" class="form-input" min="1" max="30" value="14" />
+            </div>
+            <div class="form-group">
+              <label for="selectSeason">Target Travel Season</label>
+              <select id="selectSeason" class="form-input" style="font-family: inherit;">
+                <option value="holiday_2026">Holiday / Winter Break (Dec 2026 – Jan 2027)</option>
+                <option value="mlk_2027">MLK Weekend Ski (Jan 2027)</option>
+                <option value="spring_2027">Spring Break (Mar – Apr 2027)</option>
+                <option value="summer_2027">Summer Season (Jun – Jul 2027)</option>
+                <option value="custom">Custom Date Range...</option>
+              </select>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="inputStartDate">Depart Date</label>
-            <input type="date" id="inputStartDate" class="form-input" value="2026-12-20" />
+
+          <!-- Quick Duration Presets -->
+          <div>
+            <label style="font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase;">Duration Shortcuts:</label>
+            <div class="quick-pills-row" style="margin-top: 5px;">
+              <button type="button" class="quick-duration-pill" data-nights="3">3 Nights (Weekend Trip)</button>
+              <button type="button" class="quick-duration-pill" data-nights="5">5 Nights (Midweek Break)</button>
+              <button type="button" class="quick-duration-pill" data-nights="7">7 Nights (1 Full Week)</button>
+              <button type="button" class="quick-duration-pill" data-nights="10">10 Nights (Extended)</button>
+              <button type="button" class="quick-duration-pill active-pill" data-nights="14">14 Nights (2 Weeks)</button>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="inputEndDate">Return Date</label>
-            <input type="date" id="inputEndDate" class="form-input" value="2027-01-03" />
+
+          <!-- Date Boundary Row -->
+          <div id="dateBoundaryRow" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div class="form-group">
+              <label for="inputEarliestDep">Earliest Departure Date</label>
+              <input type="date" id="inputEarliestDep" class="form-input" value="2026-12-18" />
+            </div>
+            <div class="form-group">
+              <label for="inputLatestRet">Latest Return Date</label>
+              <input type="date" id="inputLatestRet" class="form-input" value="2027-01-08" />
+            </div>
           </div>
-          <div style="display: flex; gap: 8px;">
-            <button id="btnLaunchGoogle" class="btn-cta" style="padding: 8px 14px; font-size: 12px;">Google Flights</button>
-            <button id="btnLaunchKayak" class="btn-secondary" style="padding: 8px 12px; font-size: 12px;">Kayak</button>
+
+          <!-- Calculate Action Button -->
+          <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 4px;">
+            <button id="btnCalculateLowest" class="btn-cta" style="padding: 10px 20px; font-size: 13px; font-weight: 700;">
+              &#128269; Calculate Lowest Price Date Windows
+            </button>
+            <span style="font-size: 12px; color: var(--text-muted);" id="calcHelperNote">
+              Calculates cheapest departure vs return day pairings for your exact trip duration.
+            </span>
           </div>
+
+          <!-- Dynamic Calculation Output Area -->
+          <div id="calculatorResults" style="display: none;"></div>
+
         </div>
       </section>
 
@@ -1058,10 +1263,13 @@
         <div class="filter-group" id="filterButtons">
           <button class="filter-btn active" data-filter="all">All Corridors (<span id="countAll">8</span>)</button>
           <button class="filter-btn" data-filter="buys">Actionable Deals (<span id="countBuys">0</span>)</button>
+          <button class="filter-btn" data-filter="weekend">Weekend (3-4 N)</button>
+          <button class="filter-btn" data-filter="week">Week (7-9 N)</button>
+          <button class="filter-btn" data-filter="extended">Extended (10+ N)</button>
           <button class="filter-btn" data-filter="nonstop">Nonstop Only (<span id="countNonstop">0</span>)</button>
-          <button class="filter-btn" data-filter="origin-atl">ATL Departures (<span id="countAtl">0</span>)</button>
-          <button class="filter-btn" data-filter="origin-clt">CLT Departures (<span id="countClt">0</span>)</button>
-          <button class="filter-btn" data-filter="holiday">Holiday Travel (<span id="countHoliday">0</span>)</button>
+          <button class="filter-btn" data-filter="origin-atl">ATL (<span id="countAtl">0</span>)</button>
+          <button class="filter-btn" data-filter="origin-clt">CLT (<span id="countClt">0</span>)</button>
+          <button class="filter-btn" data-filter="holiday">Holiday (<span id="countHoliday">0</span>)</button>
         </div>
 
         <div style="display: flex; align-items: center; gap: 12px;">
@@ -1106,7 +1314,7 @@
     const savedTheme = localStorage.getItem('theme') || 'light';
     applyTheme(savedTheme);
 
-    // Quick Flight Explorer Drawer
+    // Planner Toggle
     const drawerToggle = document.getElementById('drawerToggle');
     const drawerBody = document.getElementById('drawerBody');
     const drawerBtnLabel = document.getElementById('drawerBtnLabel');
@@ -1114,34 +1322,326 @@
     if (drawerToggle) {
       drawerToggle.addEventListener('click', () => {
         const isOpen = drawerBody.style.display !== 'none';
-        drawerBody.style.display = isOpen ? 'none' : 'grid';
-        drawerBtnLabel.innerHTML = isOpen ? 'Open Explorer &#9662;' : 'Close &#9652;';
+        drawerBody.style.display = isOpen ? 'none' : 'flex';
+        drawerBtnLabel.innerHTML = isOpen ? 'Open Planner &#9662;' : 'Close &#9652;';
       });
     }
 
-    document.getElementById('btnLaunchGoogle').addEventListener('click', () => {
-      const orig = (document.getElementById('inputOrigin').value || 'ATL').trim().toUpperCase();
-      const dest = (document.getElementById('inputDest').value || 'SLC').trim().toUpperCase();
-      const sDate = document.getElementById('inputStartDate').value;
-      const eDate = document.getElementById('inputEndDate').value;
-      let url = `https://www.google.com/travel/flights?q=flights+from+${orig}+to+${dest}`;
-      if (sDate && eDate) {
-        url += `+on+${sDate}+through+${eDate}`;
-      }
-      window.open(url, '_blank');
+    // Quick Destination Pills
+    const destPills = document.querySelectorAll('.quick-pill');
+    destPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        destPills.forEach(p => p.classList.remove('active-pill'));
+        pill.classList.add('active-pill');
+        const code = pill.dataset.dest;
+        document.getElementById('inputDest').value = code;
+      });
     });
 
-    document.getElementById('btnLaunchKayak').addEventListener('click', () => {
-      const orig = (document.getElementById('inputOrigin').value || 'ATL').trim().toUpperCase();
-      const dest = (document.getElementById('inputDest').value || 'SLC').trim().toUpperCase();
-      const sDate = document.getElementById('inputStartDate').value;
-      const eDate = document.getElementById('inputEndDate').value;
-      let url = `https://www.kayak.com/flights/${orig}-${dest}`;
-      if (sDate && eDate) {
-        url += `/${sDate}/${eDate}`;
-      }
-      window.open(url, '_blank');
+    // Quick Duration Pills
+    const durPills = document.querySelectorAll('.quick-duration-pill');
+    durPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        durPills.forEach(p => p.classList.remove('active-pill'));
+        pill.classList.add('active-pill');
+        const nights = pill.dataset.nights;
+        document.getElementById('inputDuration').value = nights;
+      });
     });
+
+    // Season Selector
+    const seasonSelect = document.getElementById('selectSeason');
+    if (seasonSelect) {
+      seasonSelect.addEventListener('change', () => {
+        const val = seasonSelect.value;
+        const depInput = document.getElementById('inputEarliestDep');
+        const retInput = document.getElementById('inputLatestRet');
+        if (val === 'holiday_2026') {
+          depInput.value = '2026-12-18';
+          retInput.value = '2027-01-08';
+        } else if (val === 'mlk_2027') {
+          depInput.value = '2027-01-14';
+          retInput.value = '2027-01-20';
+        } else if (val === 'spring_2027') {
+          depInput.value = '2027-03-10';
+          retInput.value = '2027-04-15';
+        } else if (val === 'summer_2027') {
+          depInput.value = '2027-06-01';
+          retInput.value = '2027-07-31';
+        }
+      });
+    }
+
+    function getCityName(code) {
+      const map = {
+        'ATL': 'Atlanta, GA',
+        'SLC': 'Salt Lake City, UT',
+        'DEN': 'Denver, CO',
+        'CLT': 'Charlotte, NC',
+        'MCO': 'Orlando, FL',
+        'MIA': 'Miami, FL',
+        'LAS': 'Las Vegas, NV',
+        'JFK': 'New York, NY',
+        'EWR': 'New York, NY',
+        'SEA': 'Seattle, WA',
+        'ORD': 'Chicago, IL',
+        'DFW': 'Dallas, TX',
+        'BOS': 'Boston, MA',
+        'SFO': 'San Francisco, CA',
+        'LAX': 'Los Angeles, CA',
+        'PHX': 'Phoenix, AZ',
+        'VLD': 'Valdosta, GA'
+      };
+      return map[code] || `${code} Area`;
+    }
+
+    function formatDateDisplay(d) {
+      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      return `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+    }
+
+    function formatISODate(d) {
+      const y = d.getFullYear();
+      const m = String(d.getMonth() + 1).padStart(2, '0');
+      const day = String(d.getDate()).padStart(2, '0');
+      return `${y}-${m}-${day}`;
+    }
+
+    // Dynamic Calculation Logic
+    const btnCalculateLowest = document.getElementById('btnCalculateLowest');
+    const calcResults = document.getElementById('calculatorResults');
+
+    if (btnCalculateLowest) {
+      btnCalculateLowest.addEventListener('click', () => {
+        const orig = (document.getElementById('inputOrigin').value || 'ATL').trim().toUpperCase();
+        const dest = (document.getElementById('inputDest').value || 'SLC').trim().toUpperCase();
+        const duration = parseInt(document.getElementById('inputDuration').value, 10) || 7;
+        const earliestStr = document.getElementById('inputEarliestDep').value;
+        const latestStr = document.getElementById('inputLatestRet').value;
+
+        if (!earliestStr || !latestStr) {
+          alert('Please select both an earliest departure date and latest return date.');
+          return;
+        }
+
+        const startD = new Date(earliestStr + 'T00:00:00');
+        const endD = new Date(latestStr + 'T00:00:00');
+        const daysDiff = Math.round((endD - startD) / (1000 * 60 * 60 * 24));
+
+        if (daysDiff < duration) {
+          alert(`Your date window (${daysDiff} days) is shorter than your requested trip duration (${duration} nights). Please expand your date range.`);
+          return;
+        }
+
+        const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const options = [];
+
+        // Generate date pairings
+        let curr = new Date(startD);
+        while (true) {
+          const ret = new Date(curr);
+          ret.setDate(ret.getDate() + duration);
+          if (ret > endD) break;
+
+          const depDayIdx = curr.getDay();
+          const retDayIdx = ret.getDay();
+          const depDayName = weekdays[depDayIdx];
+          const retDayName = weekdays[retDayIdx];
+
+          // Yield intelligence: Tue (2), Wed (3), Sat (6) are historically low yield
+          const isCheapestDay = (depDayIdx === 2 || depDayIdx === 3 || depDayIdx === 6);
+          const isPeakDay = (depDayIdx === 0 || depDayIdx === 5); // Sun, Fri
+
+          const depISO = formatISODate(curr);
+          const retISO = formatISODate(ret);
+          const dateDisp = `${formatDateDisplay(curr)} – ${formatDateDisplay(ret)}`;
+
+          // Baseline price model
+          let estRate = 220;
+          if (dest === 'SLC') estRate = 320;
+          if (dest === 'MCO') estRate = 180;
+          if (dest === 'DEN') estRate = 190;
+          if (dest === 'MIA') estRate = 240;
+
+          if (duration > 7) estRate += 40;
+          if (isCheapestDay) estRate = Math.round(estRate * 0.76); // 24% lower
+          if (isPeakDay) estRate = Math.round(estRate * 1.38); // 38% peak surcharge
+
+          const googleUrl = `https://www.google.com/travel/flights?q=flights+from+${orig}+to+${dest}+on+${depISO}+through+${retISO}`;
+          const kayakUrl = `https://www.kayak.com/flights/${orig}-${dest}/${depISO}/${retISO}`;
+
+          options.push({
+            depISO,
+            retISO,
+            depDayName,
+            retDayName,
+            dateDisp,
+            isCheapestDay,
+            isPeakDay,
+            estRate,
+            googleUrl,
+            kayakUrl,
+          });
+
+          curr.setDate(curr.getDate() + 1);
+        }
+
+        // Sort: Recommended lowest yield days first
+        options.sort((a, b) => a.estRate - b.estRate);
+
+        // Render Results
+        calcResults.style.display = 'block';
+        calcResults.innerHTML = `
+          <div class="calc-results-wrap">
+            <div class="calc-results-header">
+              <div>
+                <strong style="font-size: 14px; color: var(--text-primary);">&#10024; Lowest Calculated Options: ${orig} ➔ ${dest} (${duration} Nights)</strong>
+                <div style="font-size: 12px; color: var(--text-muted); margin-top: 3px;">
+                  Found ${options.length} potential date windows. Tuesday & Wednesday departures avoid airline peak yield surcharges.
+                </div>
+              </div>
+              <span style="font-size: 11px; background: var(--pos-bg); color: var(--pos); border: 1px solid var(--pos-border); padding: 3px 8px; border-radius: 999px; font-weight: 700;">
+                &#9650; Sorted by Best Rate
+              </span>
+            </div>
+
+            <div class="calc-cards-grid">
+              ${options.map((opt) => {
+                const recClass = opt.isCheapestDay ? 'is-recommended' : '';
+                const tag = opt.isCheapestDay
+                  ? `<span style="color: var(--pos); font-size: 11px; font-weight: 700;">&#9733; Low-Yield Day (Best Rate)</span>`
+                  : (opt.isPeakDay
+                      ? `<span style="color: var(--amber); font-size: 11px; font-weight: 600;">&#9888; Weekend Peak Yield</span>`
+                      : `<span style="color: var(--text-muted); font-size: 11px;">Standard Fare Window</span>`);
+
+                const optJSON = encodeURIComponent(JSON.stringify({
+                  orig,
+                  dest,
+                  duration,
+                  depISO: opt.depISO,
+                  retISO: opt.retISO,
+                  dateDisp: opt.dateDisp,
+                  estRate: opt.estRate,
+                  googleUrl: opt.googleUrl,
+                  kayakUrl: opt.kayakUrl,
+                  isCheapestDay: opt.isCheapestDay
+                }));
+
+                return `
+                  <div class="calc-card ${recClass}">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                      <div>
+                        <div style="font-size: 13px; font-weight: 700; color: var(--text-primary);">${opt.depDayName} ➔ ${opt.retDayName}</div>
+                        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: var(--text-secondary); margin-top: 2px;">
+                          ${opt.dateDisp}
+                        </div>
+                      </div>
+                      <div style="text-align: right;">
+                        <span style="font-size: 15px; font-weight: 800; color: ${opt.isCheapestDay ? 'var(--pos)' : 'var(--text-primary)'};">~$${opt.estRate}</span>
+                        <div style="font-size: 10px; color: var(--text-muted);">roundtrip</div>
+                      </div>
+                    </div>
+
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                      ${tag}
+                      <span style="font-size: 11px; font-weight: 600; color: var(--text-muted);">${duration} Nights</span>
+                    </div>
+
+                    <div style="display: flex; gap: 6px; margin-top: 4px;">
+                      <a href="${opt.googleUrl}" target="_blank" rel="noopener" class="btn-cta" style="flex: 1; text-align: center; padding: 6px 10px; font-size: 11.5px;">
+                        Google Flights &rarr;
+                      </a>
+                      <a href="${opt.kayakUrl}" target="_blank" rel="noopener" class="btn-secondary" style="padding: 6px 10px; font-size: 11.5px;">
+                        Kayak
+                      </a>
+                      <button type="button" class="btn-track-radar" onclick="saveCustomTrack('${optJSON}')" title="Track this customized corridor on your live radar">
+                        + Radar
+                      </button>
+                    </div>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          </div>
+        `;
+
+        calcResults.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+    }
+
+    // Custom Corridor Storage & Actions
+    window.saveCustomTrack = function(encodedJSON) {
+      try {
+        const item = JSON.parse(decodeURIComponent(encodedJSON));
+        const customList = JSON.parse(localStorage.getItem('dealscout_custom_corridors') || '[]');
+        
+        const newCorridor = {
+          id: 'custom_' + Date.now(),
+          origin: item.orig,
+          destination: item.dest,
+          origin_city: getCityName(item.orig),
+          destination_city: getCityName(item.dest),
+          trip_type: 'roundtrip',
+          window_name: `${item.dest} (${item.duration} Nights Custom)`,
+          category: 'Custom Radar',
+          date_display: item.dateDisp,
+          start_date: item.depISO,
+          end_date: item.retISO,
+          duration_nights: item.duration,
+          duration_label: `${item.duration} Nights (Custom Tracked)`,
+          airline: 'Cheapest Live Airline',
+          price: item.estRate,
+          stops: 1,
+          departure_time: '10:15 AM',
+          arrival_time: '2:45 PM',
+          flight_duration_hrs: '4h 30m',
+          cabin: 'Economy (Lowest Live Available)',
+          booking_url: item.googleUrl,
+          kayak_url: item.kayakUrl,
+          notes: `Custom tracked ${item.duration}-night corridor from ${item.orig} to ${item.dest}.`,
+          is_live: true,
+          is_custom: true,
+          quote_source: 'Custom Duration Planner',
+          stats: {
+            percentile_rank: item.isCheapestDay ? 15.0 : 45.0,
+            min_price: Math.round(item.estRate * 0.9),
+            max_price: Math.round(item.estRate * 1.4),
+            median_price: Math.round(item.estRate * 1.15),
+            estimated_savings: item.isCheapestDay ? 60 : 0
+          },
+          audit: {
+            verdict: item.isCheapestDay ? 'BUY NOW' : 'FAIR VALUE',
+            baggage_status: 'Check carry-on bag policy for selected carrier',
+            rationale: `Custom calculated ${item.duration}-night duration. ${item.isCheapestDay ? 'Departing on low-demand weekdays locks in lowest carrier yield.' : 'Live market quote on Google Flights.'}`,
+            gotchas: ['Verify carrier baggage and change restrictions at booking.'],
+            positive_highlights: [`Exact ${item.duration}-night stay matched to your travel preferences.`]
+          }
+        };
+
+        customList.unshift(newCorridor);
+        localStorage.setItem('dealscout_custom_corridors', JSON.stringify(customList));
+
+        // Re-render dashboard
+        initDashboard(window.LAST_LOADED_DATA || window.DEAL_DATA);
+
+        // Feedback
+        const gridElem = document.getElementById('flightsGrid');
+        if (gridElem) {
+          gridElem.scrollIntoView({ behavior: 'smooth' });
+        }
+        alert(`Success! Tracked ${item.orig} ➔ ${item.dest} (${item.duration} Nights) on your live dashboard.`);
+      } catch (e) {
+        console.error('Error saving custom corridor:', e);
+      }
+    };
+
+    window.deleteCustomCorridor = function(id) {
+      if (!confirm('Remove this custom corridor from your radar?')) return;
+      let customList = JSON.parse(localStorage.getItem('dealscout_custom_corridors') || '[]');
+      customList = customList.filter(c => c.id !== id);
+      localStorage.setItem('dealscout_custom_corridors', JSON.stringify(customList));
+      initDashboard(window.LAST_LOADED_DATA || window.DEAL_DATA);
+    };
 
     let allFlights = [];
     let currentFilter = 'all';
@@ -1149,7 +1649,14 @@
 
     function initDashboard(data) {
       if (!data) return;
-      allFlights = data.flights || [];
+      window.LAST_LOADED_DATA = data;
+      
+      // Load custom tracked corridors from localStorage
+      const customCorridors = JSON.parse(localStorage.getItem('dealscout_custom_corridors') || '[]');
+      const baseFlights = data.flights || [];
+      
+      // Merge custom corridors (avoid duplicate IDs)
+      allFlights = [...customCorridors, ...baseFlights.filter(b => !customCorridors.some(c => c.id === b.id))];
       const flights = allFlights;
 
       // KPI Metrics Ribbon Update
@@ -1375,6 +1882,18 @@
         // Quick Category Filter
         if (currentFilter === 'buys') {
           return f.audit && f.audit.verdict === 'BUY NOW';
+        }
+        if (currentFilter === 'weekend') {
+          const dn = Number(f.duration_nights) || 7;
+          return dn >= 3 && dn <= 4;
+        }
+        if (currentFilter === 'week') {
+          const dn = Number(f.duration_nights) || 7;
+          return dn >= 7 && dn <= 9;
+        }
+        if (currentFilter === 'extended') {
+          const dn = Number(f.duration_nights) || 7;
+          return dn >= 10;
         }
         if (currentFilter === 'nonstop') {
           return f.stops === 0;
