@@ -17,7 +17,7 @@ class GeminiAuditor:
     def __init__(self, api_key: str | None = None):
         self.api_key = api_key or os.getenv("GEMINI_API_KEY")
         self.client = None
-        self.model_name = "gemini-3.8-flash"
+        self.model_name = "gemini-3.5-flash-lite"
 
         if self.api_key:
             try:
