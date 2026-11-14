@@ -56,9 +56,14 @@
       --sky-bg: #f0f9ff;
       --sky-border: #bae6fd;
 
-      --shadow-subtle: 0 1px 3px rgba(15, 23, 42, 0.05), 0 1px 2px rgba(15, 23, 42, 0.03);
-      --shadow-card: 0 4px 6px -1px rgba(15, 23, 42, 0.05), 0 2px 4px -2px rgba(15, 23, 42, 0.03);
-      --shadow-elevated: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
+      --shadow-subtle: none;
+      --shadow-card: none;
+      --shadow-elevated: none;
+      --radius-xs: 2px;
+      --radius-sm: 3px;
+      --radius-md: 4px;
+      --radius-lg: 4px;
+      --radius-pill: 4px;
     }
 
     html[data-theme="slate"] {
@@ -96,9 +101,9 @@
       --sky-bg: rgba(56, 189, 248, 0.12);
       --sky-border: rgba(56, 189, 248, 0.28);
 
-      --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.3);
-      --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.35);
-      --shadow-elevated: 0 12px 24px rgba(0, 0, 0, 0.45);
+      --shadow-subtle: none;
+      --shadow-card: none;
+      --shadow-elevated: none;
     }
 
     html.is-embedded header {
@@ -208,7 +213,7 @@
       font-size: 13px;
       font-weight: 600;
       padding: 7px 14px;
-      border-radius: 7px;
+      border-radius: 4px;
       border: 1px solid var(--border-strong);
       background: var(--bg-card);
       color: var(--text-primary);
@@ -224,25 +229,52 @@
       text-decoration: none;
     }
 
-    /* KPI Ribbon */
+    /* KPI Ribbon - Flat Telemetry Strip */
     .metrics-ribbon {
-      background: var(--bg-ribbon);
+      background: var(--bg-card);
+      border-top: 1px solid var(--border-subtle);
       border-bottom: 1px solid var(--border-subtle);
-      padding: 24px 0;
+      padding: 0;
       margin-bottom: 24px;
     }
 
     .kpi-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
+      gap: 0;
     }
 
     .kpi-card {
-      background: var(--bg-card-alt);
-      border: 1px solid var(--border-subtle);
-      border-radius: 10px;
-      padding: 16px 20px;
+      background: transparent;
+      border: none;
+      border-right: 1px solid var(--border-subtle);
+      border-radius: 0;
+      padding: 14px 18px;
+      position: relative;
+    }
+
+    .kpi-card:last-child {
+      border-right: none;
+    }
+
+    .kpi-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background: var(--accent-primary);
+      opacity: 0.85;
+    }
+    .kpi-card:nth-child(2)::before {
+      background: var(--pos);
+    }
+    .kpi-card:nth-child(3)::before {
+      background: var(--purple);
+    }
+    .kpi-card:nth-child(4)::before {
+      background: var(--sky);
     }
 
     .kpi-label {
@@ -274,26 +306,21 @@
     }
 
     .spotlight-card {
-      background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-card-alt) 100%);
-      border: 1px solid var(--accent-primary-border);
-      border-radius: 12px;
-      padding: 20px 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-left: 3px solid var(--pos);
+      border-radius: 4px;
+      padding: 18px 22px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: var(--shadow-card);
+      box-shadow: none;
       position: relative;
       overflow: hidden;
     }
 
     .spotlight-card::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 5px;
-      background: var(--accent-primary);
+      display: none;
     }
 
     .spotlight-badge {
@@ -308,7 +335,7 @@
       font-weight: 700;
       text-transform: uppercase;
       padding: 3px 8px;
-      border-radius: 5px;
+      border-radius: 3px;
       margin-bottom: 8px;
     }
 
@@ -343,7 +370,7 @@
       font-weight: 600;
       font-size: 13px;
       padding: 10px 16px;
-      border-radius: 7px;
+      border-radius: 4px;
       transition: background 0.15s ease;
       text-align: center;
     }
@@ -364,7 +391,7 @@
       font-weight: 600;
       font-size: 12.5px;
       padding: 7px 14px;
-      border-radius: 7px;
+      border-radius: 4px;
       transition: all 0.15s ease;
       text-align: center;
     }
@@ -378,10 +405,10 @@
     .drawer-section {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
-      border-radius: 12px;
+      border-radius: 4px;
       padding: 18px 22px;
       margin-bottom: 24px;
-      box-shadow: var(--shadow-subtle);
+      box-shadow: none;
     }
 
     .drawer-header {
@@ -402,13 +429,13 @@
     }
 
     .drawer-toggle-btn {
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 600;
       color: var(--accent-primary);
       background: var(--accent-primary-bg);
       border: 1px solid var(--accent-primary-border);
       padding: 4px 10px;
-      border-radius: 5px;
+      border-radius: 4px;
     }
 
     .drawer-content {
@@ -439,7 +466,7 @@
       font-family: 'JetBrains Mono', monospace;
       font-size: 13.5px;
       padding: 8px 12px;
-      border-radius: 6px;
+      border-radius: 4px;
       border: 1px solid var(--border-strong);
       background: var(--bg-card-alt);
       color: var(--text-primary);
@@ -477,7 +504,7 @@
       font-size: 12px;
       font-weight: 600;
       padding: 5px 12px;
-      border-radius: 6px;
+      border-radius: 4px;
       border: 1px solid var(--border-subtle);
       background: var(--bg-card-alt);
       color: var(--text-secondary);
@@ -499,8 +526,8 @@
     .calc-results-wrap {
       background: var(--bg-card-alt);
       border: 1px solid var(--border-subtle);
-      border-radius: 10px;
-      padding: 18px;
+      border-radius: 4px;
+      padding: 16px;
       display: flex;
       flex-direction: column;
       gap: 12px;
@@ -525,16 +552,17 @@
     .calc-card {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
-      border-radius: 8px;
+      border-radius: 4px;
       padding: 14px;
       display: flex;
       flex-direction: column;
       gap: 10px;
-      transition: transform 0.15s, border-color 0.15s;
+      box-shadow: none;
+      transition: border-color 0.15s;
     }
 
     .calc-card:hover {
-      transform: translateY(-2px);
+      transform: none;
       border-color: var(--accent-primary);
     }
 
@@ -550,7 +578,7 @@
       font-size: 11.5px;
       font-weight: 700;
       padding: 6px 10px;
-      border-radius: 6px;
+      border-radius: 4px;
       cursor: pointer;
       transition: all 0.15s;
     }
@@ -610,7 +638,7 @@
       font-size: 12.5px;
       font-weight: 600;
       padding: 6px 13px;
-      border-radius: 6px;
+      border-radius: 4px;
       border: 1px solid var(--border-subtle);
       background: var(--bg-card);
       color: var(--text-secondary);
@@ -632,7 +660,7 @@
     .search-input {
       font-size: 12.5px;
       padding: 6px 12px;
-      border-radius: 6px;
+      border-radius: 4px;
       border: 1px solid var(--border-strong);
       background: var(--bg-card);
       color: var(--text-primary);
@@ -650,32 +678,33 @@
     .cards-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
+      gap: 16px;
       margin-bottom: 48px;
     }
 
     .flight-card {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
-      border-radius: 12px;
-      padding: 22px;
+      border-radius: 4px;
+      padding: 18px 20px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
-      box-shadow: var(--shadow-card);
+      transition: border-color 0.15s ease;
+      box-shadow: none;
       position: relative;
     }
 
     .flight-card:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-elevated);
-      border-color: var(--border-strong);
+      transform: none;
+      box-shadow: none;
+      border-color: var(--accent-primary);
     }
 
     .flight-card.is-buy-now {
       border-color: var(--pos-border);
-      box-shadow: 0 4px 16px rgba(5, 150, 105, 0.08);
+      border-left: 3px solid var(--pos);
+      box-shadow: none;
     }
 
     /* Card Route Header */
@@ -766,7 +795,7 @@
       font-size: 11px;
       font-weight: 600;
       padding: 3px 8px;
-      border-radius: 5px;
+      border-radius: 3px;
     }
 
     .category-badge {
@@ -778,7 +807,7 @@
       font-size: 11px;
       font-weight: 600;
       padding: 3px 8px;
-      border-radius: 5px;
+      border-radius: 3px;
     }
 
     .nonstop-badge {
@@ -790,7 +819,7 @@
       font-size: 11px;
       font-weight: 700;
       padding: 3px 7px;
-      border-radius: 5px;
+      border-radius: 3px;
     }
 
     .layover-badge {
@@ -802,7 +831,7 @@
       font-size: 11px;
       font-weight: 600;
       padding: 3px 7px;
-      border-radius: 5px;
+      border-radius: 3px;
     }
 
     /* Sparkline & History Row */
@@ -813,7 +842,7 @@
       margin-bottom: 14px;
       padding: 8px 12px;
       background: var(--bg-card-alt);
-      border-radius: 7px;
+      border-radius: 4px;
       border: 1px solid var(--border-subtle);
     }
 
@@ -867,7 +896,7 @@
     .baggage-pill {
       background: var(--bg-card-alt);
       border: 1px solid var(--border-subtle);
-      border-radius: 6px;
+      border-radius: 4px;
       padding: 7px 11px;
       font-size: 12px;
       color: var(--text-secondary);
@@ -884,7 +913,7 @@
     /* Gemini Audit Box */
     .gemini-audit-box {
       background: var(--bg-card-alt);
-      border-radius: 8px;
+      border-radius: 4px;
       padding: 12px 14px;
       margin-bottom: 16px;
       border: 1px solid var(--border-subtle);
@@ -1004,7 +1033,7 @@
       font-size: 12px;
       font-weight: 600;
       padding: 6px 12px;
-      border-radius: 6px;
+      border-radius: 4px;
       background: var(--accent-primary);
       color: #ffffff !important;
       transition: background 0.15s ease;
@@ -1022,7 +1051,7 @@
       font-size: 12px;
       font-weight: 600;
       padding: 6px 10px;
-      border-radius: 6px;
+      border-radius: 4px;
       background: var(--bg-card);
       border: 1px solid var(--border-strong);
       color: var(--text-primary);
