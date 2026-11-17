@@ -59,19 +59,25 @@ def run_scout():
     # 3. Analyze Flight Corridors
     print("\n[2/3] Computing 90-day Percentile Envelopes & Gemini Flight Audits...")
     flights_history = history.setdefault("flights", {})
+    today_date_str = datetime.datetime.now().strftime("%Y-%m-%d")
+    same_day_update = (history.get("last_updated_date") == today_date_str)
 
     for fq in flight_quotes:
         fid = fq["id"]
         f_hist = flights_history.setdefault(fid, [])
 
-        # Analyze price before appending so percentile is against existing envelope
-        stats = PercentileEngine.analyze_price(fq["price"], f_hist)
+        # Analyze price against prior days' envelope (exclude today's slot on same-day rerun)
+        baseline_hist = f_hist[:-1] if (same_day_update and len(f_hist) > 1) else f_hist
+        stats = PercentileEngine.analyze_price(fq["price"], baseline_hist)
         audit = auditor.audit_flight(fq, stats)
 
-        # Append today's actual price to rolling 90-day history
-        f_hist.append(fq["price"])
-        if len(f_hist) > 90:
-            f_hist.pop(0)
+        # Update today's price in place on same-day reruns, or append a new day
+        if same_day_update and f_hist:
+            f_hist[-1] = fq["price"]
+        else:
+            f_hist.append(fq["price"])
+            if len(f_hist) > 90:
+                f_hist.pop(0)
 
         if fq.get("is_live"):
             live_quotes_count += 1
@@ -95,6 +101,7 @@ def run_scout():
         print(f"     Percentile: {stats['percentile_rank']}th% | Median: ${stats['median_price']} | Verdict: [{audit['verdict']}]")
 
     # Persist updated history back to file
+    history["last_updated_date"] = today_date_str
     with open(HISTORY_FILE, "w", encoding="utf-8") as f:
         json.dump(history, f, indent=2)
 

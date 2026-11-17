@@ -2,8 +2,8 @@ name: Daily DealScout Scan & Refresh
 
 on:
   schedule:
-    # 7:00 AM EST is 12:00 UTC
-    - cron: '0 12 * * *'
+    # 8:11 AM EST (13:11 UTC) - Off-peak cron minute
+    - cron: '11 13 * * *'
   workflow_dispatch:
 
 permissions:
