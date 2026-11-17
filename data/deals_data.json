@@ -1,12 +1,12 @@
 {
   "metadata": {
-    "last_scan_time": "November 17, 2026 at 04:38 PM",
+    "last_scan_time": "November 17, 2026 at 09:43 PM",
     "total_corridors": 9,
-    "live_verified_count": 8,
-    "qualified_deals_count": 5,
-    "total_savings_opportunity": 496.0,
-    "max_single_savings": 216.0,
-    "average_flight_price": 353.3,
+    "live_verified_count": 6,
+    "qualified_deals_count": 4,
+    "total_savings_opportunity": 277.5,
+    "max_single_savings": 91.5,
+    "average_flight_price": 348.7,
     "system_status": "Operational & Live Market Connected",
     "model_engine": "Google Flights Real-Time Ingestion + Gemini Gotcha Auditor + 90-Day Percentile Radar"
   },
@@ -25,46 +25,43 @@
       "end_date": "2027-01-05",
       "duration_nights": 14,
       "duration_label": "14 Nights (Lowest Holiday Rate)",
-      "airline": "Frontier Airlines",
-      "price": 240,
+      "airline": "Delta Air Lines",
+      "price": 548,
       "target_price": 280,
       "max_acceptable_price": 360,
-      "stops": 1,
-      "layover_hrs": 0.5,
-      "connection": "LAS",
-      "departure_time": "8:40 PM",
-      "arrival_time": "1:56 PM",
-      "flight_duration_hrs": "6h 07m",
-      "cabin": "Economy (1 stop via LAS \u2022 Airbus A321neo)",
+      "stops": 0,
+      "layover_hrs": 0,
+      "connection": null,
+      "departure_time": "8:40 AM",
+      "arrival_time": "11:15 AM",
+      "flight_duration_hrs": "4h 35m",
+      "cabin": "Main Cabin (Direct Nonstop)",
       "booking_url": "https://www.google.com/travel/flights?q=flights+from+ATL+to+SLC+on+2026-12-22+through+2027-01-05",
       "kayak_url": "https://www.kayak.com/flights/ATL-SLC/2026-12-22/2027-01-05",
-      "notes": "Cheapest flight ($240). Nonstop direct available at $729.",
-      "is_live": true,
-      "quote_source": "Lowest Live Google Flights Fare",
+      "notes": "Lowest holiday fare into Wasatch Range. Peak Christmas rates drop significantly on these dates.",
+      "is_live": false,
+      "quote_source": "Benchmark (Route unavailable on Google Flights)",
       "stats": {
-        "percentile_rank": 0.0,
+        "percentile_rank": 94.4,
         "min_price": 244,
         "max_price": 929,
-        "median_price": 456.0,
-        "avg_price": 460.69,
-        "price_score": 0.0,
-        "is_deal": true,
-        "tier": "STRONG BUY",
-        "estimated_savings": 216.0
+        "median_price": 456,
+        "avg_price": 458.91,
+        "price_score": 0.444,
+        "is_deal": false,
+        "tier": "OVERPRICED",
+        "estimated_savings": 0.0
       },
       "audit": {
-        "verdict": "BUY NOW",
-        "baggage_status": "$45+ Carry-on Fee (Personal item only included)",
-        "gotchas": [
-          "Ultra-low-cost carrier unbundled baggage fees apply",
-          "Short 30-minute layover in Las Vegas (LAS) increases risk of misconnection during peak holiday travel",
-          "Late-night departure arriving past midnight local time"
-        ],
+        "verdict": "WAIT / PASS",
+        "baggage_status": "Standard Main Cabin: Overhead roller carry-on & personal item included",
+        "gotchas": [],
         "positive_highlights": [
-          "0.0th historical percentile representing an absolute bottom price for peak Christmas and New Year holiday travel",
-          "Massive estimated savings of $216.00 compared to the seasonal median fare"
+          "Nonstop direct service (4h 35m) with zero layover disruption risk",
+          "Full Main Cabin ticket on Delta Air Lines with standard seat choice & carry-on bag",
+          "Peak holiday window: high demand period where seat inventory drops rapidly"
         ],
-        "rationale": "At the 0.0th percentile for the Christmas holiday travel window, this $240 fare represents an exceptional bottom-market price that will not drop further. Secure this deal immediately, but factor in Frontier's extra bag fees and the tight connection in Las Vegas."
+        "rationale": "Fare sits near median historical levels ($456). Recommend tracking this corridor for typical fare dips 4-6 weeks out."
       },
       "history_90d": [
         365,
@@ -80,7 +77,7 @@
         244,
         548,
         249,
-        240
+        548
       ]
     },
     {
@@ -126,18 +123,15 @@
       },
       "audit": {
         "verdict": "BUY NOW",
-        "baggage_status": "$45+ Carry-on Fee (Frontier unbundles overhead bags; personal item only included)",
+        "baggage_status": "Unbundled Fare: Overhead carry-on roller incurs $45\u2013$65 fee each way",
         "gotchas": [
-          "Ultra-low-cost carrier unbundled fare requires paying extra for carry-on bags and seat selection",
-          "Tight 30-minute layover in Las Vegas (LAS) increases risk of misconnecting during peak holiday travel",
-          "Winter travel vulnerability through Las Vegas connecting to a mountain destination"
+          "Tight 0.5h layover connection in LAS \u2014 high missed connection risk",
+          "Ultra-low-cost carrier: seat selection, overhead carry-on bags, and water cost extra"
         ],
         "positive_highlights": [
-          "0.0th percentile historical pricing represents an absolute rock-bottom rate for Christmas week",
-          "Massive estimated savings of $91.50 compared to the seasonal median fare",
-          "Operated by a modern Airbus A321neo aircraft"
+          "Peak holiday window: high demand period where seat inventory drops rapidly"
         ],
-        "rationale": "At the 0.0th percentile for peak Christmas week travel, this fare offers unprecedented savings that heavily outweigh the ultra-low-cost carrier baggage fees. Lock this price in immediately, but pack light in a personal item to avoid ancillary charges and prepare for a tight connection in LAS."
+        "rationale": "Rare price bottom for Frontier Airlines during Christmas Ski (Southwest 2 Free Bags), ranking in the lowest 0.0% of historical fares ($$92 below median). Secure this seat before fares surge."
       },
       "history_90d": [
         439,
@@ -161,47 +155,42 @@
       "end_date": "2027-06-20",
       "duration_nights": 8,
       "duration_label": "8 Nights (Summer Hiking)",
-      "airline": "Southwest Airlines",
-      "price": 597,
+      "airline": "Delta Air Lines",
+      "price": 380,
       "target_price": 220,
       "max_acceptable_price": 280,
-      "stops": 1,
-      "layover_hrs": 0.5,
-      "connection": "HOU",
-      "departure_time": "6:00 AM",
-      "arrival_time": "10:15 AM",
-      "flight_duration_hrs": "5h 15m",
-      "cabin": "Economy (1 stop via HOU \u2022 Boeing 737MAX 8 Passenger)",
+      "stops": 0,
+      "layover_hrs": 0,
+      "connection": null,
+      "departure_time": "1:20 PM",
+      "arrival_time": "3:55 PM",
+      "flight_duration_hrs": "4h 35m",
+      "cabin": "Main Cabin (Direct Nonstop)",
       "booking_url": "https://www.google.com/travel/flights?q=flights+from+ATL+to+SLC+on+2027-06-12+through+2027-06-20",
       "kayak_url": "https://www.kayak.com/flights/ATL-SLC/2027-06-12/2027-06-20",
-      "notes": "Cheapest flight ($597). Nonstop direct available at $993.",
-      "is_live": true,
-      "quote_source": "Lowest Live Google Flights Fare",
+      "notes": "Wildflower & hiking season in Big/Little Cottonwood Canyons.",
+      "is_live": false,
+      "quote_source": "Benchmark (Route unavailable on Google Flights)",
       "stats": {
-        "percentile_rank": 97.8,
+        "percentile_rank": 79.8,
         "min_price": 228,
         "max_price": 798,
-        "median_price": 334.0,
-        "avg_price": 351.4,
-        "price_score": 0.647,
+        "median_price": 334,
+        "avg_price": 351.84,
+        "price_score": 0.267,
         "is_deal": false,
         "tier": "OVERPRICED",
         "estimated_savings": 0.0
       },
       "audit": {
         "verdict": "WAIT / PASS",
-        "baggage_status": "2 Checked Bags Free and Free Overhead Roller",
-        "gotchas": [
-          "Extremely high historical price percentile at 97.8th percentile for this route",
-          "Early departure time at 6:00 AM requires a very early morning arrival at ATL",
-          "1-stop routing via HOU with a tight 0.5h layover increases misconnect risk"
-        ],
+        "baggage_status": "Standard Main Cabin: Overhead roller carry-on & personal item included",
+        "gotchas": [],
         "positive_highlights": [
-          "Southwest includes two free checked bags and full size carry-on",
-          "Flown on a modern Boeing 737MAX 8 passenger aircraft",
-          "Convenient summer hiking window for Wasatch Mountains"
+          "Nonstop direct service (4h 35m) with zero layover disruption risk",
+          "Full Main Cabin ticket on Delta Air Lines with standard seat choice & carry-on bag"
         ],
-        "rationale": "At the 97.8th historical percentile for $597, this fare is drastically overpriced despite Southwest's generous baggage policy. You should wait and monitor for price drops as your travel window approaches, or consider alternative routings to avoid severe overpaying."
+        "rationale": "Fare sits near median historical levels ($334). Recommend tracking this corridor for typical fare dips 4-6 weeks out."
       },
       "history_90d": [
         228,
@@ -217,7 +206,7 @@
         597,
         597,
         597,
-        597
+        380
       ]
     },
     {
@@ -251,29 +240,29 @@
       "is_live": false,
       "quote_source": "Benchmark (Route unavailable on Google Flights)",
       "stats": {
-        "percentile_rank": 8.9,
+        "percentile_rank": 9.0,
         "min_price": 207,
         "max_price": 358,
-        "median_price": 278.0,
-        "avg_price": 276.89,
+        "median_price": 278,
+        "avg_price": 276.48,
         "price_score": 0.007,
         "is_deal": true,
         "tier": "STRONG BUY",
-        "estimated_savings": 70.0
+        "estimated_savings": 70
       },
       "audit": {
         "verdict": "BUY NOW",
-        "baggage_status": "Free Overhead Roller Included (Standard Delta Main Cabin allowance)",
+        "baggage_status": "Free Overhead Roller Included (Main Cabin standard)",
         "gotchas": [
-          "Regional jet (CRJ-900) requires gate valet pink-tag for standard roller bags due to overhead bin size constraints",
-          "Atlanta (ATL) holiday traffic congestion requires early airport arrival despite short flight duration"
+          "Regional jet CRJ-900 operations mean larger roller bags must be gate-valet pink-tagged for planeside pickup",
+          "Holiday peak demand means limited recovery options if flights are delayed"
         ],
         "positive_highlights": [
-          "Nonstop direct flight with a very fast 57-minute travel time",
-          "Priced at the 8.9th historical percentile, saving an estimated $70 versus the seasonal median during peak holiday travel",
-          "Zero stops eliminates winter hub connection risks"
+          "Nonstop direct routing avoiding weather-prone connecting hubs",
+          "9.0th percentile historical pricing delivering $70 in savings vs. the seasonal median during peak holiday travel",
+          "Complimentary full-size carry-on and standard Delta Main Cabin perks"
         ],
-        "rationale": "At the 8.9th percentile for the peak holiday window, this $208 nonstop fare represents an exceptional bottom for regional holiday travel. Secure this rate immediately to avoid the inevitable pre-holiday price surge."
+        "rationale": "At the 9.0th historical percentile for a holiday semester break window, this $208 nonstop fare represents exceptional value. Secure this booking immediately before peak holiday inventory depletes."
       },
       "history_90d": [
         269,
@@ -306,46 +295,46 @@
       "end_date": "2027-07-12",
       "duration_nights": 3,
       "duration_label": "3 Nights (Weekend Shuttle)",
-      "airline": "Southwest Airlines",
-      "price": 541,
+      "airline": "Frontier Airlines",
+      "price": 408,
       "target_price": 115,
       "max_acceptable_price": 160,
       "stops": 1,
       "layover_hrs": 0.5,
-      "connection": "BNA",
-      "departure_time": "3:40 PM",
-      "arrival_time": "7:10 PM",
-      "flight_duration_hrs": "2h 40m",
-      "cabin": "Economy (1 stop via BNA \u2022 Boeing 737-700 (Scimitar Winglets) Pax)",
+      "connection": "BWI",
+      "departure_time": "9:43 AM",
+      "arrival_time": "3:04 PM",
+      "flight_duration_hrs": "3h 41m",
+      "cabin": "Economy (1 stop via BWI \u2022 Airbus A321neo)",
       "booking_url": "https://www.google.com/travel/flights?q=flights+from+ATL+to+CLT+on+2027-07-09+through+2027-07-12",
       "kayak_url": "https://www.kayak.com/flights/ATL-CLT/2027-07-09/2027-07-12",
-      "notes": "Cheapest flight ($541). Nonstop direct available at $571.",
+      "notes": "Cheapest flight ($408). Nonstop direct available at $571.",
       "is_live": true,
       "quote_source": "Lowest Live Google Flights Fare",
       "stats": {
-        "percentile_rank": 97.8,
+        "percentile_rank": 94.4,
         "min_price": 132,
         "max_price": 571,
-        "median_price": 197.0,
-        "avg_price": 214.99,
-        "price_score": 0.932,
+        "median_price": 197,
+        "avg_price": 214.46,
+        "price_score": 0.629,
         "is_deal": false,
         "tier": "OVERPRICED",
         "estimated_savings": 0.0
       },
       "audit": {
         "verdict": "WAIT / PASS",
-        "baggage_status": "2 Free Checked Bags Included",
+        "baggage_status": "$45-$65 Carry-on Fee (Frontier unbundles all overhead and checked bags)",
         "gotchas": [
-          "Extremely high historical price sitting at the 97.8th percentile for this route",
-          "Unnecessary 1-stop routing via BNA for an ultra-short regional corridor that is normally a direct hop",
-          "Detour adds travel time and connection risk despite a short layover"
+          "94.4th percentile historical price is severely inflated for a short regional route",
+          "Extreme backtracking via BWI (Baltimore) for a direct ATL-CLT corridor",
+          "Tight 30-minute layover at BWI increases risk of misconnecting",
+          "Frontier's unbundled baggage fees will push the total out-of-pocket cost well above $408"
         ],
         "positive_highlights": [
-          "Southwest Airlines includes two free checked bags and zero change fees",
-          "Standard Boeing 737 mainline aircraft equipment used throughout"
+          "Operates on a modern Airbus A321neo aircraft"
         ],
-        "rationale": "At $541, this fare is sitting in the 98th percentile for a short regional corridor that should command a much lower price. You should wait or look for direct alternatives, as this pricing offers terrible value for a weekend shuttle."
+        "rationale": "At the 94.4th percentile, paying $408 for a severely backtracked, one-stop Frontier itinerary on a 225-mile corridor is a terrible deal. You should pass immediately and look to book a direct mainline flight on Delta or American for a fraction of the cost and time."
       },
       "history_90d": [
         207,
@@ -361,7 +350,7 @@
         475,
         224,
         408,
-        541
+        408
       ]
     },
     {
@@ -395,27 +384,30 @@
       "is_live": true,
       "quote_source": "Lowest Live Google Flights Fare",
       "stats": {
-        "percentile_rank": 20.0,
+        "percentile_rank": 20.2,
         "min_price": 341,
         "max_price": 983,
-        "median_price": 478.5,
-        "avg_price": 493.94,
+        "median_price": 477,
+        "avg_price": 493.3,
         "price_score": 0.111,
         "is_deal": false,
         "tier": "GOOD VALUE",
-        "estimated_savings": 66.5
+        "estimated_savings": 65
       },
       "audit": {
         "verdict": "BUY NOW",
-        "baggage_status": "Generous: 2 Free Checked Bags + Full Carry-on & Personal Item",
+        "baggage_status": "2 Bags Free",
         "gotchas": [
-          "Tight 0.5h layover connection in MDW \u2014 high missed connection risk"
+          "Winter connection risk at MDW during Christmas ski week",
+          "Tight 30-minute layover at MDW leaves zero margin for error",
+          "Late-night arrival into SLC at 1:05 AM"
         ],
         "positive_highlights": [
-          "Southwest perk: 2 free checked bags included, saving up to $140 roundtrip",
-          "Peak holiday window: high demand period where seat inventory drops rapidly"
+          "Historical 20.2nd percentile pricing for peak Christmas holiday travel",
+          "Two complimentary checked bags included, saving $120+ compared to basic economy",
+          "Flown on mainline Boeing 737 equipment avoiding regional jet gate-check hassles"
         ],
-        "rationale": "Rare price bottom for Southwest Airlines during Christmas Ski Week (Cheapest Window), ranking in the lowest 20.0% of historical fares ($$66 below median). Secure this seat before fares surge."
+        "rationale": "Securing a 20th percentile fare during Christmas ski week is a rare holiday win, especially with two free checked bags included. Book immediately before holiday inventory tightens further, keeping a close eye on your tight MDW connection."
       },
       "history_90d": [
         452,
@@ -465,30 +457,30 @@
       "is_live": true,
       "quote_source": "Lowest Live Google Flights Fare",
       "stats": {
-        "percentile_rank": 3.3,
+        "percentile_rank": 3.4,
         "min_price": 176,
         "max_price": 337,
-        "median_price": 237.0,
-        "avg_price": 241.27,
+        "median_price": 236,
+        "avg_price": 240.56,
         "price_score": 0.056,
         "is_deal": true,
         "tier": "STRONG BUY",
-        "estimated_savings": 52.0
+        "estimated_savings": 51
       },
       "audit": {
         "verdict": "BUY NOW",
-        "baggage_status": "$45+ Carry-on Fee (Frontier unbundles overhead roller bags and charges extra)",
+        "baggage_status": "$45-$65+ Carry-on Fee (Personal item only included)",
         "gotchas": [
-          "Unbundled bag fees inflate the base price",
-          "Winter weather exposure at DFW connection during MLK weekend",
-          "Airbus A321 operating an itinerary with a tight 30-minute layover"
+          "Ultra-low-cost carrier unbundled baggage fees will apply",
+          "0.5h tight connection at DFW during winter operations carries delay risk",
+          "Airbus A321 operating this route requires paid overhead bin space"
         ],
         "positive_highlights": [
-          "3.3rd percentile historical price point offers exceptional holiday savings",
-          "Saves $52.0 compared to the median fare for this peak long weekend",
-          "Daytime departure at 10:08 AM avoids brutal early morning wake-up times"
+          "3.4th historical percentile pricing represents an extreme bargain for a holiday weekend",
+          "Saves approximately $51 compared to the seasonal median fare",
+          "Favorable morning departure time avoiding red-eye fatigue"
         ],
-        "rationale": "At the 3.3rd percentile, this $185 fare represents an absolute bottom for peak MLK weekend travel and should be secured immediately. Just factor in Frontier's extra baggage fees and the tight 30-minute winter connection at DFW."
+        "rationale": "At the 3.4th historical percentile for MLK weekend, this $185 fare is an exceptional outlier that easily offsets potential ultra-low-cost baggage fees. Lock this price in immediately before it disappears, while keeping a close eye on the tight connection at DFW."
       },
       "history_90d": [
         272,
@@ -541,8 +533,8 @@
         "percentile_rank": 100.0,
         "min_price": 106,
         "max_price": 263,
-        "median_price": 158.0,
-        "avg_price": 163.59,
+        "median_price": 158,
+        "avg_price": 163.62,
         "price_score": 1.0,
         "is_deal": false,
         "tier": "OVERPRICED",
@@ -550,17 +542,17 @@
       },
       "audit": {
         "verdict": "WAIT / PASS",
-        "baggage_status": "$45+ Carry-on Fee",
+        "baggage_status": "$45+ Carry-on Fee (Personal item only included)",
         "gotchas": [
-          "Unbundled fare charges extra for both overhead carry-on and checked bags",
-          "100.0th percentile pricing indicates extreme peak Spring Break markup",
-          "Airbus A320neo high-density seating with minimal recline"
+          "100.0th percentile historic price indicating severe Spring Break price gouging",
+          "Unbundled fare means overhead carry-on and checked bags cost extra",
+          "Ultra-low-cost carrier lack of schedule reliability if disruptions occur"
         ],
         "positive_highlights": [
-          "Direct nonstop routing of 1 hour 44 minutes",
-          "No winter hub connections or layover risks"
+          "Nonstop direct route with a fast 1h 44m flight time",
+          "Airbus A320neo modern fleet"
         ],
-        "rationale": "At the 100th percentile for historical pricing, this fare is heavily inflated by Spring Break demand and offers zero savings. You should wait for potential flash sales or consider alternative carriers like Southwest where free checked bags offset the initial ticket cost."
+        "rationale": "At the 100th percentile for historical pricing, this Spring Break fare is heavily inflated for a short regional hop. You should wait for fare sales or compare legacy carrier main cabin options that may include carry-on bags and better customer protections for similar total costs."
       },
       "history_90d": [
         174,
@@ -610,11 +602,11 @@
       "is_live": true,
       "quote_source": "Lowest Live Google Flights Fare",
       "stats": {
-        "percentile_rank": 92.2,
+        "percentile_rank": 92.1,
         "min_price": 154,
         "max_price": 685,
-        "median_price": 214.5,
-        "avg_price": 237.9,
+        "median_price": 215,
+        "avg_price": 238.35,
         "price_score": 0.601,
         "is_deal": false,
         "tier": "OVERPRICED",
@@ -622,15 +614,18 @@
       },
       "audit": {
         "verdict": "WAIT / PASS",
-        "baggage_status": "Standard Main Cabin: Overhead roller carry-on & personal item included",
+        "baggage_status": "Free Overhead Roller Included (Standard United Economy, not Basic)",
         "gotchas": [
-          "Tight 0.5h layover connection in IAD \u2014 high missed connection risk",
-          "Early morning departure (6:00 AM) requires arriving at airport by 4:30 AM"
+          "Extremely overpriced at the 92.1st percentile ($473 for a short domestic hop)",
+          "Inefficient 1-stop routing via IAD for a CLT-MIA flight that should be a quick nonstop",
+          "Tight 30-minute layover at Dulles (IAD) creates high risk of misconnecting",
+          "Early 6:00 AM departure requires a very early morning airport arrival"
         ],
         "positive_highlights": [
-          "Full Main Cabin ticket on United Airlines with standard seat choice & carry-on bag"
+          "Includes standard carry-on baggage privileges",
+          "Operated on a reliable Embraer 175 regional aircraft"
         ],
-        "rationale": "Fare sits near median historical levels ($214.5). Recommend tracking this corridor for typical fare dips 4-6 weeks out."
+        "rationale": "At the 92.1st percentile for this corridor, this fare is heavily inflated for a roundabout 1-stop itinerary with a risky 30-minute layover. You should wait and monitor for nonstop alternatives or lower-tier pricing closer to the historical median."
       },
       "history_90d": [
         196,
