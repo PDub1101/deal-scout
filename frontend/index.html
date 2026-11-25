@@ -1,42 +1,40 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DealScout Flight Intelligence — Personal Corridor Radar & Fare Auditor</title>
+  <title>DealScout Flight Intelligence — Corridor Radar &amp; Fare Auditor</title>
   <meta name="description" content="DealScout Flight Intelligence: Automated flight corridor price radar, rolling 90-day percentile distribution engine, and Gemini qualitative fee & schedule audits." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
 
-  <script>
-    if (window.self !== window.top) {
-      document.documentElement.classList.add('is-embedded');
-    }
-  </script>
-
   <style>
     /* ==========================================================================
-       DESIGN SYSTEM: REFINED LIGHT BASE & SOFT SLATE DARK MODE
+       DESIGN SYSTEM: CRISP EDITORIAL LIGHT
        ========================================================================== */
-    :root,
-    html[data-theme="light"] {
-      --bg-page: #f8fafc;
-      --bg-header: rgba(248, 250, 252, 0.94);
+    :root {
+      --bg-page: #faf9f6;
+      --bg-header: rgba(250, 249, 246, 0.94);
       --bg-ribbon: #ffffff;
       --bg-card: #ffffff;
-      --bg-card-alt: #f1f5f9;
-      --bg-card-hover: #f8fafc;
-      --border-subtle: #e2e8f0;
-      --border-strong: #cbd5e1;
+      --bg-card-alt: #f3f1ec;
+      --bg-card-hover: #faf9f6;
+      --border-subtle: #e5e2da;
+      --border-strong: #cfc9bc;
 
-      --text-primary: #0f172a;
-      --text-secondary: #475569;
-      --text-muted: #475569;
+      --text-primary: #14171f;
+      --text-secondary: #4a505c;
+      --text-muted: #68707d;
 
-      --accent-primary: #1d4ed8;
-      --accent-primary-hover: #1e40af;
+      --accent-navy: #003057;
+      --accent-navy-hover: #00213d;
+      --accent-gold: #8c7a3e;
+      --accent-gold-badge: #b3a369;
+
+      --accent-primary: #003057;
+      --accent-primary-hover: #00213d;
       --accent-primary-bg: #eff6ff;
       --accent-primary-border: #bfdbfe;
 
@@ -48,11 +46,11 @@
       --amber-bg: #fffbeb;
       --amber-border: #fde68a;
 
-      --purple: #7c3aed;
+      --purple: #6d28d9;
       --purple-bg: #f5f3ff;
       --purple-border: #ddd6fe;
 
-      --sky: #0284c7;
+      --sky: #0369a1;
       --sky-bg: #f0f9ff;
       --sky-border: #bae6fd;
 
@@ -64,53 +62,10 @@
       --radius-md: 4px;
       --radius-lg: 4px;
       --radius-pill: 4px;
-    }
 
-    html[data-theme="slate"] {
-      --bg-page: #0f1218;
-      --bg-header: rgba(15, 18, 24, 0.92);
-      --bg-ribbon: #171c26;
-      --bg-card: #171c26;
-      --bg-card-alt: #1c2331;
-      --bg-card-hover: #222a3a;
-      --border-subtle: #242c3d;
-      --border-strong: #333e54;
-
-      --text-primary: #f1f5f9;
-      --text-secondary: #94a3b8;
-      --text-muted: #94a3b8;
-
-      --accent-primary: #60a5fa;
-      --accent-primary-hover: #3b82f6;
-      --accent-primary-bg: rgba(96, 165, 250, 0.12);
-      --accent-primary-border: rgba(96, 165, 250, 0.28);
-
-      --pos: #34d399;
-      --pos-bg: rgba(52, 211, 153, 0.12);
-      --pos-border: rgba(52, 211, 153, 0.28);
-
-      --amber: #fbbf24;
-      --amber-bg: rgba(251, 191, 36, 0.12);
-      --amber-border: rgba(251, 191, 36, 0.28);
-
-      --purple: #a78bfa;
-      --purple-bg: rgba(167, 139, 250, 0.14);
-      --purple-border: rgba(167, 139, 250, 0.32);
-
-      --sky: #38bdf8;
-      --sky-bg: rgba(56, 189, 248, 0.12);
-      --sky-border: rgba(56, 189, 248, 0.28);
-
-      --shadow-subtle: none;
-      --shadow-card: none;
-      --shadow-elevated: none;
-    }
-
-    html.is-embedded header {
-      display: none !important;
-    }
-    html.is-embedded .metrics-ribbon {
-      padding-top: 24px;
+      --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
     }
 
     *, *::before, *::after {
@@ -119,18 +74,28 @@
       padding: 0;
     }
 
+    ::selection {
+      background: rgba(0, 48, 87, 0.14);
+      color: var(--text-primary);
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent-navy);
+      outline-offset: 2px;
+    }
+
     body {
       background-color: var(--bg-page);
       color: var(--text-primary);
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: var(--font-body);
       font-size: 14.5px;
       line-height: 1.55;
       -webkit-font-smoothing: antialiased;
-      transition: background-color 0.2s, color 0.2s;
+      overflow-x: hidden;
     }
 
     h1, h2, h3, h4 {
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: var(--font-display);
       font-weight: 700;
       color: var(--text-primary);
       letter-spacing: -0.015em;
@@ -150,89 +115,128 @@
       padding: 0 20px;
     }
 
-    /* Header */
-    header {
+    /* Unified Top Header */
+    .site-header {
       position: sticky;
       top: 0;
-      z-index: 40;
+      z-index: 100;
       background: var(--bg-header);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border-subtle);
     }
-
-    .header-inner {
+    .nav-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 20px;
+      height: 62px;
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: center;
-      height: 68px;
+      gap: 20px;
     }
-
-    .brand-wrap {
-      display: flex;
+    .nav-brand {
+      display: inline-flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
+      color: var(--text-primary);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: -0.015em;
+      flex-shrink: 0;
     }
-
-    .brand-mark {
+    .nav-brand:hover { color: var(--accent-navy); text-decoration: none; }
+    .gt-logo-pill {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 38px;
-      height: 38px;
-      border-radius: 9px;
-      background: linear-gradient(135deg, #1d4ed8, #0284c7);
-      color: #ffffff;
-      font-family: 'JetBrains Mono', monospace;
-      font-weight: 700;
-      font-size: 16px;
-      box-shadow: 0 2px 6px rgba(29, 78, 216, 0.35);
+      width: 28px;
+      height: 28px;
+      background: var(--accent-navy);
+      color: var(--accent-gold-badge);
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 11.5px;
+      letter-spacing: 0.03em;
+      border-radius: 4px;
+      flex-shrink: 0;
     }
-
-    .brand-title {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text-primary);
-      letter-spacing: -0.02em;
-    }
-
-    .brand-subtitle {
-      font-size: 12.5px;
+    .brand-sub-nav {
       color: var(--text-muted);
-      margin-left: 6px;
-      padding-left: 8px;
-      border-left: 1px solid var(--border-strong);
+      font-weight: 500;
+      font-size: 13.5px;
+      margin-left: 4px;
     }
-
-    .header-links {
+    .nav-links {
+      display: flex;
+      align-items: stretch;
+      height: 100%;
+      gap: 24px;
+    }
+    .nav-link {
+      display: inline-flex;
+      align-items: center;
+      height: 100%;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      border-bottom: 2px solid transparent;
+      white-space: nowrap;
+      padding: 0 2px;
+    }
+    .nav-link:hover { color: var(--text-primary); text-decoration: none; }
+    .nav-link.active {
+      color: var(--text-primary);
+      font-weight: 700;
+      border-bottom-color: var(--accent-navy);
+    }
+    .nav-actions {
       display: flex;
       align-items: center;
       gap: 10px;
+      flex-shrink: 0;
     }
-
-    .btn-header {
-      font-size: 13px;
-      font-weight: 600;
-      padding: 7px 14px;
+    .nav-icon-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
       border-radius: 4px;
-      border: 1px solid var(--border-strong);
-      background: var(--bg-card);
-      color: var(--text-primary);
-      transition: all 0.15s ease;
+      color: var(--text-secondary);
+    }
+    .nav-icon-link:hover { color: var(--accent-navy); background: var(--bg-card-alt); text-decoration: none; }
+    .nav-resume-btn {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      cursor: pointer;
+      height: 34px;
+      padding: 0 12px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+      background: var(--bg-card);
+      border: 1px solid var(--border-strong);
+      border-radius: 4px;
     }
+    .nav-resume-btn:hover { border-color: var(--accent-navy); color: var(--accent-navy); text-decoration: none; }
 
-    .btn-header:hover {
-      background: var(--bg-card-alt);
-      text-decoration: none;
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--pos);
+      display: inline-block;
+      flex-shrink: 0;
+    }
+    .status-dot.muted {
+      background: var(--text-muted);
     }
 
     /* KPI Ribbon - Flat Telemetry Strip */
     .metrics-ribbon {
       background: var(--bg-card);
-      border-top: 1px solid var(--border-subtle);
       border-bottom: 1px solid var(--border-subtle);
       padding: 10px 0;
       margin-bottom: 24px;
@@ -255,26 +259,6 @@
 
     .kpi-card:last-child {
       border-right: none;
-    }
-
-    .kpi-card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 3px;
-      height: 100%;
-      background: var(--accent-primary);
-      opacity: 0.85;
-    }
-    .kpi-card:nth-child(2)::before {
-      background: var(--pos);
-    }
-    .kpi-card:nth-child(3)::before {
-      background: var(--purple);
-    }
-    .kpi-card:nth-child(4)::before {
-      background: var(--sky);
     }
 
     .kpi-label {
@@ -1088,6 +1072,31 @@
       }
     }
 
+    @media (max-width: 768px) {
+      .nav-container {
+        height: auto;
+        padding: 10px 16px 0;
+        flex-wrap: wrap;
+        gap: 8px 12px;
+      }
+      .nav-brand { order: 1; }
+      .nav-actions { order: 2; }
+      .nav-links {
+        order: 3;
+        width: 100%;
+        height: auto;
+        border-top: 1px solid var(--border-subtle);
+        margin-top: 4px;
+        gap: 12px;
+        justify-content: space-between;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      .nav-link { height: 40px; font-size: 13px; }
+      .brand-sub-nav { display: none; }
+      .container { padding: 0 16px; }
+    }
+
     @media (max-width: 600px) {
       .kpi-grid {
         grid-template-columns: 1fr;
@@ -1122,25 +1131,31 @@
 </head>
 <body>
 
-  <!-- Top Navigation Header -->
-  <header>
-    <div class="container">
-      <div class="header-inner">
-        <div class="brand-wrap">
-          <span class="brand-mark">&#9992;</span>
-          <div>
-            <span class="brand-title">DealScout Flight Intelligence</span>
-            <span class="brand-subtitle">Personal Corridor Radar</span>
-          </div>
-        </div>
-        <div class="header-links">
-          <a href="https://pdub1101.github.io/" target="_top" class="btn-header">
-            &larr; Portfolio
-          </a>
-          <button id="themeToggle" class="btn-header" aria-label="Toggle theme">
-            Theme
-          </button>
-        </div>
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="../" class="nav-brand">
+        <span class="gt-logo-pill">GT</span>
+        <span class="brand-text">Paul Gibson <span class="brand-sub-nav">ISyE '28</span></span>
+      </a>
+
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="../" class="nav-link">Overview</a>
+        <a href="../market-insight/" class="nav-link">Market Insight</a>
+        <a href="../deal-scout/" class="nav-link active" aria-current="page">DealScout</a>
+        <a href="../court-vision/" class="nav-link">CourtVision</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="https://github.com/PDub1101" target="_blank" rel="noopener" class="nav-icon-link" title="GitHub Profile" aria-label="GitHub Profile">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/paul-gibson-079b44326/" target="_blank" rel="noopener" class="nav-icon-link" title="LinkedIn Profile" aria-label="LinkedIn Profile">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        </a>
+        <a href="../Paul_Gibson_Resume.pdf" target="_blank" rel="noopener" class="nav-resume-btn">
+          <span>Resume</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+        </a>
       </div>
     </div>
   </header>
@@ -1201,7 +1216,7 @@
       <section class="drawer-section">
         <div class="drawer-header" id="drawerToggle">
           <div class="drawer-title">
-            <span>&#9992; Trip Duration & Custom Destination Price Planner</span>
+            <span>Trip Duration &amp; Custom Destination Price Planner</span>
             <span style="font-size: 12px; font-weight: 500; color: var(--text-muted);">(Pick your destination, how long you want to stay, and find lowest rates)</span>
           </div>
           <button class="drawer-toggle-btn" id="drawerBtnLabel">Open Planner &#9662;</button>
@@ -1275,7 +1290,7 @@
           <!-- Calculate Action Button -->
           <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 4px;">
             <button id="btnCalculateLowest" class="btn-cta" style="padding: 10px 20px; font-size: 13px; font-weight: 700;">
-              &#128269; Calculate Lowest Price Date Windows
+              Calculate Lowest Price Date Windows
             </button>
             <span style="font-size: 12px; color: var(--text-muted);" id="calcHelperNote">
               Calculates cheapest departure vs return day pairings for your exact trip duration.
@@ -1318,32 +1333,6 @@
 
   <script src="deals_data.js?v=20261112_2055"></script>
   <script>
-    // Theme Switcher & Embedding Sync
-    const themeBtn = document.getElementById('themeToggle');
-    const htmlElem = document.documentElement;
-
-    function applyTheme(theme) {
-      htmlElem.setAttribute('data-theme', theme);
-      localStorage.setItem('theme', theme);
-    }
-
-    if (themeBtn) {
-      themeBtn.addEventListener('click', () => {
-        const current = htmlElem.getAttribute('data-theme') || 'light';
-        const next = current === 'slate' ? 'light' : 'slate';
-        applyTheme(next);
-      });
-    }
-
-    window.addEventListener('message', function(e) {
-      if (e.data && e.data.type === 'SET_THEME' && e.data.theme) {
-        applyTheme(e.data.theme);
-      }
-    });
-
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    applyTheme(savedTheme);
-
     // Planner Toggle
     const drawerToggle = document.getElementById('drawerToggle');
     const drawerBody = document.getElementById('drawerBody');
@@ -1525,7 +1514,7 @@
           <div class="calc-results-wrap">
             <div class="calc-results-header">
               <div>
-                <strong style="font-size: 14px; color: var(--text-primary);">&#10024; Lowest Calculated Options: ${orig} ➔ ${dest} (${duration} Nights)</strong>
+                <strong style="font-size: 14px; color: var(--text-primary);">Lowest Calculated Options: ${orig} &rarr; ${dest} (${duration} Nights)</strong>
                 <div style="font-size: 12px; color: var(--text-muted); margin-top: 3px;">
                   Found ${options.length} potential date windows. Tuesday & Wednesday departures avoid airline peak yield surcharges.
                 </div>
@@ -1539,9 +1528,9 @@
               ${options.map((opt) => {
                 const recClass = opt.isCheapestDay ? 'is-recommended' : '';
                 const tag = opt.isCheapestDay
-                  ? `<span style="color: var(--pos); font-size: 11px; font-weight: 700;">&#9733; Low-Yield Day (Best Rate)</span>`
+                  ? `<span style="color: var(--pos); font-size: 11px; font-weight: 700;">Low-Yield Day (Best Rate)</span>`
                   : (opt.isPeakDay
-                      ? `<span style="color: var(--amber); font-size: 11px; font-weight: 600;">&#9888; Weekend Peak Yield</span>`
+                      ? `<span style="color: var(--amber); font-size: 11px; font-weight: 600;">Weekend Peak Yield</span>`
                       : `<span style="color: var(--text-muted); font-size: 11px;">Standard Fare Window</span>`);
 
                 const optJSON = encodeURIComponent(JSON.stringify({
@@ -1561,7 +1550,7 @@
                   <div class="calc-card ${recClass}">
                     <div style="display: flex; justify-content: space-between; align-items: flex-start;">
                       <div>
-                        <div style="font-size: 13px; font-weight: 700; color: var(--text-primary);">${opt.depDayName} ➔ ${opt.retDayName}</div>
+                        <div style="font-size: 13px; font-weight: 700; color: var(--text-primary);">${opt.depDayName} &rarr; ${opt.retDayName}</div>
                         <div style="font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: var(--text-secondary); margin-top: 2px;">
                           ${opt.dateDisp}
                         </div>
@@ -1659,7 +1648,7 @@
         if (gridElem) {
           gridElem.scrollIntoView({ behavior: 'smooth' });
         }
-        alert(`Success! Tracked ${item.orig} ➔ ${item.dest} (${item.duration} Nights) on your live dashboard.`);
+        alert(`Success! Tracked ${item.orig} -> ${item.dest} (${item.duration} Nights) on your live dashboard.`);
       } catch (e) {
         console.error('Error saving custom corridor:', e);
       }
@@ -1728,8 +1717,15 @@
       if (spotlightItem) {
         const stats = spotlightItem.stats || {};
         const audit = spotlightItem.audit || {};
-        document.getElementById('spotlightTitle').textContent = `${spotlightItem.origin_city} (${spotlightItem.origin}) ➔ ${spotlightItem.destination_city} (${spotlightItem.destination}) • ${spotlightItem.airline} ($${spotlightItem.price} roundtrip)`;
-        document.getElementById('spotlightSummary').textContent = `${spotlightItem.window_name} (${spotlightItem.date_display}, ${spotlightItem.duration_label}) • 90d Percentile: ${stats.percentile_rank || 0}th% (Saves ~$${stats.estimated_savings || 0} vs median). ${audit.rationale || ''}`;
+        const rawPct = stats.percentile_rank !== undefined ? Math.round(stats.percentile_rank) : 0;
+        const ordinal = (n) => {
+          const s = ['th', 'st', 'nd', 'rd'];
+          const v = n % 100;
+          return n + (s[(v - 20) % 10] || s[v] || s[0]);
+        };
+        const cleanRationale = (audit.rationale || '').replace(/\$\$(\d+)/g, '$$$1');
+        document.getElementById('spotlightTitle').textContent = `${spotlightItem.origin_city} (${spotlightItem.origin}) → ${spotlightItem.destination_city} (${spotlightItem.destination}) • ${spotlightItem.airline} ($${spotlightItem.price} roundtrip)`;
+        document.getElementById('spotlightSummary').textContent = `${spotlightItem.window_name} (${spotlightItem.date_display}, ${spotlightItem.duration_label}) • 90d Percentile: ${ordinal(rawPct)} percentile (Saves ~$${stats.estimated_savings || 0} vs median). ${cleanRationale}`;
         document.getElementById('spotlightGoogleBtn').href = spotlightItem.booking_url;
         document.getElementById('spotlightKayakBtn').href = spotlightItem.kayak_url || spotlightItem.booking_url;
       }
@@ -1762,7 +1758,13 @@
       const stats = item.stats || {};
       const audit = item.audit || {};
       const isBuyNow = audit.verdict === 'BUY NOW';
-      const percentile = stats.percentile_rank || 50;
+      const percentile = stats.percentile_rank !== undefined ? stats.percentile_rank : 50;
+      const ordinal = (n) => {
+        const s = ['th', 'st', 'nd', 'rd'];
+        const v = n % 100;
+        return n + (s[(v - 20) % 10] || s[v] || s[0]);
+      };
+      const percentileDisplay = `${ordinal(Math.round(percentile))} percentile`;
       
       const pClass = percentile <= 20 ? 'percentile-low' : (percentile <= 45 ? 'percentile-mid' : 'percentile-high');
       const vClass = isBuyNow ? 'verdict-buy' : (audit.verdict === 'FAIR VALUE' ? 'verdict-fair' : 'verdict-pass');
@@ -1773,8 +1775,8 @@
         : `<span class="layover-badge">${item.stops} stop (${item.layover_hrs}h in ${item.connection || 'hub'})</span>`;
 
       const liveBadge = item.is_live
-        ? `<span class="live-badge" style="background: rgba(52, 211, 153, 0.15); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.35); padding: 2px 7px; border-radius: 999px; font-size: 11px; font-weight: 600; display: inline-flex; align-items: center; gap: 4px;">🟢 Live Fare</span>`
-        : `<span class="benchmark-badge" style="background: rgba(148, 163, 184, 0.15); color: #94a3b8; border: 1px solid rgba(148, 163, 184, 0.35); padding: 2px 7px; border-radius: 999px; font-size: 11px; font-weight: 600; display: inline-flex; align-items: center; gap: 4px;">⚪ Benchmark</span>`;
+        ? `<span class="live-badge" style="background: var(--pos-bg); color: var(--pos); border: 1px solid var(--pos-border); padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 600; display: inline-flex; align-items: center; gap: 5px;"><span class="status-dot"></span>Live Fare</span>`
+        : `<span class="benchmark-badge" style="background: var(--bg-card-alt); color: var(--text-muted); border: 1px solid var(--border-subtle); padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 600; display: inline-flex; align-items: center; gap: 5px;"><span class="status-dot muted"></span>Benchmark</span>`;
 
       let gotchas = (audit.gotchas || []).map(g => `<li class="audit-bullet caution">${g}</li>`).join('');
       let highlights = (audit.positive_highlights || []).map(p => `<li class="audit-bullet positive">${p}</li>`).join('');
@@ -1798,14 +1800,14 @@
               <div>
                 <div class="route-airports">
                   <span>${item.origin}</span>
-                  <span class="plane-icon">&#9992;</span>
+                  <span class="plane-icon">&rarr;</span>
                   <span>${item.destination}</span>
                 </div>
                 <div class="route-cities">${item.origin_city} to ${item.destination_city}</div>
               </div>
               <div class="price-box">
                 <div class="price-main">$${item.price}</div>
-                <div class="price-percentile-badge ${pClass}">${percentile}th percentile</div>
+                <div class="price-percentile-badge ${pClass}">${percentileDisplay}</div>
                 <div style="font-size: 11px; color: var(--text-muted); margin-top: 3px; font-weight: 500;">${item.quote_source || 'Market Quote'}</div>
               </div>
             </div>
@@ -1813,7 +1815,7 @@
             <!-- Badges Row -->
             <div class="badges-row">
               ${liveBadge}
-              <span class="window-badge">&#128197; ${item.date_display}</span>
+              <span class="window-badge">${item.date_display}</span>
               <span class="category-badge">${item.window_name}</span>
               ${routingBadge}
             </div>
@@ -1821,7 +1823,7 @@
             <!-- Sparkline Trend -->
             <div class="trend-row">
               <div class="trend-stat">
-                Median: <strong>$${stats.median_price || item.price}</strong> • Range: $${stats.min_price || item.price}-$${stats.max_price || item.price}
+                Median: <strong>$${stats.median_price || item.price}</strong> &bull; Range: $${stats.min_price || item.price}-$${stats.max_price || item.price}
               </div>
               <div>${createSparkline(item.history_90d)}</div>
             </div>
@@ -1829,7 +1831,7 @@
             <!-- Flight Specs Table -->
             <div class="specs-grid">
               <div class="spec-item">
-                <span class="spec-label">Carrier & Cabin</span>
+                <span class="spec-label">Carrier &amp; Cabin</span>
                 <span class="spec-val">${item.airline}</span>
                 <span style="font-size: 11px; color: var(--text-muted);">${item.cabin || 'Main Cabin'}</span>
               </div>
@@ -1847,14 +1849,13 @@
 
             <!-- Baggage Status Pill -->
             <div class="baggage-pill">
-              <span>&#129523;</span>
               <span><strong>Baggage:</strong> ${audit.baggage_status || 'Main Cabin standard carry-on included'}</span>
             </div>
 
             <!-- Gemini Qualitative Audit Box -->
             <div class="gemini-audit-box">
               <div class="gemini-verdict-row">
-                <span class="gemini-label">&#10024; Gemini Travel Audit</span>
+                <span class="gemini-label">Gemini Travel Audit</span>
                 <span class="verdict-badge ${vClass}">${audit.verdict}</span>
               </div>
               <div class="audit-rationale">${audit.rationale}</div>
@@ -1867,7 +1868,7 @@
 
           <!-- Card Action Footer -->
           <div class="card-footer">
-            <span class="savings-tag">&#128176; ${savingsDisplay}</span>
+            <span class="savings-tag">${savingsDisplay}</span>
             <div class="action-links">
               <a href="${item.kayak_url || item.booking_url}" target="_blank" rel="noopener" class="btn-kayak" title="Compare rates on Kayak">
                 Kayak
@@ -1886,8 +1887,7 @@
     function renderGrid(itemsToRender) {
       if (!itemsToRender || itemsToRender.length === 0) {
         grid.innerHTML = `
-          <div style="grid-column: 1 / -1; text-align: center; padding: 48px 20px; background: var(--bg-card); border-radius: 12px; border: 1px solid var(--border-subtle);">
-            <div style="font-size: 32px; margin-bottom: 12px;">&#9992;</div>
+          <div style="grid-column: 1 / -1; text-align: center; padding: 48px 20px; background: var(--bg-card); border-radius: 4px; border: 1px solid var(--border-subtle);">
             <h3 style="margin-bottom: 6px;">No corridors match your current filter.</h3>
             <p style="color: var(--text-muted); font-size: 13.5px;">Try switching filters or clearing the search query.</p>
           </div>
@@ -1960,25 +1960,10 @@
       });
     }
 
-    // Initial render from embedded data
+    // Render from bundled deals_data.js
     if (window.DEAL_DATA) {
       initDashboard(window.DEAL_DATA);
     }
-
-    // Always fetch latest data with cache: 'no-store' to guarantee fresh data without browser cache
-    fetch('data/deals_data.json?_t=' + Date.now(), { cache: 'no-store' })
-      .then(res => {
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        return res.json();
-      })
-      .then(freshData => {
-        if (freshData && freshData.flights && freshData.flights.length > 0) {
-          initDashboard(freshData);
-        }
-      })
-      .catch(err => {
-        console.warn('Direct fetch note (falling back to bundle):', err);
-      });
   </script>
 </body>
 </html>

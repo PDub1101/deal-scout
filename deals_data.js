@@ -62,7 +62,7 @@ window.DEAL_DATA = {
         "positive_highlights": [
           "Peak holiday window: high demand period where seat inventory drops rapidly"
         ],
-        "rationale": "Rare price bottom for Frontier Airlines during Christmas / Holiday Ski Break, ranking in the lowest 11.1% of historical fares ($$184 below median). Secure this seat before fares surge."
+        "rationale": "Rare price bottom for Frontier Airlines during Christmas / Holiday Ski Break, ranking in the 11th percentile of historical fares ($184 below median). Secure this seat before fares surge."
       },
       "history_90d": [
         244,
@@ -132,7 +132,7 @@ window.DEAL_DATA = {
         "positive_highlights": [
           "Peak holiday window: high demand period where seat inventory drops rapidly"
         ],
-        "rationale": "Rare price bottom for Frontier Airlines during Christmas Ski (Southwest 2 Free Bags), ranking in the lowest 7.1% of historical fares ($$48 below median). Secure this seat before fares surge."
+        "rationale": "Rare price bottom for Frontier Airlines during Christmas Ski (Southwest 2 Free Bags), ranking in the 7th percentile of historical fares ($48 below median). Secure this seat before fares surge."
       },
       "history_90d": [
         439,
@@ -273,7 +273,7 @@ window.DEAL_DATA = {
           "Full Main Cabin ticket on Delta Connection (SkyWest) with standard seat choice & carry-on bag",
           "Peak holiday window: high demand period where seat inventory drops rapidly"
         ],
-        "rationale": "Rare price bottom for Delta Connection (SkyWest) during Holiday Semester Break, ranking in the lowest 20.0% of historical fares ($$61 below median). Secure this seat before fares surge."
+        "rationale": "Rare price bottom for Delta Connection (SkyWest) during Holiday Semester Break, ranking in the 20th percentile of historical fares ($61 below median). Secure this seat before fares surge."
       },
       "history_90d": [
         208,
@@ -410,7 +410,7 @@ window.DEAL_DATA = {
           "Southwest perk: 2 free checked bags included, saving up to $140 roundtrip",
           "Peak holiday window: high demand period where seat inventory drops rapidly"
         ],
-        "rationale": "Rare price bottom for Southwest Airlines during Christmas Ski Week (Cheapest Window), ranking in the lowest 17.8% of historical fares ($$48 below median). Secure this seat before fares surge."
+        "rationale": "Rare price bottom for Southwest Airlines during Christmas Ski Week (Cheapest Window), ranking in the 18th percentile of historical fares ($48 below median). Secure this seat before fares surge."
       },
       "history_90d": [
         398,
@@ -478,7 +478,7 @@ window.DEAL_DATA = {
           "Ultra-low-cost carrier: seat selection, overhead carry-on bags, and water cost extra"
         ],
         "positive_highlights": [],
-        "rationale": "Rare price bottom for Frontier Airlines during MLK Long Weekend Ski, ranking in the lowest 1.1% of historical fares ($$70 below median). Secure this seat before fares surge."
+        "rationale": "Rare price bottom for Frontier Airlines during MLK Long Weekend Ski, ranking in the 1st percentile of historical fares ($70 below median). Secure this seat before fares surge."
       },
       "history_90d": [
         187,
@@ -547,7 +547,7 @@ window.DEAL_DATA = {
         "positive_highlights": [
           "Nonstop direct service (1h 44m) with zero layover disruption risk"
         ],
-        "rationale": "Rare price bottom for Frontier Airlines during Spring Break Florida Getaway, ranking in the lowest 10.0% of historical fares ($$47 below median). Secure this seat before fares surge."
+        "rationale": "Rare price bottom for Frontier Airlines during Spring Break Florida Getaway, ranking in the 10th percentile of historical fares ($47 below median). Secure this seat before fares surge."
       },
       "history_90d": [
         258,
